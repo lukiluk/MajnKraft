@@ -10,7 +10,7 @@
 using namespace std;
 
 int main(int argc, char** argv) {
-    cout << "Nazdar!!!" << endl;
+    cout << "Nazdar zmena2!!!" << endl;
     return 0;
 }
 
