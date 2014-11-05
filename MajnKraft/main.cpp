@@ -4,9 +4,13 @@
  *
  * Created on October 29, 2014, 12:23 PM
  */
+#define GLEW_STATIC
+#include <GL/glew.h>
 
 #include <SDL2/SDL.h>
 #include <SDL2/SDL_opengl.h>
+#include <GL/gl.h>
+#include <GL/glu.h>
 
 int main(int argc, char** argv) {
     SDL_Init(SDL_INIT_VIDEO);
