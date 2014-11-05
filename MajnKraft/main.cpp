@@ -25,6 +25,11 @@ int main(int argc, char** argv) {
     glewExperimental = GL_TRUE;
     glewInit();
     
+    GLuint vertexBuffer;
+    glGenBuffers(1, &vertexBuffer);
+
+    printf("%u\n", vertexBuffer);
+
     glClearColor( 1.0f, 0.0f, 0.0f, 1.0f );
     glClear( GL_COLOR_BUFFER_BIT );
     
