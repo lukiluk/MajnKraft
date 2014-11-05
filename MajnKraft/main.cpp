@@ -6,7 +6,6 @@
  */
 #define GLEW_STATIC
 #include <GL/glew.h>
-
 #include <SDL2/SDL.h>
 #include <SDL2/SDL_opengl.h>
 #include <GL/gl.h>
@@ -28,14 +27,15 @@ int main(int argc, char** argv) {
     GLuint vertexBuffer;
     glGenBuffers(1, &vertexBuffer);
 
-    printf("%u\n", vertexBuffer);
+   
 
-    glClearColor( 1.0f, 0.0f, 0.0f, 1.0f );
-    glClear( GL_COLOR_BUFFER_BIT );
+    glClearColor( 1.0f, 0.0f, 0.0f, 0.0f );
+   
     
     SDL_Event windowEvent;
     while (true)
     {
+        glClear( GL_COLOR_BUFFER_BIT );
         if (SDL_PollEvent(&windowEvent))
         {
             if (windowEvent.type == SDL_QUIT) break;
