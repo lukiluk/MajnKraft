@@ -40,6 +40,7 @@
             <linkerOptionItem>-lSDL2</linkerOptionItem>
             <linkerOptionItem>-lGL</linkerOptionItem>
             <linkerOptionItem>-lGLEW</linkerOptionItem>
+            <linkerOptionItem>-lSDL2_image</linkerOptionItem>
           </linkerLibItems>
         </linkerTool>
       </compileType>
