@@ -2,10 +2,7 @@
 
 #define GLEW_STATIC
 #include <GL/glew.h>
-
-#include <SDL2/SDL.h>
-#include <SDL2/SDL_opengl.h>
-
+#define GLEW_STATIC
 /*
 #define STB_IMAGE_IMPLEMENTATION
 #include <stb_image.h>*/
@@ -19,7 +16,9 @@
 
 #define GLSL(src) "#version 150 core\n" #src
 
-int main()
+#include "SDL2/SDL.h"
+
+int main(int argc, char *argv[])
 {
     SDL_Init(SDL_INIT_VIDEO);
     
