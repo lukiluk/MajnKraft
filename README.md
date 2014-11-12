@@ -9,4 +9,6 @@ Potrebne kniznice - Required Libraries
 ======================================
 
 -SDL2
+-SDL2_Image
 -GLEW
+-GLM
