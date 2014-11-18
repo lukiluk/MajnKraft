@@ -4,6 +4,10 @@
     <logicalFolder name="HeaderFiles"
                    displayName="Header Files"
                    projectFiles="true">
+      <itemPath>Mesh.h</itemPath>
+      <itemPath>Shader.h</itemPath>
+      <itemPath>Texture.h</itemPath>
+      <itemPath>Transformation.h</itemPath>
     </logicalFolder>
     <logicalFolder name="ResourceFiles"
                    displayName="Resource Files"
@@ -12,6 +16,10 @@
     <logicalFolder name="SourceFiles"
                    displayName="Source Files"
                    projectFiles="true">
+      <itemPath>Mesh.cpp</itemPath>
+      <itemPath>Shader.cpp</itemPath>
+      <itemPath>Texture.cpp</itemPath>
+      <itemPath>Transformation.cpp</itemPath>
       <itemPath>main.cpp</itemPath>
     </logicalFolder>
     <logicalFolder name="TestFiles"
@@ -36,14 +44,25 @@
       </toolsSet>
       <compileType>
         <linkerTool>
-          <linkerLibItems>
-            <linkerOptionItem>-lSDL2</linkerOptionItem>
-            <linkerOptionItem>-lGL</linkerOptionItem>
-            <linkerOptionItem>-lGLEW</linkerOptionItem>
-            <linkerOptionItem>-lSDL2_image</linkerOptionItem>
-          </linkerLibItems>
+          <commandLine>-lmingw32 -lSDL2main -lSDL2 -lSDL2_image -lglew32 -lopengl32</commandLine>
         </linkerTool>
       </compileType>
+      <item path="Mesh.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="Mesh.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="Shader.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="Shader.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="Texture.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="Texture.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="Transformation.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="Transformation.h" ex="false" tool="3" flavor2="0">
+      </item>
       <item path="main.cpp" ex="false" tool="1" flavor2="0">
       </item>
     </conf>
@@ -67,6 +86,22 @@
           <developmentMode>5</developmentMode>
         </asmTool>
       </compileType>
+      <item path="Mesh.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="Mesh.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="Shader.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="Shader.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="Texture.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="Texture.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="Transformation.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="Transformation.h" ex="false" tool="3" flavor2="0">
+      </item>
       <item path="main.cpp" ex="false" tool="1" flavor2="0">
       </item>
     </conf>
