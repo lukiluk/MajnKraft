@@ -8,10 +8,13 @@ First project to learn 3D graphics and computer game creation. Goal of this proj
 Potrebne kniznice - Required Libraries
 ======================================
 
--SDL2
--SDL2_Image
--GLEW
--GLM
+Kniznice potrebne pre skompilovanie projektu:
+Libraries required to build project:
+
+- SDL2
+- SDL2_Image
+- GLEW
+- GLM
 
 Linker Options
 ==============
