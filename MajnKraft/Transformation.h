@@ -13,7 +13,7 @@ public:
     Transformation();
     Transformation(const Transformation& orig);
     void transform(GLuint shaderProgram);
-    void rotate();
+    void rotate(int rotateAmtX);
     virtual ~Transformation();
 private:
     GLint uniTrans;

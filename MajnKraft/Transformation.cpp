@@ -10,6 +10,7 @@
 #include <glm/glm.hpp>
 #include <glm/gtc/matrix_transform.hpp>
 #include <glm/gtc/type_ptr.hpp>
+#include <SDL2/SDL.h>
 #include "Transformation.h"
 
 Transformation::Transformation() {
@@ -34,12 +35,12 @@ void Transformation::transform(GLuint shaderProgram) {
     glUniformMatrix4fv(uniProj, 1, GL_FALSE, glm::value_ptr(proj));
 }
 
-void Transformation::rotate() {
+void Transformation::rotate(int rotateAmtX) {
      glm::mat4 trans;
         trans = glm::rotate(
             trans,
-            //(float)sin(glfwGetTime()) * 2.0f,
-                0.0f,
+            rotateAmtX * 2.0f,
+              //  0.0f,
             glm::vec3(0.0f, 0.0f, 1.0f)
         );
 
