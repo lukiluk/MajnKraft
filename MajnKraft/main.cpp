@@ -6,7 +6,7 @@
 #define STB_IMAGE_IMPLEMENTATION
 #include <stb_image.h>*/
 
-#define GLM_FORCE_RADIANS
+
 
 #include "SDL2/SDL.h"
 #include "Mesh.h"

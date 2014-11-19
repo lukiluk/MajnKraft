@@ -4,6 +4,7 @@
  * 
  * Created on Utorok, 2014, november 18, 23:21
  */
+#define GLEW_STATIC
 #include <GL/glew.h>
 #include <SDL2/SDL_image.h>
 #include "Texture.h"
