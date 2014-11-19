@@ -12,3 +12,11 @@ Potrebne kniznice - Required Libraries
 -SDL2_Image
 -GLEW
 -GLM
+
+Linker Options
+==============
+
+V projekte do linker options doplnte:
+
+- v Linuxe: -lSDL2 -lGL -lGLEW -lSDL2_image
+- vo Windows: -lmingw32 -lSDL2main -lSDL2 -lSDL2_image -lglew32 -lopengl32
