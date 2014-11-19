@@ -8,7 +8,7 @@
 #ifndef MESH_H
 #define	MESH_H
 #define GLEW_STATIC
-#include <gl\glew.h>
+#include <GL/glew.h>
 #define GLM_FORCE_RADIANS
 #include <glm/glm.hpp>
 class Mesh
