@@ -1,0 +1,10 @@
+interface Kocka, metody draw(3 parametre pozicie, bude vykreslovat kocku na danom mieste), update(meni stav kocky, napr pri animovani)
+implementacie kocky budu mat konstanty s cestou k texturam
+
+svet - trojrozmerrne pole struktur informacii o kocke(InfoKocka)
+InfoKocka - struktura obsahujuca odkaz na implementaciiu kocky, ktora sa ma vykreslit a viditelnost
+viditelnost je true ak je vedla kocky aspon jedna transparentna kocka(voda, vzuch) inak false
+viditelnost sa nastavi pri prvom vykresleni kocky a potom len pri zmene jej najblizsieho okolia (polozenie, zburanie kocky)
+
+po spusteni programu:
+najprv sa spusti generovanie svetu (vygeneruje urcite okolie od kamery)
