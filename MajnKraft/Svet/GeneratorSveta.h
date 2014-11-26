@@ -8,6 +8,8 @@
 #ifndef GENERATORSVETA_H
 #define	GENERATORSVETA_H
 
+#include "../Struktury.h"
+
 class GeneratorSveta {
 public:
     GeneratorSveta();

@@ -6,7 +6,6 @@
  */
 
 #include "GeneratorSveta.h"
-#include "../Struktury.h"
 #include "../Kocky/Kocka.h"
 
 GeneratorSveta::GeneratorSveta() {

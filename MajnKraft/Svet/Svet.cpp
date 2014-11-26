@@ -6,7 +6,6 @@
  */
 
 #include "Svet.h"
-#include "../Struktury.h"
 
 Svet::Svet() {
 }

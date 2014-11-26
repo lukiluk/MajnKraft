@@ -16,10 +16,10 @@ KockaTravy::KockaTravy(const KockaTravy& orig) {
 KockaTravy::~KockaTravy() {
 }
 
-KockaTravy::draw(double x, double y, double z){
+void KockaTravy::draw(double x, double y, double z){
     
 }
 
-KockaTravy::update(){
+void KockaTravy::update(){
     
 }

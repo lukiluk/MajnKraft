@@ -8,6 +8,8 @@
 #ifndef SVET_H
 #define	SVET_H
 
+#include "../Struktury.h"
+
 
 class Svet {
 public:

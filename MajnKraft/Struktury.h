@@ -8,6 +8,8 @@
 #ifndef STRUKTURY_H
 #define	STRUKTURY_H
 
+#include "Kocky/Kocka.h"
+
 struct InfoKocka{
     Kocka* typ;
     bool viditelnost;
