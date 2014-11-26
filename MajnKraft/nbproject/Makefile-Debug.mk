@@ -21,8 +21,8 @@ FC=gfortran
 AS=as
 
 # Macros
-CND_PLATFORM=MinGW-Windows
-CND_DLIB_EXT=dll
+CND_PLATFORM=GNU-Linux-x86
+CND_DLIB_EXT=so
 CND_CONF=Debug
 CND_DISTDIR=dist
 CND_BUILDDIR=build
@@ -35,8 +35,11 @@ OBJECTDIR=${CND_BUILDDIR}/${CND_CONF}/${CND_PLATFORM}
 
 # Object Files
 OBJECTFILES= \
+	${OBJECTDIR}/Kocky/KockaTravy.o \
 	${OBJECTDIR}/Mesh.o \
 	${OBJECTDIR}/Shader.o \
+	${OBJECTDIR}/Svet/GeneratorSveta.o \
+	${OBJECTDIR}/Svet/Svet.o \
 	${OBJECTDIR}/Texture.o \
 	${OBJECTDIR}/Transformation.o \
 	${OBJECTDIR}/main.o
@@ -56,15 +59,20 @@ FFLAGS=
 ASFLAGS=
 
 # Link Libraries and Options
-LDLIBSOPTIONS=
+LDLIBSOPTIONS=-lSDL2 -lGL -lGLEW -lSDL2_image
 
 # Build Targets
 .build-conf: ${BUILD_SUBPROJECTS}
-	"${MAKE}"  -f nbproject/Makefile-${CND_CONF}.mk ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/majnkraft.exe
+	"${MAKE}"  -f nbproject/Makefile-${CND_CONF}.mk ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/majnkraft
 
-${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/majnkraft.exe: ${OBJECTFILES}
+${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/majnkraft: ${OBJECTFILES}
 	${MKDIR} -p ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}
-	${LINK.cc} -o ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/majnkraft ${OBJECTFILES} ${LDLIBSOPTIONS} -lmingw32 -lSDL2main -lSDL2 -lSDL2_image -lglew32 -lopengl32
+	${LINK.cc} -o ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/majnkraft ${OBJECTFILES} ${LDLIBSOPTIONS}
+
+${OBJECTDIR}/Kocky/KockaTravy.o: Kocky/KockaTravy.cpp 
+	${MKDIR} -p ${OBJECTDIR}/Kocky
+	${RM} "$@.d"
+	$(COMPILE.cc) -g -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/Kocky/KockaTravy.o Kocky/KockaTravy.cpp
 
 ${OBJECTDIR}/Mesh.o: Mesh.cpp 
 	${MKDIR} -p ${OBJECTDIR}
@@ -75,6 +83,16 @@ ${OBJECTDIR}/Shader.o: Shader.cpp
 	${MKDIR} -p ${OBJECTDIR}
 	${RM} "$@.d"
 	$(COMPILE.cc) -g -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/Shader.o Shader.cpp
+
+${OBJECTDIR}/Svet/GeneratorSveta.o: Svet/GeneratorSveta.cpp 
+	${MKDIR} -p ${OBJECTDIR}/Svet
+	${RM} "$@.d"
+	$(COMPILE.cc) -g -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/Svet/GeneratorSveta.o Svet/GeneratorSveta.cpp
+
+${OBJECTDIR}/Svet/Svet.o: Svet/Svet.cpp 
+	${MKDIR} -p ${OBJECTDIR}/Svet
+	${RM} "$@.d"
+	$(COMPILE.cc) -g -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/Svet/Svet.o Svet/Svet.cpp
 
 ${OBJECTDIR}/Texture.o: Texture.cpp 
 	${MKDIR} -p ${OBJECTDIR}
@@ -97,7 +115,7 @@ ${OBJECTDIR}/main.o: main.cpp
 # Clean Targets
 .clean-conf: ${CLEAN_SUBPROJECTS}
 	${RM} -r ${CND_BUILDDIR}/${CND_CONF}
-	${RM} ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/majnkraft.exe
+	${RM} ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/majnkraft
 
 # Subprojects
 .clean-subprojects:
