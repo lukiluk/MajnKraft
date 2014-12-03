@@ -13,12 +13,12 @@
 class InfoKocka {
 public:
     InfoKocka();
+    InfoKocka(Kocka* kocka, bool viditelnost);
     InfoKocka(const InfoKocka& orig);
     virtual ~InfoKocka();
     
     Kocka* getTyp(){ return this->typ;}
-    bool getViditelnost(){ return this->viditelnost;}
-    
+    bool getViditelnost(){ return this->viditelnost;}    
     
 private:
     Kocka* typ;

@@ -12,7 +12,7 @@ class Texture {
 private:
     GLuint textures[1];
     int width, height, comp = 0;
-    SDL_Surface *img = 0;
+    SDL_Surface* img = 0;
 public:
     Texture();
     Texture(const Texture& orig);

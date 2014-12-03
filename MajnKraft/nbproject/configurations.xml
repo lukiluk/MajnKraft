@@ -8,7 +8,11 @@
       <itemPath>Svet/GeneratorSveta.h</itemPath>
       <itemPath>Svet/InfoKocka.h</itemPath>
       <itemPath>Kocky/Kocka.h</itemPath>
+      <itemPath>Kocky/KockaKamena.h</itemPath>
       <itemPath>Kocky/KockaTravy.h</itemPath>
+      <itemPath>Kocky/KockaVzduchu.h</itemPath>
+      <itemPath>Kocky/KockaZeme.h</itemPath>
+      <itemPath>Kocky/KockySpolocne.h</itemPath>
       <itemPath>Graphic/Mesh.h</itemPath>
       <itemPath>Graphic/Shader.h</itemPath>
       <itemPath>Struktury.h</itemPath>
@@ -26,7 +30,10 @@
       <itemPath>Svet/Chunk.cpp</itemPath>
       <itemPath>Svet/GeneratorSveta.cpp</itemPath>
       <itemPath>Svet/InfoKocka.cpp</itemPath>
+      <itemPath>Kocky/KockaKamena.cpp</itemPath>
       <itemPath>Kocky/KockaTravy.cpp</itemPath>
+      <itemPath>Kocky/KockaVzduchu.cpp</itemPath>
+      <itemPath>Kocky/KockaZeme.cpp</itemPath>
       <itemPath>Graphic/Mesh.cpp</itemPath>
       <itemPath>Graphic/Shader.cpp</itemPath>
       <itemPath>Svet/Svet.cpp</itemPath>
@@ -88,9 +95,23 @@
       </item>
       <item path="Kocky/Kocka.h" ex="false" tool="3" flavor2="0">
       </item>
+      <item path="Kocky/KockaKamena.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="Kocky/KockaKamena.h" ex="false" tool="3" flavor2="0">
+      </item>
       <item path="Kocky/KockaTravy.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="Kocky/KockaTravy.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="Kocky/KockaVzduchu.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="Kocky/KockaVzduchu.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="Kocky/KockaZeme.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="Kocky/KockaZeme.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="Kocky/KockySpolocne.h" ex="false" tool="3" flavor2="0">
       </item>
       <item path="Struktury.h" ex="false" tool="3" flavor2="0">
       </item>
@@ -151,9 +172,23 @@
       </item>
       <item path="Kocky/Kocka.h" ex="false" tool="3" flavor2="0">
       </item>
+      <item path="Kocky/KockaKamena.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="Kocky/KockaKamena.h" ex="false" tool="3" flavor2="0">
+      </item>
       <item path="Kocky/KockaTravy.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="Kocky/KockaTravy.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="Kocky/KockaVzduchu.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="Kocky/KockaVzduchu.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="Kocky/KockaZeme.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="Kocky/KockaZeme.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="Kocky/KockySpolocne.h" ex="false" tool="3" flavor2="0">
       </item>
       <item path="Struktury.h" ex="false" tool="3" flavor2="0">
       </item>
