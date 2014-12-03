@@ -14,7 +14,7 @@
 #include "Texture.h"
 #include "Transformation.h"
 
-int main(int argc, char *argv[])
+int main(int argc, char* argv[])
 {
     SDL_Init(SDL_INIT_VIDEO|SDL_INIT_TIMER);
     

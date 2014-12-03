@@ -38,7 +38,9 @@ OBJECTFILES= \
 	${OBJECTDIR}/Kocky/KockaTravy.o \
 	${OBJECTDIR}/Mesh.o \
 	${OBJECTDIR}/Shader.o \
+	${OBJECTDIR}/Svet/Chunk.o \
 	${OBJECTDIR}/Svet/GeneratorSveta.o \
+	${OBJECTDIR}/Svet/InfoKocka.o \
 	${OBJECTDIR}/Svet/Svet.o \
 	${OBJECTDIR}/Texture.o \
 	${OBJECTDIR}/Transformation.o \
@@ -84,10 +86,20 @@ ${OBJECTDIR}/Shader.o: Shader.cpp
 	${RM} "$@.d"
 	$(COMPILE.cc) -O2 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/Shader.o Shader.cpp
 
+${OBJECTDIR}/Svet/Chunk.o: Svet/Chunk.cpp 
+	${MKDIR} -p ${OBJECTDIR}/Svet
+	${RM} "$@.d"
+	$(COMPILE.cc) -O2 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/Svet/Chunk.o Svet/Chunk.cpp
+
 ${OBJECTDIR}/Svet/GeneratorSveta.o: Svet/GeneratorSveta.cpp 
 	${MKDIR} -p ${OBJECTDIR}/Svet
 	${RM} "$@.d"
 	$(COMPILE.cc) -O2 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/Svet/GeneratorSveta.o Svet/GeneratorSveta.cpp
+
+${OBJECTDIR}/Svet/InfoKocka.o: Svet/InfoKocka.cpp 
+	${MKDIR} -p ${OBJECTDIR}/Svet
+	${RM} "$@.d"
+	$(COMPILE.cc) -O2 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/Svet/InfoKocka.o Svet/InfoKocka.cpp
 
 ${OBJECTDIR}/Svet/Svet.o: Svet/Svet.cpp 
 	${MKDIR} -p ${OBJECTDIR}/Svet

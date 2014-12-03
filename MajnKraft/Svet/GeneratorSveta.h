@@ -8,7 +8,7 @@
 #ifndef GENERATORSVETA_H
 #define	GENERATORSVETA_H
 
-#include "../Struktury.h"
+#include "Chunk.h"
 
 class GeneratorSveta {
 public:

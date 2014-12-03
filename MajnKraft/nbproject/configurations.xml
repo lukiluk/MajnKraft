@@ -4,7 +4,9 @@
     <logicalFolder name="HeaderFiles"
                    displayName="Header Files"
                    projectFiles="true">
+      <itemPath>Svet/Chunk.h</itemPath>
       <itemPath>Svet/GeneratorSveta.h</itemPath>
+      <itemPath>Svet/InfoKocka.h</itemPath>
       <itemPath>Kocky/Kocka.h</itemPath>
       <itemPath>Kocky/KockaTravy.h</itemPath>
       <itemPath>Mesh.h</itemPath>
@@ -21,7 +23,9 @@
     <logicalFolder name="SourceFiles"
                    displayName="Source Files"
                    projectFiles="true">
+      <itemPath>Svet/Chunk.cpp</itemPath>
       <itemPath>Svet/GeneratorSveta.cpp</itemPath>
+      <itemPath>Svet/InfoKocka.cpp</itemPath>
       <itemPath>Kocky/KockaTravy.cpp</itemPath>
       <itemPath>Mesh.cpp</itemPath>
       <itemPath>Shader.cpp</itemPath>
@@ -84,9 +88,17 @@
       </item>
       <item path="Struktury.h" ex="false" tool="3" flavor2="0">
       </item>
+      <item path="Svet/Chunk.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="Svet/Chunk.h" ex="false" tool="3" flavor2="0">
+      </item>
       <item path="Svet/GeneratorSveta.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="Svet/GeneratorSveta.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="Svet/InfoKocka.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="Svet/InfoKocka.h" ex="false" tool="3" flavor2="0">
       </item>
       <item path="Svet/Svet.cpp" ex="false" tool="1" flavor2="0">
       </item>
@@ -139,9 +151,17 @@
       </item>
       <item path="Struktury.h" ex="false" tool="3" flavor2="0">
       </item>
+      <item path="Svet/Chunk.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="Svet/Chunk.h" ex="false" tool="3" flavor2="0">
+      </item>
       <item path="Svet/GeneratorSveta.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="Svet/GeneratorSveta.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="Svet/InfoKocka.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="Svet/InfoKocka.h" ex="false" tool="3" flavor2="0">
       </item>
       <item path="Svet/Svet.cpp" ex="false" tool="1" flavor2="0">
       </item>

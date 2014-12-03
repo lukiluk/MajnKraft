@@ -8,7 +8,7 @@
 #ifndef SVET_H
 #define	SVET_H
 
-#include "../Struktury.h"
+#include "Chunk.h"
 
 
 class Svet {
