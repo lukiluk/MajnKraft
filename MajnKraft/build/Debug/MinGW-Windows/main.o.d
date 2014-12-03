@@ -1,10 +1,10 @@
-build/Debug/MinGW-Windows/main.o: main.cpp Mesh.h Shader.h Texture.h \
- Transformation.h
+build/Debug/MinGW-Windows/main.o: main.cpp Graphic\Mesh.h \
+ Graphic\Shader.h Graphic\Texture.h Graphic\Transformation.h
 
-Mesh.h:
+Graphic\Mesh.h:
 
-Shader.h:
+Graphic\Shader.h:
 
-Texture.h:
+Graphic\Texture.h:
 
-Transformation.h:
+Graphic\Transformation.h:

@@ -22,7 +22,7 @@ void Texture::loadTexture(GLuint shaderProgram) {
     IMG_Init(IMG_INIT_PNG);
     glActiveTexture(GL_TEXTURE0);
     glBindTexture(GL_TEXTURE_2D, textures[0]);
-    img = IMG_Load("grass.png");
+    img = IMG_Load("Graphic\\Textures\\grass.png");
     glTexImage2D(GL_TEXTURE_2D, 0, GL_RGB, img->w, img->h, 0, GL_RGBA, GL_UNSIGNED_BYTE, img->pixels);
     glUniform1i(glGetUniformLocation(shaderProgram, "tex0"), 0);
 

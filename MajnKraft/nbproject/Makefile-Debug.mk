@@ -21,8 +21,8 @@ FC=gfortran
 AS=as
 
 # Macros
-CND_PLATFORM=GNU-Linux-x86
-CND_DLIB_EXT=so
+CND_PLATFORM=MinGW-Windows
+CND_DLIB_EXT=dll
 CND_CONF=Debug
 CND_DISTDIR=dist
 CND_BUILDDIR=build
@@ -35,15 +35,15 @@ OBJECTDIR=${CND_BUILDDIR}/${CND_CONF}/${CND_PLATFORM}
 
 # Object Files
 OBJECTFILES= \
+	${OBJECTDIR}/Graphic/Mesh.o \
+	${OBJECTDIR}/Graphic/Shader.o \
+	${OBJECTDIR}/Graphic/Texture.o \
+	${OBJECTDIR}/Graphic/Transformation.o \
 	${OBJECTDIR}/Kocky/KockaTravy.o \
-	${OBJECTDIR}/Mesh.o \
-	${OBJECTDIR}/Shader.o \
 	${OBJECTDIR}/Svet/Chunk.o \
 	${OBJECTDIR}/Svet/GeneratorSveta.o \
 	${OBJECTDIR}/Svet/InfoKocka.o \
 	${OBJECTDIR}/Svet/Svet.o \
-	${OBJECTDIR}/Texture.o \
-	${OBJECTDIR}/Transformation.o \
 	${OBJECTDIR}/main.o
 
 
@@ -61,30 +61,40 @@ FFLAGS=
 ASFLAGS=
 
 # Link Libraries and Options
-LDLIBSOPTIONS=-lSDL2 -lGL -lGLEW -lSDL2_image
+LDLIBSOPTIONS=
 
 # Build Targets
 .build-conf: ${BUILD_SUBPROJECTS}
-	"${MAKE}"  -f nbproject/Makefile-${CND_CONF}.mk ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/majnkraft
+	"${MAKE}"  -f nbproject/Makefile-${CND_CONF}.mk ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/majnkraft.exe
 
-${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/majnkraft: ${OBJECTFILES}
+${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/majnkraft.exe: ${OBJECTFILES}
 	${MKDIR} -p ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}
-	${LINK.cc} -o ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/majnkraft ${OBJECTFILES} ${LDLIBSOPTIONS}
+	${LINK.cc} -o ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/majnkraft ${OBJECTFILES} ${LDLIBSOPTIONS} -lmingw32 -lSDL2main -lSDL2 -lSDL2_image -lglew32 -lopengl32
+
+${OBJECTDIR}/Graphic/Mesh.o: Graphic/Mesh.cpp 
+	${MKDIR} -p ${OBJECTDIR}/Graphic
+	${RM} "$@.d"
+	$(COMPILE.cc) -g -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/Graphic/Mesh.o Graphic/Mesh.cpp
+
+${OBJECTDIR}/Graphic/Shader.o: Graphic/Shader.cpp 
+	${MKDIR} -p ${OBJECTDIR}/Graphic
+	${RM} "$@.d"
+	$(COMPILE.cc) -g -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/Graphic/Shader.o Graphic/Shader.cpp
+
+${OBJECTDIR}/Graphic/Texture.o: Graphic/Texture.cpp 
+	${MKDIR} -p ${OBJECTDIR}/Graphic
+	${RM} "$@.d"
+	$(COMPILE.cc) -g -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/Graphic/Texture.o Graphic/Texture.cpp
+
+${OBJECTDIR}/Graphic/Transformation.o: Graphic/Transformation.cpp 
+	${MKDIR} -p ${OBJECTDIR}/Graphic
+	${RM} "$@.d"
+	$(COMPILE.cc) -g -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/Graphic/Transformation.o Graphic/Transformation.cpp
 
 ${OBJECTDIR}/Kocky/KockaTravy.o: Kocky/KockaTravy.cpp 
 	${MKDIR} -p ${OBJECTDIR}/Kocky
 	${RM} "$@.d"
 	$(COMPILE.cc) -g -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/Kocky/KockaTravy.o Kocky/KockaTravy.cpp
-
-${OBJECTDIR}/Mesh.o: Mesh.cpp 
-	${MKDIR} -p ${OBJECTDIR}
-	${RM} "$@.d"
-	$(COMPILE.cc) -g -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/Mesh.o Mesh.cpp
-
-${OBJECTDIR}/Shader.o: Shader.cpp 
-	${MKDIR} -p ${OBJECTDIR}
-	${RM} "$@.d"
-	$(COMPILE.cc) -g -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/Shader.o Shader.cpp
 
 ${OBJECTDIR}/Svet/Chunk.o: Svet/Chunk.cpp 
 	${MKDIR} -p ${OBJECTDIR}/Svet
@@ -106,16 +116,6 @@ ${OBJECTDIR}/Svet/Svet.o: Svet/Svet.cpp
 	${RM} "$@.d"
 	$(COMPILE.cc) -g -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/Svet/Svet.o Svet/Svet.cpp
 
-${OBJECTDIR}/Texture.o: Texture.cpp 
-	${MKDIR} -p ${OBJECTDIR}
-	${RM} "$@.d"
-	$(COMPILE.cc) -g -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/Texture.o Texture.cpp
-
-${OBJECTDIR}/Transformation.o: Transformation.cpp 
-	${MKDIR} -p ${OBJECTDIR}
-	${RM} "$@.d"
-	$(COMPILE.cc) -g -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/Transformation.o Transformation.cpp
-
 ${OBJECTDIR}/main.o: main.cpp 
 	${MKDIR} -p ${OBJECTDIR}
 	${RM} "$@.d"
@@ -127,7 +127,7 @@ ${OBJECTDIR}/main.o: main.cpp
 # Clean Targets
 .clean-conf: ${CLEAN_SUBPROJECTS}
 	${RM} -r ${CND_BUILDDIR}/${CND_CONF}
-	${RM} ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/majnkraft
+	${RM} ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/majnkraft.exe
 
 # Subprojects
 .clean-subprojects:
