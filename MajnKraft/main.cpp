@@ -9,10 +9,10 @@
 
 
 #include "SDL2/SDL.h"
-#include "Graphic\Mesh.h"
-#include "Graphic\Shader.h"
-#include "Graphic\Texture.h"
-#include "Graphic\Transformation.h"
+#include "Graphic/Mesh.h"
+#include "Graphic/Shader.h"
+#include "Graphic/Texture.h"
+#include "Graphic/Transformation.h"
 
 int main(int argc, char* argv[])
 {
