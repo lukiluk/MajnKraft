@@ -4,6 +4,7 @@
     <logicalFolder name="HeaderFiles"
                    displayName="Header Files"
                    projectFiles="true">
+      <itemPath>Graphic/Camera.h</itemPath>
       <itemPath>Svet/Chunk.h</itemPath>
       <itemPath>Svet/GeneratorSveta.h</itemPath>
       <itemPath>Svet/InfoKocka.h</itemPath>
@@ -11,10 +12,10 @@
       <itemPath>Kocky/KockaTravy.h</itemPath>
       <itemPath>Graphic/Mesh.h</itemPath>
       <itemPath>Graphic/Shader.h</itemPath>
-      <itemPath>Struktury.h</itemPath>
       <itemPath>Svet/Svet.h</itemPath>
       <itemPath>Graphic/Texture.h</itemPath>
       <itemPath>Graphic/Transformation.h</itemPath>
+      <itemPath>Graphic/Window.h</itemPath>
     </logicalFolder>
     <logicalFolder name="ResourceFiles"
                    displayName="Resource Files"
@@ -23,6 +24,7 @@
     <logicalFolder name="SourceFiles"
                    displayName="Source Files"
                    projectFiles="true">
+      <itemPath>Graphic/Camera.cpp</itemPath>
       <itemPath>Svet/Chunk.cpp</itemPath>
       <itemPath>Svet/GeneratorSveta.cpp</itemPath>
       <itemPath>Svet/InfoKocka.cpp</itemPath>
@@ -32,6 +34,7 @@
       <itemPath>Svet/Svet.cpp</itemPath>
       <itemPath>Graphic/Texture.cpp</itemPath>
       <itemPath>Graphic/Transformation.cpp</itemPath>
+      <itemPath>Graphic/Window.cpp</itemPath>
       <itemPath>main.cpp</itemPath>
     </logicalFolder>
     <logicalFolder name="TestFiles"
@@ -70,6 +73,10 @@
           <commandLine>-lmingw32 -lSDL2main -lSDL2 -lSDL2_image -lglew32 -lopengl32</commandLine>
         </linkerTool>
       </compileType>
+      <item path="Graphic/Camera.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="Graphic/Camera.h" ex="false" tool="3" flavor2="0">
+      </item>
       <item path="Graphic/Mesh.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="Graphic/Mesh.h" ex="false" tool="3" flavor2="0">
@@ -86,13 +93,15 @@
       </item>
       <item path="Graphic/Transformation.h" ex="false" tool="3" flavor2="0">
       </item>
+      <item path="Graphic/Window.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="Graphic/Window.h" ex="false" tool="3" flavor2="0">
+      </item>
       <item path="Kocky/Kocka.h" ex="false" tool="3" flavor2="0">
       </item>
       <item path="Kocky/KockaTravy.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="Kocky/KockaTravy.h" ex="false" tool="3" flavor2="0">
-      </item>
-      <item path="Struktury.h" ex="false" tool="3" flavor2="0">
       </item>
       <item path="Svet/Chunk.cpp" ex="false" tool="1" flavor2="0">
       </item>
@@ -133,6 +142,10 @@
           <developmentMode>5</developmentMode>
         </asmTool>
       </compileType>
+      <item path="Graphic/Camera.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="Graphic/Camera.h" ex="false" tool="3" flavor2="0">
+      </item>
       <item path="Graphic/Mesh.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="Graphic/Mesh.h" ex="false" tool="3" flavor2="0">
@@ -149,13 +162,15 @@
       </item>
       <item path="Graphic/Transformation.h" ex="false" tool="3" flavor2="0">
       </item>
+      <item path="Graphic/Window.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="Graphic/Window.h" ex="false" tool="3" flavor2="0">
+      </item>
       <item path="Kocky/Kocka.h" ex="false" tool="3" flavor2="0">
       </item>
       <item path="Kocky/KockaTravy.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="Kocky/KockaTravy.h" ex="false" tool="3" flavor2="0">
-      </item>
-      <item path="Struktury.h" ex="false" tool="3" flavor2="0">
       </item>
       <item path="Svet/Chunk.cpp" ex="false" tool="1" flavor2="0">
       </item>

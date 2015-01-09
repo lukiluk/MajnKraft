@@ -12,8 +12,7 @@ class Transformation {
 public:
     Transformation();
     Transformation(const Transformation& orig);
-    void transform(GLuint shaderProgram);
-    void rotate(int rotateAmtX);
+    void rotate(float rotateAmtX,GLuint);
     virtual ~Transformation();
 private:
     GLint uniTrans;

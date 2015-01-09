@@ -35,10 +35,12 @@ OBJECTDIR=${CND_BUILDDIR}/${CND_CONF}/${CND_PLATFORM}
 
 # Object Files
 OBJECTFILES= \
+	${OBJECTDIR}/Graphic/Camera.o \
 	${OBJECTDIR}/Graphic/Mesh.o \
 	${OBJECTDIR}/Graphic/Shader.o \
 	${OBJECTDIR}/Graphic/Texture.o \
 	${OBJECTDIR}/Graphic/Transformation.o \
+	${OBJECTDIR}/Graphic/Window.o \
 	${OBJECTDIR}/Kocky/KockaTravy.o \
 	${OBJECTDIR}/Svet/Chunk.o \
 	${OBJECTDIR}/Svet/GeneratorSveta.o \
@@ -71,6 +73,11 @@ ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/majnkraft.exe: ${OBJECTFILES}
 	${MKDIR} -p ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}
 	${LINK.cc} -o ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/majnkraft ${OBJECTFILES} ${LDLIBSOPTIONS} -lmingw32 -lSDL2main -lSDL2 -lSDL2_image -lglew32 -lopengl32
 
+${OBJECTDIR}/Graphic/Camera.o: Graphic/Camera.cpp 
+	${MKDIR} -p ${OBJECTDIR}/Graphic
+	${RM} "$@.d"
+	$(COMPILE.cc) -g -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/Graphic/Camera.o Graphic/Camera.cpp
+
 ${OBJECTDIR}/Graphic/Mesh.o: Graphic/Mesh.cpp 
 	${MKDIR} -p ${OBJECTDIR}/Graphic
 	${RM} "$@.d"
@@ -90,6 +97,11 @@ ${OBJECTDIR}/Graphic/Transformation.o: Graphic/Transformation.cpp
 	${MKDIR} -p ${OBJECTDIR}/Graphic
 	${RM} "$@.d"
 	$(COMPILE.cc) -g -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/Graphic/Transformation.o Graphic/Transformation.cpp
+
+${OBJECTDIR}/Graphic/Window.o: Graphic/Window.cpp 
+	${MKDIR} -p ${OBJECTDIR}/Graphic
+	${RM} "$@.d"
+	$(COMPILE.cc) -g -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/Graphic/Window.o Graphic/Window.cpp
 
 ${OBJECTDIR}/Kocky/KockaTravy.o: Kocky/KockaTravy.cpp 
 	${MKDIR} -p ${OBJECTDIR}/Kocky

@@ -18,7 +18,7 @@ public:
 	Shader();
 	void loadShader();
 	~Shader();
-
+        void checkShader(GLuint shader,GLuint flag,bool isProgram);
     GLuint getShaderProgram() const {
         return shaderProgram;
     }

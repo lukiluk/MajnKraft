@@ -10,15 +10,15 @@ Mesh::Mesh() {
 
 void Mesh::loadCube() {
 // Create Vertex Array Object
-    glGenVertexArrays(1, &vao); //vytvori odkaz(int) na pole vertexov
+    glGenVertexArrays(1, &vao); //vytvori identifikator pola vertexov
     glBindVertexArray(vao); //prikaze pouzivat zadane pole  vertexov
 
     // Create a Vertex Buffer Object and copy the vertex data to it
     
-    glGenBuffers(1, &vbo);  //vytvori buffer
+    glGenBuffers(1, &vbo);  //vytvori identifikator buffera
     glBindBuffer(GL_ARRAY_BUFFER, vbo); //urci typ bufera a prikaze pouzivat zadany  buffer
 
-    GLfloat vertices[] = {
+    GLfloat vertices[] = {                                  //body kocky ktore sa spajaju
         -0.5f, -0.5f, -0.5f, 1.0f, 1.0f, 1.0f, 0.0f, 0.0f,
          0.5f, -0.5f, -0.5f, 1.0f, 1.0f, 1.0f, 1.0f, 0.0f,
          0.5f,  0.5f, -0.5f, 1.0f, 1.0f, 1.0f, 1.0f, 1.0f,
@@ -64,7 +64,7 @@ void Mesh::loadCube() {
     glBufferData(GL_ARRAY_BUFFER, sizeof(vertices), vertices, GL_STATIC_DRAW); //nacita body do buffra
 }
 
-void Mesh::draw(GLuint shaderProgram) {
+void Mesh::draw(GLuint shaderProgram) {         //stale nieviem podrobne co to robi
 // Specify the layout of the vertex data
     GLint posAttrib = glGetAttribLocation(shaderProgram, "position");       //nacita z shaderu poziciu premmennej position
     glEnableVertexAttribArray(posAttrib);                                   //umozni vyuzitie posAttrib pri vykreslovani glDrawArrays or glDrawElements.
@@ -81,7 +81,7 @@ void Mesh::draw(GLuint shaderProgram) {
     GLint uniColor = glGetUniformLocation(shaderProgram, "overrideColor");
     glUniform3f(uniColor, 1.0f, 1.0f, 1.0f);    //nastavi v shadery uniColor na danu  hodnotu
     
-    glDrawArrays(GL_TRIANGLES, 0, 36);
+    glDrawArrays(GL_TRIANGLES, 0, 36);      //vykresli buffer ako trojuhoniky
     
     glDisableVertexAttribArray(posAttrib); //opak EnableVertexArray
     glDisableVertexAttribArray(colAttrib);
