@@ -124,8 +124,6 @@
       </item>
       <item path="Kocky/KockySpolocne.h" ex="false" tool="3" flavor2="0">
       </item>
-      <item path="Struktury.h" ex="false" tool="3" flavor2="0">
-      </item>
       <item path="Svet/Chunk.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="Svet/Chunk.h" ex="false" tool="3" flavor2="0">
@@ -208,8 +206,6 @@
       <item path="Kocky/KockaZeme.h" ex="false" tool="3" flavor2="0">
       </item>
       <item path="Kocky/KockySpolocne.h" ex="false" tool="3" flavor2="0">
-      </item>
-      <item path="Struktury.h" ex="false" tool="3" flavor2="0">
       </item>
       <item path="Svet/Chunk.cpp" ex="false" tool="1" flavor2="0">
       </item>
