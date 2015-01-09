@@ -16,3 +16,5 @@ KockaVzduchu::KockaVzduchu(const KockaVzduchu& orig) {
 KockaVzduchu::~KockaVzduchu() {
 }
 
+void KockaVzduchu::draw(double x, double y, double z){}
+void KockaVzduchu::update(){}

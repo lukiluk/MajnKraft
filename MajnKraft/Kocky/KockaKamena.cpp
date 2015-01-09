@@ -16,3 +16,6 @@ KockaKamena::KockaKamena(const KockaKamena& orig) {
 KockaKamena::~KockaKamena() {
 }
 
+void KockaKamena::draw(double x, double y, double z){}
+void KockaKamena::update(){}
+
