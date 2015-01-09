@@ -10,6 +10,11 @@
 InfoKocka::InfoKocka() {
 }
 
+InfoKocka::InfoKocka(Kocka* kocka, bool viditelnost){
+    this->typ = kocka;
+    this->viditelnost = viditelnost;
+}
+
 InfoKocka::InfoKocka(const InfoKocka& orig) {
 }
 

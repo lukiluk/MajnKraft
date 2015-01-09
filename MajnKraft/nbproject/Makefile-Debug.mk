@@ -41,7 +41,10 @@ OBJECTFILES= \
 	${OBJECTDIR}/Graphic/Texture.o \
 	${OBJECTDIR}/Graphic/Transformation.o \
 	${OBJECTDIR}/Graphic/Window.o \
+	${OBJECTDIR}/Kocky/KockaKamena.o \
 	${OBJECTDIR}/Kocky/KockaTravy.o \
+	${OBJECTDIR}/Kocky/KockaVzduchu.o \
+	${OBJECTDIR}/Kocky/KockaZeme.o \
 	${OBJECTDIR}/Svet/Chunk.o \
 	${OBJECTDIR}/Svet/GeneratorSveta.o \
 	${OBJECTDIR}/Svet/InfoKocka.o \
@@ -103,10 +106,25 @@ ${OBJECTDIR}/Graphic/Window.o: Graphic/Window.cpp
 	${RM} "$@.d"
 	$(COMPILE.cc) -g -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/Graphic/Window.o Graphic/Window.cpp
 
+${OBJECTDIR}/Kocky/KockaKamena.o: Kocky/KockaKamena.cpp 
+	${MKDIR} -p ${OBJECTDIR}/Kocky
+	${RM} "$@.d"
+	$(COMPILE.cc) -g -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/Kocky/KockaKamena.o Kocky/KockaKamena.cpp
+
 ${OBJECTDIR}/Kocky/KockaTravy.o: Kocky/KockaTravy.cpp 
 	${MKDIR} -p ${OBJECTDIR}/Kocky
 	${RM} "$@.d"
 	$(COMPILE.cc) -g -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/Kocky/KockaTravy.o Kocky/KockaTravy.cpp
+
+${OBJECTDIR}/Kocky/KockaVzduchu.o: Kocky/KockaVzduchu.cpp 
+	${MKDIR} -p ${OBJECTDIR}/Kocky
+	${RM} "$@.d"
+	$(COMPILE.cc) -g -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/Kocky/KockaVzduchu.o Kocky/KockaVzduchu.cpp
+
+${OBJECTDIR}/Kocky/KockaZeme.o: Kocky/KockaZeme.cpp 
+	${MKDIR} -p ${OBJECTDIR}/Kocky
+	${RM} "$@.d"
+	$(COMPILE.cc) -g -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/Kocky/KockaZeme.o Kocky/KockaZeme.cpp
 
 ${OBJECTDIR}/Svet/Chunk.o: Svet/Chunk.cpp 
 	${MKDIR} -p ${OBJECTDIR}/Svet

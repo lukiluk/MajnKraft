@@ -12,6 +12,9 @@
 
 class Chunk {
 public:
+    const int DLZKA_CHUNKU = 16;
+    const int SIRKA_CHUNKU = 16;
+    const int VYSKA_CHUNKU = 256;
     Chunk();
     Chunk(const Chunk& orig);
     virtual ~Chunk();
@@ -22,11 +25,13 @@ public:
         return (InfoKocka*)-1;
     }
     
+    void setSvet(InfoKocka*** castSveta){ this->castSveta = castSveta; }
+    
     int getChunkID(){ return this->ID; }
     
 
 private:
-    InfoKocka** castSveta[256];
+    InfoKocka*** castSveta;
     int ID;
 
 };
