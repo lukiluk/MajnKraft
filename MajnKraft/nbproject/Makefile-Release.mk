@@ -35,10 +35,12 @@ OBJECTDIR=${CND_BUILDDIR}/${CND_CONF}/${CND_PLATFORM}
 
 # Object Files
 OBJECTFILES= \
+	${OBJECTDIR}/Graphic/Camera.o \
 	${OBJECTDIR}/Graphic/Mesh.o \
 	${OBJECTDIR}/Graphic/Shader.o \
 	${OBJECTDIR}/Graphic/Texture.o \
 	${OBJECTDIR}/Graphic/Transformation.o \
+	${OBJECTDIR}/Graphic/Window.o \
 	${OBJECTDIR}/Kocky/KockaKamena.o \
 	${OBJECTDIR}/Kocky/KockaTravy.o \
 	${OBJECTDIR}/Kocky/KockaVzduchu.o \
@@ -74,6 +76,11 @@ ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/majnkraft: ${OBJECTFILES}
 	${MKDIR} -p ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}
 	${LINK.cc} -o ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/majnkraft ${OBJECTFILES} ${LDLIBSOPTIONS}
 
+${OBJECTDIR}/Graphic/Camera.o: Graphic/Camera.cpp 
+	${MKDIR} -p ${OBJECTDIR}/Graphic
+	${RM} "$@.d"
+	$(COMPILE.cc) -O2 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/Graphic/Camera.o Graphic/Camera.cpp
+
 ${OBJECTDIR}/Graphic/Mesh.o: Graphic/Mesh.cpp 
 	${MKDIR} -p ${OBJECTDIR}/Graphic
 	${RM} "$@.d"
@@ -93,6 +100,11 @@ ${OBJECTDIR}/Graphic/Transformation.o: Graphic/Transformation.cpp
 	${MKDIR} -p ${OBJECTDIR}/Graphic
 	${RM} "$@.d"
 	$(COMPILE.cc) -O2 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/Graphic/Transformation.o Graphic/Transformation.cpp
+
+${OBJECTDIR}/Graphic/Window.o: Graphic/Window.cpp 
+	${MKDIR} -p ${OBJECTDIR}/Graphic
+	${RM} "$@.d"
+	$(COMPILE.cc) -O2 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/Graphic/Window.o Graphic/Window.cpp
 
 ${OBJECTDIR}/Kocky/KockaKamena.o: Kocky/KockaKamena.cpp 
 	${MKDIR} -p ${OBJECTDIR}/Kocky

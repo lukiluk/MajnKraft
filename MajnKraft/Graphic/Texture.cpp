@@ -26,8 +26,8 @@ void Texture::loadTexture(GLuint shaderProgram) {
     
     glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_CLAMP_TO_EDGE);//Nastavi co sa ma stat ak poziadam o pixel vacsi ako je velkost textury
     glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_CLAMP_TO_EDGE);
-    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);   //Nastavi sposob ako sa ma zmensovat textura
-    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);   //Nastavi sposob akym sa ma zvatsovat textura,linear znamena farebny priemer najblissich bodov
+    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_NEAREST);   //Nastavi sposob ako sa ma zmensovat textura
+    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_NEAREST);   //Nastavi sposob akym sa ma zvatsovat textura,linear znamena farebny priemer najblissich bodov, nearest nastavuje presny pixel
 }
 
 Texture::~Texture() {

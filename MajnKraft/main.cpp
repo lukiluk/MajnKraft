@@ -56,7 +56,7 @@ int main(int argc, char* argv[])
               else if( windowEvent.type == SDL_KEYDOWN )
                     {
                         //Select surfaces based on key press
-                        switch( windowEvent.key.keysym.sym )        //ak sa stalila klavesa
+                        switch( windowEvent.key.keysym.sym )        //ak sa stlacila klavesa
                         {
                             case SDLK_UP:
                           //  gCurrentSurface = gKeyPressSurfaces[ KEY_PRESS_SURFACE_UP ];
