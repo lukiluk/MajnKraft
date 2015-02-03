@@ -7,12 +7,13 @@
 
 #ifndef TRANSFORMATION_H
 #define	TRANSFORMATION_H
-
+#include <glm/glm.hpp>
 class Transformation {
 public:
     Transformation();
     Transformation(const Transformation& orig);
-    void rotate(float rotateAmtX,GLuint);
+    void rotate(float rotateAmtX,float rotateAmtY,GLuint);
+    void move(float x,float y,float z,GLuint shaderProgram);
     virtual ~Transformation();
 private:
     GLint uniTrans;
@@ -20,6 +21,7 @@ private:
     GLint uniProj;
     glm::mat4 view;
     glm::mat4 proj;
+    glm::mat4 trans;
 };
 
 #endif	/* TRANSFORMATION_H */

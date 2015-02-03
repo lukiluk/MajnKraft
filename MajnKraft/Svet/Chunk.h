@@ -12,9 +12,9 @@
 
 class Chunk {
 public:
-    const int DLZKA_CHUNKU = 16;
-    const int SIRKA_CHUNKU = 16;
-    const int VYSKA_CHUNKU = 256;
+    static const int DLZKA_CHUNKU = 16;
+    static const int SIRKA_CHUNKU = 16;
+    static const int VYSKA_CHUNKU = 256;
     Chunk();
     Chunk(const Chunk& orig);
     virtual ~Chunk();

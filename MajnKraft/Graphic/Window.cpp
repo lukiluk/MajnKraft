@@ -26,7 +26,7 @@ Window::Window(int width,int height,bool doubleBuffering) {
     }
     /*Kontroluje ci dany pixel je pred inym(ci ho ma vykreslit)*/
     glEnable(GL_DEPTH_TEST);
-    
+    glEnable(GL_CULL_FACE);
     glEnable(GL_LINE_SMOOTH);
 }
 

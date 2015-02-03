@@ -37,6 +37,7 @@ OBJECTDIR=${CND_BUILDDIR}/${CND_CONF}/${CND_PLATFORM}
 OBJECTFILES= \
 	${OBJECTDIR}/Graphic/Camera.o \
 	${OBJECTDIR}/Graphic/Mesh.o \
+	${OBJECTDIR}/Graphic/Object.o \
 	${OBJECTDIR}/Graphic/Shader.o \
 	${OBJECTDIR}/Graphic/Texture.o \
 	${OBJECTDIR}/Graphic/Transformation.o \
@@ -85,6 +86,11 @@ ${OBJECTDIR}/Graphic/Mesh.o: Graphic/Mesh.cpp
 	${MKDIR} -p ${OBJECTDIR}/Graphic
 	${RM} "$@.d"
 	$(COMPILE.cc) -g -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/Graphic/Mesh.o Graphic/Mesh.cpp
+
+${OBJECTDIR}/Graphic/Object.o: Graphic/Object.cpp 
+	${MKDIR} -p ${OBJECTDIR}/Graphic
+	${RM} "$@.d"
+	$(COMPILE.cc) -g -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/Graphic/Object.o Graphic/Object.cpp
 
 ${OBJECTDIR}/Graphic/Shader.o: Graphic/Shader.cpp 
 	${MKDIR} -p ${OBJECTDIR}/Graphic

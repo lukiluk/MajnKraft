@@ -7,6 +7,8 @@
 
 #ifndef TEXTURE_H
 #define	TEXTURE_H
+#include <SDL2/SDL.h>
+#include <GL/gl.h>
 
 class Texture {
 private:
@@ -15,11 +17,11 @@ private:
     SDL_Surface *img;
 public:
     Texture();
-    Texture(const Texture& orig);
-    void loadTexture(GLuint shaderProgram);
+    void loadTexture(GLuint shaderProgram,char* path);
+    void bindTexture();
     virtual ~Texture();
 private:
-
+    Texture(const Texture& orig);
 };
 
 #endif	/* TEXTURE_H */
