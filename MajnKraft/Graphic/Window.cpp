@@ -1,5 +1,5 @@
 #include "Window.h"
-#include <gl/glew.h>
+#include <GL/glew.h>
 #include <stdio.h>
  /*Vytvori okno so zadanov sirkov a vyskov*/
 Window::Window(int width,int height,bool doubleBuffering) {

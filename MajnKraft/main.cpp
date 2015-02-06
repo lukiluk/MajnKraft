@@ -70,7 +70,8 @@ int main(int argc, char* argv[])
             if (windowEvent.type == SDL_QUIT) break;                //ak skoncil program tak sa ukonci hlavny cyklus
               else if( windowEvent.type == SDL_KEYDOWN ){
                         //Select surfaces based on key press
-                        switch( windowEvent.key.keysym.sym ){        //ak sa stalila klavesa
+                        switch( windowEvent.key.keysym.sym )        //ak sa stlacila klavesa
+                        {
                             case SDLK_UP:
                                 rotateAmtY=0.02f;
                             break;

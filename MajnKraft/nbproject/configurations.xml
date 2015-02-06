@@ -68,6 +68,28 @@
                    kind="IMPORTANT_FILES_FOLDER">
       <itemPath>Makefile</itemPath>
     </logicalFolder>
+    <logicalFolder name="TestFiles"
+                   displayName="Test Files"
+                   projectFiles="false"
+                   kind="TEST_LOGICAL_FOLDER">
+    </logicalFolder>
+    <logicalFolder name="ExternalFiles"
+                   displayName="Important Files"
+                   projectFiles="false"
+                   kind="IMPORTANT_FILES_FOLDER">
+      <itemPath>Makefile</itemPath>
+    </logicalFolder>
+    <logicalFolder name="TestFiles"
+                   displayName="Test Files"
+                   projectFiles="false"
+                   kind="TEST_LOGICAL_FOLDER">
+    </logicalFolder>
+    <logicalFolder name="ExternalFiles"
+                   displayName="Important Files"
+                   projectFiles="false"
+                   kind="IMPORTANT_FILES_FOLDER">
+      <itemPath>Makefile</itemPath>
+    </logicalFolder>
   </logicalFolder>
   <projectmakefile>Makefile</projectmakefile>
   <confs>
@@ -79,7 +101,7 @@
       </toolsSet>
       <compileType>
         <linkerTool>
-          <commandLine>-lmingw32 -lSDL2main -lSDL2 -lSDL2_image -lglew32 -lopengl32</commandLine>
+          <commandLine>-lSDL2 -lGL -lGLEW -lSDL2_image</commandLine>
         </linkerTool>
       </compileType>
       <item path="Graphic/Camera.cpp" ex="false" tool="1" flavor2="0">
