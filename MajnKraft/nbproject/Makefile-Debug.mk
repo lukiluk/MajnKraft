@@ -21,8 +21,8 @@ FC=gfortran
 AS=as
 
 # Macros
-CND_PLATFORM=GNU-Linux-x86
-CND_DLIB_EXT=so
+CND_PLATFORM=MinGW-Windows
+CND_DLIB_EXT=dll
 CND_CONF=Debug
 CND_DISTDIR=dist
 CND_BUILDDIR=build
@@ -36,8 +36,8 @@ OBJECTDIR=${CND_BUILDDIR}/${CND_CONF}/${CND_PLATFORM}
 # Object Files
 OBJECTFILES= \
 	${OBJECTDIR}/Graphic/Camera.o \
+	${OBJECTDIR}/Graphic/GObject.o \
 	${OBJECTDIR}/Graphic/Mesh.o \
-	${OBJECTDIR}/Graphic/Object.o \
 	${OBJECTDIR}/Graphic/Shader.o \
 	${OBJECTDIR}/Graphic/Texture.o \
 	${OBJECTDIR}/Graphic/Transformation.o \
@@ -71,26 +71,26 @@ LDLIBSOPTIONS=
 
 # Build Targets
 .build-conf: ${BUILD_SUBPROJECTS}
-	"${MAKE}"  -f nbproject/Makefile-${CND_CONF}.mk ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/majnkraft
+	"${MAKE}"  -f nbproject/Makefile-${CND_CONF}.mk ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/majnkraft.exe
 
-${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/majnkraft: ${OBJECTFILES}
+${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/majnkraft.exe: ${OBJECTFILES}
 	${MKDIR} -p ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}
-	${LINK.cc} -o ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/majnkraft ${OBJECTFILES} ${LDLIBSOPTIONS} -lSDL2 -lGL -lGLEW -lSDL2_image
+	${LINK.cc} -o ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/majnkraft ${OBJECTFILES} ${LDLIBSOPTIONS} -lmingw32 -lSDL2main -lSDL2 -lSDL2_image -lglew32 -lopengl32
 
 ${OBJECTDIR}/Graphic/Camera.o: Graphic/Camera.cpp 
 	${MKDIR} -p ${OBJECTDIR}/Graphic
 	${RM} "$@.d"
 	$(COMPILE.cc) -g -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/Graphic/Camera.o Graphic/Camera.cpp
 
+${OBJECTDIR}/Graphic/GObject.o: Graphic/GObject.cpp 
+	${MKDIR} -p ${OBJECTDIR}/Graphic
+	${RM} "$@.d"
+	$(COMPILE.cc) -g -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/Graphic/GObject.o Graphic/GObject.cpp
+
 ${OBJECTDIR}/Graphic/Mesh.o: Graphic/Mesh.cpp 
 	${MKDIR} -p ${OBJECTDIR}/Graphic
 	${RM} "$@.d"
 	$(COMPILE.cc) -g -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/Graphic/Mesh.o Graphic/Mesh.cpp
-
-${OBJECTDIR}/Graphic/Object.o: Graphic/Object.cpp 
-	${MKDIR} -p ${OBJECTDIR}/Graphic
-	${RM} "$@.d"
-	$(COMPILE.cc) -g -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/Graphic/Object.o Graphic/Object.cpp
 
 ${OBJECTDIR}/Graphic/Shader.o: Graphic/Shader.cpp 
 	${MKDIR} -p ${OBJECTDIR}/Graphic
@@ -163,7 +163,7 @@ ${OBJECTDIR}/main.o: main.cpp
 # Clean Targets
 .clean-conf: ${CLEAN_SUBPROJECTS}
 	${RM} -r ${CND_BUILDDIR}/${CND_CONF}
-	${RM} ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/majnkraft
+	${RM} ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/majnkraft.exe
 
 # Subprojects
 .clean-subprojects:

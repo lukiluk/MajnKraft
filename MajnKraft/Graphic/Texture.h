@@ -12,13 +12,15 @@
 
 class Texture {
 private:
-    GLuint textures[1];
+    GLuint textures[1],shader;
     int width, height, comp;
     SDL_Surface *img;
+    bool used;
 public:
     Texture();
     void loadTexture(GLuint shaderProgram,char* path);
     void bindTexture();
+    bool isUsed();
     virtual ~Texture();
 private:
     Texture(const Texture& orig);

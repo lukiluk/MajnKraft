@@ -13,7 +13,9 @@
 class Camera {
 public:
     Camera(float fov,float aspect,float minDistance,float maxDist,GLint shader);
-    void Update(glm::vec3 position,glm::vec3 fowardVector,glm::vec3 upVector);
+    void cameraPosition(float x,float y,float z);
+    void lookAtPosition(float x,float y,float z);
+    void update(glm::vec3 position,glm::vec3 fowardVector,glm::vec3 upVector);
     virtual ~Camera();
 private:
     glm::vec3 position;

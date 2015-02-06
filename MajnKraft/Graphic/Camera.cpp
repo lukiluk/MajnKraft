@@ -17,11 +17,18 @@ Camera::Camera(float fov,float aspectRatio,float minDistance,float maxDistance,G
     glUniformMatrix4fv(glGetUniformLocation(shaderProgram, "proj"), 1, GL_FALSE, &perspective[0][0]);
 }
 
+void Camera::cameraPosition(float x, float y, float z){
+    position=glm::vec3(x,y,z);
+}
+
+void Camera::lookAtPosition(float x, float y, float z){
+   fowardVector=glm::vec3(x,y,z);
+}
 /*Urci poziciu a uhol kamery na zaklade miesta kde sa nachadza ,miesta kam sa pozera , a 
   vektorom ktory ukozuje hore(na urcenie rotacie) a posle udaje shaderu*/
-void Camera::Update(glm::vec3 position,glm::vec3 fowardVector,glm::vec3 upVector){
-    this->position=position;
-    this->fowardVector=fowardVector;
+void Camera::update(glm::vec3 position,glm::vec3 fowardVector,glm::vec3 upVector){
+   // this->position=position;
+    //this->fowardVector=fowardVector;
     this->upVector=upVector;
     view = glm::lookAt(this->position,this->position+this->fowardVector,this->upVector);
     glUniformMatrix4fv(glGetUniformLocation(shaderProgram, "view"),
@@ -30,4 +37,3 @@ void Camera::Update(glm::vec3 position,glm::vec3 fowardVector,glm::vec3 upVector
 
 Camera::~Camera() {
 }
-

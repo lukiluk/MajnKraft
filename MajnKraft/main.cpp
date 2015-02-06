@@ -18,7 +18,7 @@
 #include "Graphic/Texture.h"
 #include "Graphic/Transformation.h"
 #include "Graphic/Camera.h"
-#include "Graphic/Object.h"
+#include "Graphic/GObject.h"
 
 int main(int argc, char* argv[])
 {
@@ -27,27 +27,38 @@ int main(int argc, char* argv[])
     Window window(800,600,true);
     
     
-    float rotateAmtX=0;
-    float rotateAmtY=0;
-    
-    Mesh* mesh=new Mesh();                          //uklada tvar objektu a umoznuje jeho vykreslenie
+    float objectRotateAmtX=0;
+    float objectRotateAmtY=0;
+    float cammeraMoveZ=0;
+    float cammeraMoveY=0;
+    float cammeraMoveX=0;
+    float cammeraLookX=0;
+    float cammeraLookY=0;
+    GObject* kocka2 = new GObject(CUBE,TEXTURECLASSIC);
+    kocka2->setTextures("./Graphic/Textures/grass.png","./Graphic/Textures/grass.png","./Graphic/Textures/grass.png"
+    ,"./Graphic/Textures/grass.png","./Graphic/Textures/grass.png","./Graphic/Textures/grassB.png");
+   /* Mesh* mesh=new Mesh();                          //uklada tvar objektu a umoznuje jeho vykreslenie
     Shader* shader = new Shader();                  //vytvara farbu objektu
     Texture* texture = new Texture();               //vytvara texturu objektu
+    Texture* textureB = new Texture();
     Transformation* transf = new Transformation();  //meni dany object
     mesh->loadCube();
-
     shader->loadShader();
     texture->loadTexture(shader->getShaderProgram(),"./Graphic/Textures/grass.png");
-    Camera camera(70.0f,(float)8/6,0.01f,1000.0f,shader->getShaderProgram());     //vytvara cameru
-    camera.Update(glm::vec3(1.0f, 1.0f, 4.0f),glm::vec3(0.0f, 0.0f,-1.0f),                                  //aktualizuje kameru(pojde do hlavneho cyklu))
+    textureB->loadTexture(shader->getShaderProgram(),"./Graphic/Textures/grassB.png");*/
+    Camera camera(70.0f,(float)8/6,0.01f,1000.0f,kocka2->getActiveShader());     //vytvara cameru
+    camera.update(glm::vec3(1.0f, 1.0f, 4.0f),glm::vec3(0.0f, 0.0f,-1.0f),                                  //aktualizuje kameru(pojde do hlavneho cyklu))
         glm::vec3(0.0f, 1.0f, 0.0f));
     SDL_Event windowEvent;                                          //Zachytava ukoncenie okna a klavesnicu
+    
+     Transformation* transf = new Transformation();
     while (true)
     {
         // Clear the screen to black
         glClearColor(1.0f, 1.0f, 1.0f, 1.0f);                       //Nastavy cistiacu farbu ktora sa pouzije pri cisteni obrazovky
         glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);         //Vycisti sa obrazovka
 
+      /*  texture->bindTexture();
         mesh->selectCubeFront();
         mesh->draw(shader->getShaderProgram());                     //vykesli sa kocka
         mesh->selectCubeBack();
@@ -58,13 +69,26 @@ int main(int argc, char* argv[])
         mesh->draw(shader->getShaderProgram());
         mesh->selectCubeTop();
         mesh->draw(shader->getShaderProgram());
+        
+        textureB->bindTexture();
         mesh->selectCubeBottom();
         mesh->draw(shader->getShaderProgram());
-        transf->rotate(rotateAmtX,rotateAmtY,shader->getShaderProgram());      //orotuje sa objekt o dane mnozstvo
+        transf->rotate(rotateAmtX,rotateAmtY,shader->getShaderProgram());      //orotuje sa objekt o dane mnozstvo*/
         
-        Object* kocka2 = new Object(CUBE,TEXTURECLASSIC);
-        kocka2->setTextures("./Graphic/Textures/grass.png");
-        kocka2->drawTo(1.0f,1.0f,1.0f);
+        
+       // kocka2->rotate(rotateAmtX,rotateAmtY,0.0f);
+       // kocka2->move(1.0f,rotateAmtY*20,0.0f);
+      //  transf->rotate(rotateAmtX,rotateAmtY,0.0f,kocka2->getActiveShader());
+       // transf->move(0.0f,0.0f,0.0f,kocka2->getActiveShader());
+        camera.cameraPosition(1.0f, 1.0f, 4.0f);
+        camera.lookAtPosition(0.0f,0.0f,-1.0f);
+        camera.update(glm::vec3(1.0f, 1.0f, 4.0f),glm::vec3(0.0f, 0.0f,-1.0f),                                  //aktualizuje kameru(pojde do hlavneho cyklu))
+        glm::vec3(0.0f, 1.0f, 0.0f));
+        kocka2->rotate(objectRotateAmtX,objectRotateAmtY,0.0f);
+        kocka2->drawTo(0.0f,0.0f,0.0f);
+        //transf->apply(kocka2->getActiveShader());
+       // transf->move(1.0f,0.0f,0.0f,kocka2->getActiveShader());
+        kocka2->drawTo(1.0f,0.0f,0.0f);
         
         if (SDL_PollEvent(&windowEvent)) {                           //zachyti udalosti ktore sa stali v okne
             if (windowEvent.type == SDL_QUIT) break;                //ak skoncil program tak sa ukonci hlavny cyklus
@@ -73,19 +97,19 @@ int main(int argc, char* argv[])
                         switch( windowEvent.key.keysym.sym )        //ak sa stlacila klavesa
                         {
                             case SDLK_UP:
-                                rotateAmtY=0.02f;
+                                objectRotateAmtY+=0.02f;
                             break;
 
                             case SDLK_DOWN:
-                                rotateAmtY=-0.02f;
+                                objectRotateAmtY+=-0.02f;
                             break;
 
                             case SDLK_LEFT:
-                                rotateAmtX=-0.02f;
+                                objectRotateAmtX+=-0.02f;
                             break;
 
                             case SDLK_RIGHT:
-                                rotateAmtX=0.02f;
+                                objectRotateAmtX+=0.02f;
                             break;
 
                             default:
@@ -93,7 +117,7 @@ int main(int argc, char* argv[])
                             break;
                         }
                     }
-            if( windowEvent.type == SDL_KEYUP ){
+          /*  if( windowEvent.type == SDL_KEYUP ){
                 switch( windowEvent.key.keysym.sym ){
                     case SDLK_RIGHT:    rotateAmtX=0;
                     break;
@@ -104,7 +128,7 @@ int main(int argc, char* argv[])
                     case SDLK_DOWN:     rotateAmtY=0;
                     break;
                 }
-            }
+            }*/
             
         }
 
@@ -115,10 +139,10 @@ int main(int argc, char* argv[])
 
     // Delete allocated resources
     
-    delete transf;
-    delete texture;
-    delete shader;
-    delete mesh;
+   // delete transf;
+   // delete texture;
+   // delete shader;
+   // delete mesh;
     // ---------------------------- TERMINATE ----------------------------- //
     SDL_Quit();
 
