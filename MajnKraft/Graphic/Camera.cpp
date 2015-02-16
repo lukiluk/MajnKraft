@@ -13,7 +13,8 @@
 #include <GL/glew.h>
 
 /*Vytvori kameru na zaklade  sirky zorneho pola , minimalnej a maximalnej vzdialenosti ktoru vykresluje , a shaderu ktoremu posiela vysledok */
-Camera::Camera(float fov,float aspectRatio,float minDistance,float maxDistance,GLint shader):shaderProgram(shader),sensitivity(0.5f) {
+Camera::Camera(float fov,float aspectRatio,float minDistance,float maxDistance,GLint shader):shaderProgram(shader),sensitivity(0.5f),position(glm::vec3(0.0f,0.0f,0.0f)),fowardVector(glm::vec3(0.0f, 0.0f,-1.0f)),
+upVector(glm::vec3(0.0f, 1.0f,0.0f)){
     glm::mat4 perspective = glm::perspective(fov, aspectRatio, minDistance, maxDistance);
     glUniformMatrix4fv(glGetUniformLocation(shaderProgram, "proj"), 1, GL_FALSE, &perspective[0][0]);
 }
