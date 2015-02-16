@@ -6,8 +6,10 @@
                    projectFiles="true">
       <itemPath>Graphic/Camera.h</itemPath>
       <itemPath>Svet/Chunk.h</itemPath>
+      <itemPath>Graphic/GObject.h</itemPath>
       <itemPath>Svet/GeneratorSveta.h</itemPath>
       <itemPath>Svet/InfoKocka.h</itemPath>
+      <itemPath>Input.h</itemPath>
       <itemPath>Kocky/Kocka.h</itemPath>
       <itemPath>Kocky/KockaKamena.h</itemPath>
       <itemPath>Kocky/KockaTravy.h</itemPath>
@@ -30,6 +32,7 @@
                    projectFiles="true">
       <itemPath>Graphic/Camera.cpp</itemPath>
       <itemPath>Svet/Chunk.cpp</itemPath>
+      <itemPath>Graphic/GObject.cpp</itemPath>
       <itemPath>Svet/GeneratorSveta.cpp</itemPath>
       <itemPath>Svet/InfoKocka.cpp</itemPath>
       <itemPath>Kocky/KockaKamena.cpp</itemPath>
@@ -130,6 +133,8 @@
       </item>
       <item path="Graphic/Window.h" ex="false" tool="3" flavor2="0">
       </item>
+      <item path="Input.h" ex="false" tool="3" flavor2="0">
+      </item>
       <item path="Kocky/Kocka.h" ex="false" tool="3" flavor2="0">
       </item>
       <item path="Kocky/KockaKamena.cpp" ex="false" tool="1" flavor2="0">
@@ -216,6 +221,8 @@
       <item path="Graphic/Window.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="Graphic/Window.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="Input.h" ex="false" tool="3" flavor2="0">
       </item>
       <item path="Kocky/Kocka.h" ex="false" tool="3" flavor2="0">
       </item>

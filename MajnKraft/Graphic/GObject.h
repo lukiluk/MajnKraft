@@ -1,19 +1,22 @@
 /* 
- * File:   Object.h
+ * File:   GObject.h
  * Author: Lukas
  *
- * Created on Sobota, 2015, január 17, 18:50
+ * Created on Štvrtok, 2015, február 12, 16:35
  */
 
-#ifndef OBJECT_H
-#define	OBJECT_H
+#ifndef GOBJECT_H
+#define	GOBJECT_H
+
 #include "Texture.h"
 #include "Transformation.h"
 #include "Shader.h"
 #include "Mesh.h"
+
 enum TypeOfObject{CUBE,COMPLEX};
 enum TypeOfShader{TEXTURECLASSIC};
-class GObject {
+
+class GObject{
 public:
     GObject(TypeOfObject objectType,TypeOfShader shaderType);
     TypeOfObject getObjectType() const ;
@@ -36,5 +39,5 @@ private:
     Transformation* transformation;
 };
 
-#endif	/* OBJECT_H */
+#endif	/* GOBJECT_H */
 

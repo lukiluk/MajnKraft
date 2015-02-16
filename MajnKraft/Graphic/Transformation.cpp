@@ -32,7 +32,7 @@ void Transformation::move(float x,float y,float z){
 
 void Transformation::apply(GLuint shaderProgram){
     glm::mat4 posMatrix= glm::translate(glm::vec3(posX,posY,posZ));
-    glm::mat4 rotXMatrix = glm::rotate(rotX,glm::vec3(1.0f, 0.0f, 0.0f));   //orotuje o dane monozstvo, okolo danej osi o
+    glm::mat4 rotXMatrix = glm::rotate(rotX,glm::vec3(1.0f, 0.0f, 0.0f));   //orotuje o dane monozstvo, okolo danej osi 
     glm::mat4 rotYMatrix = glm::rotate(rotY,glm::vec3(0.0f, 1.0f, 0.0f));
     glm::mat4 rotZMatrix = glm::rotate(rotZ,glm::vec3(0.0f, 0.0f, 1.0f));
     glm::mat4 scaleMatrix = glm::scale(glm::vec3(scaleX,scaleY,scaleZ));

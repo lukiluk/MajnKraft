@@ -1,8 +1,8 @@
 /* 
- * File:   Object.cpp
+ * File:   GObject.cpp
  * Author: Lukas
  * 
- * Created on Sobota, 2015, január 17, 18:50
+ * Created on Štvrtok, 2015, február 12, 16:35
  */
 
 #include "GObject.h"
@@ -53,7 +53,7 @@ void GObject::move(float ammountX, float ammountY, float ammountZ){
 }
 
 void GObject::rotate(float ammountX ,float ammountY,float ammountZ){
-    transformation->rotate(ammountX,ammountY,ammountZ);         
+    transformation->rotate(-ammountY,ammountX,ammountZ);         
 }
 
 void GObject::drawTo(float x,float y,float z){

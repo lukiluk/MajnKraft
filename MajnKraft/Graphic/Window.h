@@ -6,6 +6,7 @@ class Window {
 public:
     Window(int,int,bool);
     void Update();
+    SDL_Window* getWindow();
     ~Window();
 private:
     SDL_GLContext context;

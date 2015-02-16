@@ -35,6 +35,10 @@ void Window::Update(){
     SDL_GL_SwapWindow(window);
 }
 
+SDL_Window* Window::getWindow() {
+    return window;
+}
+
 Window::~Window() {
     SDL_GL_DeleteContext(context);
     SDL_DestroyWindow(window);
