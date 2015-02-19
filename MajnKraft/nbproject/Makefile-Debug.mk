@@ -42,6 +42,7 @@ OBJECTFILES= \
 	${OBJECTDIR}/Graphic/Texture.o \
 	${OBJECTDIR}/Graphic/Transformation.o \
 	${OBJECTDIR}/Graphic/Window.o \
+	${OBJECTDIR}/Input.o \
 	${OBJECTDIR}/Kocky/KockaKamena.o \
 	${OBJECTDIR}/Kocky/KockaTravy.o \
 	${OBJECTDIR}/Kocky/KockaVzduchu.o \
@@ -111,6 +112,11 @@ ${OBJECTDIR}/Graphic/Window.o: Graphic/Window.cpp
 	${MKDIR} -p ${OBJECTDIR}/Graphic
 	${RM} "$@.d"
 	$(COMPILE.cc) -g -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/Graphic/Window.o Graphic/Window.cpp
+
+${OBJECTDIR}/Input.o: Input.cpp 
+	${MKDIR} -p ${OBJECTDIR}
+	${RM} "$@.d"
+	$(COMPILE.cc) -g -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/Input.o Input.cpp
 
 ${OBJECTDIR}/Kocky/KockaKamena.o: Kocky/KockaKamena.cpp 
 	${MKDIR} -p ${OBJECTDIR}/Kocky

@@ -35,6 +35,7 @@
       <itemPath>Graphic/GObject.cpp</itemPath>
       <itemPath>Svet/GeneratorSveta.cpp</itemPath>
       <itemPath>Svet/InfoKocka.cpp</itemPath>
+      <itemPath>Input.cpp</itemPath>
       <itemPath>Kocky/KockaKamena.cpp</itemPath>
       <itemPath>Kocky/KockaTravy.cpp</itemPath>
       <itemPath>Kocky/KockaVzduchu.cpp</itemPath>
@@ -133,6 +134,8 @@
       </item>
       <item path="Graphic/Window.h" ex="false" tool="3" flavor2="0">
       </item>
+      <item path="Input.cpp" ex="false" tool="1" flavor2="0">
+      </item>
       <item path="Input.h" ex="false" tool="3" flavor2="0">
       </item>
       <item path="Kocky/Kocka.h" ex="false" tool="3" flavor2="0">
@@ -221,6 +224,8 @@
       <item path="Graphic/Window.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="Graphic/Window.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="Input.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="Input.h" ex="false" tool="3" flavor2="0">
       </item>

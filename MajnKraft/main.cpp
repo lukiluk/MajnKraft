@@ -15,13 +15,14 @@
 #include "Graphic/Window.h"
 #include "Graphic/Camera.h"
 #include "Graphic/GObject.h"
+#include "Input.h"
 
 int main(int argc, char* argv[])
 {
     SDL_Init(SDL_INIT_VIDEO|SDL_INIT_TIMER);
     
     Window window(800,600,true);
-    
+    Input input;
     
     float objectRotateAmtX=0;
     float objectRotateAmtY=0;
@@ -37,8 +38,11 @@ int main(int argc, char* argv[])
     SDL_Event windowEvent;                                          //Zachytava ukoncenie okna a klavesnicu
     
      int mouseX=0,mouseY=0;
-    while (true)
+     bool run;
+    while (run)
     {
+        if (SDL_PollEvent(&windowEvent))                          //zachyti udalosti ktore sa stali v okne
+            if (windowEvent.type == SDL_QUIT) break; 
         // Clear the screen to black
         glClearColor(1.0f, 1.0f, 1.0f, 1.0f);                       //Nastavy cistiacu farbu ktora sa pouzije pri cisteni obrazovky
         glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);         //Vycisti sa obrazovka
@@ -51,8 +55,35 @@ int main(int argc, char* argv[])
         kocka2->drawTo(0.0f,0.0f,0.0f);
         kocka2->drawTo(1.0f,0.0f,0.0f);       
         
-        
-        bool leftClicked=false;
+        run=input.input();
+        if(input.wasKeyDown(SDLK_ESCAPE)){
+            break;
+        }
+        if(input.isKeyPressed(SDLK_s)){
+            camera.moveCameraBack();
+        }
+        if(input.isKeyPressed(SDLK_w)){
+            camera.moveCameraFoward();
+        }
+        if(input.isKeyPressed(SDLK_a)){
+             camera.moveCameraLeft();
+        }
+        if(input.isKeyPressed(SDLK_d)){
+            camera.moveCameraRight();
+        }
+        // If the mouse is moving to the left 
+        if (input.getMouseDeltaX() < 0)
+            camera.lookLeft();
+                // If the mouse is moving to the right 
+        if (input.getMouseDeltaX() > 0)
+            camera.lookRight();
+                // If the mouse is moving up 
+        if (input.getMouseDeltaY() < 0)
+            camera.lookUp();
+                // If the mouse is moving down 
+        if (input.getMouseDeltaY() > 0)
+            camera.lookDown();
+       /* bool leftClicked=false;
         if (SDL_PollEvent(&windowEvent)) {                           //zachyti udalosti ktore sa stali v okne
             if (windowEvent.type == SDL_QUIT) break;                //ak skoncil program tak sa ukonci hlavny cyklus
               else if( windowEvent.type == SDL_KEYDOWN ){
@@ -61,6 +92,7 @@ int main(int argc, char* argv[])
                         {
                             case SDLK_UP:
                                 objectRotateAmtY+=0.02f;
+                             
                             break;
 
                             case SDLK_DOWN:
@@ -117,20 +149,20 @@ int main(int argc, char* argv[])
             }
             if (windowEvent.type == SDL_MOUSEMOTION)
             {
-                /* If the mouse is moving to the left */
+                // If the mouse is moving to the left 
                 if (windowEvent.motion.xrel < 0)
                     camera.lookLeft();
-                /* If the mouse is moving to the right */
+                // If the mouse is moving to the right 
                 else if (windowEvent.motion.xrel > 0)
                     camera.lookRight();
-                /* If the mouse is moving up */
+                // If the mouse is moving up 
                 else if (windowEvent.motion.yrel < 0)
                     camera.lookUp();
-                /* If the mouse is moving down */
+                // If the mouse is moving down 
                 else if (windowEvent.motion.yrel > 0)
                     camera.lookDown();
             }
-          /*  if( windowEvent.type == SDL_KEYUP ){
+            if( windowEvent.type == SDL_KEYUP ){
                 switch( windowEvent.key.keysym.sym ){
                     case SDLK_RIGHT:    rotateAmtX=0;
                     break;
@@ -141,10 +173,10 @@ int main(int argc, char* argv[])
                     case SDLK_DOWN:     rotateAmtY=0;
                     break;
                 }
-            }*/
+            }
             
-        }
-
+        }*/
+        
         window.Update();
     }
 
