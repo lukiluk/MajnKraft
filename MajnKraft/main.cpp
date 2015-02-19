@@ -38,7 +38,7 @@ int main(int argc, char* argv[])
     SDL_Event windowEvent;                                          //Zachytava ukoncenie okna a klavesnicu
     
      int mouseX=0,mouseY=0;
-     bool run;
+     bool run=true;
     while (run)
     {
         if (SDL_PollEvent(&windowEvent))                          //zachyti udalosti ktore sa stali v okne
