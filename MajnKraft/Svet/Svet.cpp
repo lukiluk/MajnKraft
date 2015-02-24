@@ -6,8 +6,10 @@
  */
 
 #include "Svet.h"
+#include "GeneratorSveta.h"
 
 Svet::Svet() {
+    nacitanySvet = GeneratorSveta().nacitaj();
 }
 
 Svet::Svet(const Svet& orig) {
@@ -16,3 +18,6 @@ Svet::Svet(const Svet& orig) {
 Svet::~Svet() {
 }
 
+void Svet::draw() {
+    nacitanySvet->draw(0,0);
+}
