@@ -16,6 +16,7 @@ public:
     Svet();
     Svet(const Svet& orig);
     virtual ~Svet();
+    void draw();
     
 private:
     Chunk* nacitanySvet;

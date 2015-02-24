@@ -1,4 +1,5 @@
 #include "Input.h"
+#include <stdio.h>
 
 Input::Input():mouseDeltaX(0),mouseDeltaY(0),mouseX(0),mouseY(0) {
 
@@ -31,6 +32,7 @@ bool Input::input() {
             case SDL_MOUSEBUTTONDOWN:
                 pressedMB[event.button.button] = true;
                 MBClick[event.button.button] = true;
+                printf("click");
                 break;
             case SDL_MOUSEBUTTONUP:
                 pressedMB[event.button.button] = false;

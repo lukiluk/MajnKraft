@@ -84,10 +84,10 @@ int main(int argc, char* argv[])
         if (input.getMouseDeltaY() > 0)
             camera.lookDown();
         if (input.isMBPressed(SDL_BUTTON_LEFT)){
-            SDL_SetRelativeMouseMode(SDL_TRUE);
+            //SDL_SetRelativeMouseMode(SDL_TRUE);
         }
         if(input.wasMBUp(SDL_BUTTON_LEFT)) {
-            SDL_SetRelativeMouseMode(SDL_FALSE);
+            //SDL_SetRelativeMouseMode(SDL_FALSE);
         }
        /* bool leftClicked=false;
         if (SDL_PollEvent(&windowEvent)) {                           //zachyti udalosti ktore sa stali v okne

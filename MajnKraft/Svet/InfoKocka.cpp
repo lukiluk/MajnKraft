@@ -21,3 +21,8 @@ InfoKocka::InfoKocka(const InfoKocka& orig) {
 InfoKocka::~InfoKocka() {
 }
 
+void InfoKocka::draw(int positionX, int positionY, int positionZ) {
+    if(viditelnost){
+        typ->draw(positionX, positionY, positionZ);
+    }
+}

@@ -43,4 +43,7 @@ Chunk* GeneratorSveta::generuj(){
             }
         }
     }
+    
+    testovaci.setSvet(svet);
+    return &testovaci;
 }

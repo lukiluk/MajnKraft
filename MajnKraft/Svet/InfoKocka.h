@@ -18,7 +18,8 @@ public:
     virtual ~InfoKocka();
     
     Kocka* getTyp(){ return this->typ;}
-    bool getViditelnost(){ return this->viditelnost;}    
+    bool getViditelnost(){ return this->viditelnost;}
+    void draw(int positionX, int positionY, int positionZ);
     
 private:
     Kocka* typ;

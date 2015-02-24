@@ -21,17 +21,18 @@ public:
     
     InfoKocka* getBlock(int x, int y, int z) { 
         if (z >= 0 && z < 256)
-            return &this->castSveta[x][y][z];
+            return this->castSveta[x][y][z];
         return (InfoKocka*)-1;
     }
     
-    void setSvet(InfoKocka*** castSveta){ this->castSveta = castSveta; }
+    void setSvet(InfoKocka**** castSveta){ this->castSveta = castSveta; }
     
     int getChunkID(){ return this->ID; }
+    void draw(int offsetX, int offsetY);
     
 
 private:
-    InfoKocka*** castSveta;
+    InfoKocka**** castSveta;
     int ID;
 
 };
