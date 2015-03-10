@@ -16,6 +16,7 @@
 #include "Graphic/Camera.h"
 #include "Graphic/GObject.h"
 #include "Input.h"
+#include "Svet/Svet.h"
 
 int main(int argc, char* argv[])
 {
@@ -26,9 +27,12 @@ int main(int argc, char* argv[])
     
     float objectRotateAmtX=0;
     float objectRotateAmtY=0;
-    GObject* kocka2 = new GObject(CUBE,TEXTURECLASSIC);
+    GObject* kocka1 = new GObject(CUBE,TEXTUREBASIC);
+    GObject* kocka2 = new GObject(CUBE,TEXTUREBASIC);
     kocka2->setTextures("./Graphic/Textures/grass.png","./Graphic/Textures/grass.png","./Graphic/Textures/grass.png"
     ,"./Graphic/Textures/grass.png","./Graphic/Textures/grass.png","./Graphic/Textures/grassB.png");
+    kocka1->setTextures("./Graphic/Textures/rock.png");
+    //Svet* svet = new Svet();
   
     Camera camera(70.0f,(float)8/6,0.01f,1000.0f,kocka2->getActiveShader());     //vytvara cameru
     camera.update(glm::vec3(1.0f, 1.0f, 4.0f),glm::vec3(0.0f, 0.0f,-1.0f),                                  //aktualizuje kameru(pojde do hlavneho cyklu))
@@ -50,11 +54,24 @@ int main(int argc, char* argv[])
         
         camera.update(glm::vec3(1.0f, 1.0f, 4.0f),glm::vec3(0.0f, 0.0f,-1.0f),                                  //aktualizuje kameru(pojde do hlavneho cyklu))
         glm::vec3(0.0f, 1.0f, 0.0f));
-        
-        kocka2->rotate(objectRotateAmtX,objectRotateAmtY,0.0f);
-        kocka2->drawTo(0.0f,0.0f,0.0f);
-        kocka2->drawTo(1.0f,0.0f,0.0f);       
-        
+    //    svet->draw();
+       /// kocka2->rotate(objectRotateAmtX,objectRotateAmtY,0.0f);
+       // kocka2->drawTo(0.0f,0.0f,0.0f);
+        //kocka2->drawTo(1.0f,0.0f,0.0f);       
+       // kocka1->drawTo(0.0f,1.0f,0.0f);
+        for (int i = 1; i <= 20; i++) {
+            for (int j = 1; j <= 20; j++) {
+                for (int k = 1; k <= 20; k++) {
+                    if(j==20){
+                        kocka2->drawTo(k,j,i);
+                    }
+                    if(i==1||j==1||k==1||i==20||k==20){
+                        kocka1->drawTo(k,j,i);
+                    }
+                }
+            }
+        }
+
         run=input.input();
         if(input.wasKeyDown(SDLK_ESCAPE)){
             break;
@@ -84,11 +101,12 @@ int main(int argc, char* argv[])
         if (input.getMouseDeltaY() > 0)
             camera.lookDown();
         if (input.isMBPressed(SDL_BUTTON_LEFT)){
-            //SDL_SetRelativeMouseMode(SDL_TRUE);
+            SDL_SetRelativeMouseMode(SDL_TRUE);
         }
         if(input.wasMBUp(SDL_BUTTON_LEFT)) {
-            //SDL_SetRelativeMouseMode(SDL_FALSE);
+            SDL_SetRelativeMouseMode(SDL_FALSE);
         }
+        window.Update();
        /* bool leftClicked=false;
         if (SDL_PollEvent(&windowEvent)) {                           //zachyti udalosti ktore sa stali v okne
             if (windowEvent.type == SDL_QUIT) break;                //ak skoncil program tak sa ukonci hlavny cyklus
@@ -183,18 +201,9 @@ int main(int argc, char* argv[])
             
         }*/
         
-        window.Update();
+        
     }
 
-    // ---------------------------- CLEARING ------------------------------ //
-
-    // Delete allocated resources
-    
-   // delete transf;
-   // delete texture;
-   // delete shader;
-   // delete mesh;
-    // ---------------------------- TERMINATE ----------------------------- //
     SDL_Quit();
 
     return 0;
