@@ -8,13 +8,13 @@
 #ifndef GOBJECT_H
 #define	GOBJECT_H
 
+#include "Shader.h"
 #include "Texture.h"
 #include "Transformation.h"
-#include "Shader.h"
 #include "Mesh.h"
 
 enum TypeOfObject{CUBE,COMPLEX};
-enum TypeOfShader{TEXTURECLASSIC};
+enum TypeOfShader{TEXTUREBASIC};
 
 class GObject{
 public:
@@ -35,7 +35,7 @@ private:
     TypeOfShader shaderType;
     Mesh* mesh;
     Texture textures[MAXTEXTURES];
-    Shader* activeShader;
+    GLuint activeShader;
     Transformation* transformation;
 };
 

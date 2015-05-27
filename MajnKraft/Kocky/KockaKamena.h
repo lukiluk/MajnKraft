@@ -8,6 +8,7 @@
 #ifndef KOCKAKAMENA_H
 #define	KOCKAKAMENA_H
 #include "Kocka.h"
+#include "../Graphic/GObject.h"
 
 class KockaKamena  : public Kocka{
 public:
@@ -18,7 +19,8 @@ public:
     virtual void draw(double x, double y, double z);
     virtual void update();
 private:
-
+    GObject* object;
+    char* const TEXTURE = "./Graphic/Textures/grass.png";
 };
 
 #endif	/* KOCKAKAMENA_H */

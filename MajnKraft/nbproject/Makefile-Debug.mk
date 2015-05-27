@@ -21,8 +21,8 @@ FC=gfortran
 AS=as
 
 # Macros
-CND_PLATFORM=GNU-Linux-x86
-CND_DLIB_EXT=so
+CND_PLATFORM=MinGW-Windows
+CND_DLIB_EXT=dll
 CND_CONF=Debug
 CND_DISTDIR=dist
 CND_BUILDDIR=build
@@ -40,6 +40,7 @@ OBJECTFILES= \
 	${OBJECTDIR}/Graphic/Mesh.o \
 	${OBJECTDIR}/Graphic/Shader.o \
 	${OBJECTDIR}/Graphic/Texture.o \
+	${OBJECTDIR}/Graphic/TextureBasicShader.o \
 	${OBJECTDIR}/Graphic/Transformation.o \
 	${OBJECTDIR}/Graphic/Window.o \
 	${OBJECTDIR}/Input.o \
@@ -72,11 +73,11 @@ LDLIBSOPTIONS=
 
 # Build Targets
 .build-conf: ${BUILD_SUBPROJECTS}
-	"${MAKE}"  -f nbproject/Makefile-${CND_CONF}.mk ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/majnkraft
+	"${MAKE}"  -f nbproject/Makefile-${CND_CONF}.mk ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/majnkraft.exe
 
-${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/majnkraft: ${OBJECTFILES}
+${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/majnkraft.exe: ${OBJECTFILES}
 	${MKDIR} -p ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}
-	${LINK.cc} -o ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/majnkraft ${OBJECTFILES} ${LDLIBSOPTIONS} -lSDL2 -lGL -lGLEW -lSDL2_image
+	${LINK.cc} -o ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/majnkraft ${OBJECTFILES} ${LDLIBSOPTIONS} -lmingw32 -lSDL2main -lSDL2 -lSDL2_image -lglew32 -lopengl32
 
 ${OBJECTDIR}/Graphic/Camera.o: Graphic/Camera.cpp 
 	${MKDIR} -p ${OBJECTDIR}/Graphic
@@ -102,6 +103,11 @@ ${OBJECTDIR}/Graphic/Texture.o: Graphic/Texture.cpp
 	${MKDIR} -p ${OBJECTDIR}/Graphic
 	${RM} "$@.d"
 	$(COMPILE.cc) -g -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/Graphic/Texture.o Graphic/Texture.cpp
+
+${OBJECTDIR}/Graphic/TextureBasicShader.o: Graphic/TextureBasicShader.cpp 
+	${MKDIR} -p ${OBJECTDIR}/Graphic
+	${RM} "$@.d"
+	$(COMPILE.cc) -g -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/Graphic/TextureBasicShader.o Graphic/TextureBasicShader.cpp
 
 ${OBJECTDIR}/Graphic/Transformation.o: Graphic/Transformation.cpp 
 	${MKDIR} -p ${OBJECTDIR}/Graphic
@@ -169,7 +175,7 @@ ${OBJECTDIR}/main.o: main.cpp
 # Clean Targets
 .clean-conf: ${CLEAN_SUBPROJECTS}
 	${RM} -r ${CND_BUILDDIR}/${CND_CONF}
-	${RM} ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/majnkraft
+	${RM} ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/majnkraft.exe
 
 # Subprojects
 .clean-subprojects:

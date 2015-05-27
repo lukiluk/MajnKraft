@@ -1,12 +1,8 @@
-#define GLEW_STATIC
-#include <GL/glew.h>
-#include <SDL2/SDL_config.h>
 #include "Shader.h"
-#include <stdio.h>
-#define GLSL(src) "#version 150 core\n" #src
 
 Shader::Shader() {
-
+    fragmentShader=0;
+    shaderProgram=0;
 }
 /*Skontroluje shader na chyby*/
 void Shader::checkShader(GLuint shader,GLuint flag,bool isProgram){
@@ -23,9 +19,9 @@ void Shader::checkShader(GLuint shader,GLuint flag,bool isProgram){
     }
 }
 /*Nacita textureShader*/
-void Shader::loadShader() {
+void Shader::createShaders(char* vertexSource,char* fragmentSource) {
     //vytvori shader ktory urci body "trojuholnikov"
-    const char* vertexSource = GLSL(
+   /* const char* vertexSource = GLSL(
         uniform mat4 trans;
         uniform mat4 view;
         uniform mat4 proj;
@@ -43,7 +39,7 @@ void Shader::loadShader() {
             Texcoord = texcoord;
             gl_Position = proj * view * trans * vec4(position, 1.0);
         }
-    );
+    );*/
 
     vertexShader = glCreateShader(GL_VERTEX_SHADER);            //vytvori identifikator pre shader
     glShaderSource(vertexShader, 1, &vertexSource, NULL);
@@ -51,7 +47,7 @@ void Shader::loadShader() {
     Shader::checkShader(shaderProgram,GL_COMPILE_STATUS,false);
     
     // Create and compile the fragment shader
-    const char* fragmentSource = GLSL(
+   /* const char* fragmentSource = GLSL(
         uniform sampler2D tex0;
         uniform sampler2D tex1;
 
@@ -63,7 +59,7 @@ void Shader::loadShader() {
         void main() {
             outColor = mix(texture(tex0, Texcoord), texture(tex1, Texcoord), 0.5) * vec4(Color, 1.0);
         }
-    );
+    );*/
 
     fragmentShader = glCreateShader(GL_FRAGMENT_SHADER);
     glShaderSource(fragmentShader, 1, &fragmentSource, NULL);
@@ -77,6 +73,38 @@ void Shader::loadShader() {
     glLinkProgram(shaderProgram);                       //zlinkuje shader
     checkShader(shaderProgram,GL_LINK_STATUS,true);
     glUseProgram(shaderProgram);                        //prikaze pouzivat shader
+}
+
+void Shader::bindProgram() {
+    glUseProgram(shaderProgram);
+}
+
+GLuint Shader::getShaderProgram() const {
+    return shaderProgram;
+}
+
+void Shader::addUniform(char* name) {
+    int location = glGetUniformLocation(shaderProgram,name);
+    if (location == -1){
+        printf("Bad uniform name ",name);
+    }
+    uniforms[name]=location;
+}
+
+void Shader::setUniformi(char* name, int value) {
+    glUniform1i(uniforms[name],value);
+}
+
+void Shader::setUniformf(char* name, float value) {
+    glUniform1f(uniforms[name],value);
+}
+
+void Shader::setUniformV3(char* name, glm::vec3 value) {
+    glUniform3f(uniforms[name],value.x,value.y,value.z);
+}
+
+void Shader::setUniformM4(char* name, glm::mat4 value) {
+    glUniformMatrix4fv(uniforms[name], 1, GL_FALSE, glm::value_ptr(value));
 }
 
 

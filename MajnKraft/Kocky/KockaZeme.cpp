@@ -15,6 +15,11 @@ KockaZeme::KockaZeme(const KockaZeme& orig) {
 
 KockaZeme::~KockaZeme() {
 }
-void KockaZeme::draw(double x, double y, double z){}
+void KockaZeme::draw(double x, double y, double z){
+    GObject grafika = GObject(CUBE,TEXTUREBASIC);
+    grafika.setTextures("./Graphic/Textures/grass.png","./Graphic/Textures/grass.png","./Graphic/Textures/grass.png"
+    ,"./Graphic/Textures/grass.png","./Graphic/Textures/grass.png","./Graphic/Textures/grassB.png");
+    grafika.drawTo(x,y,z);
+}
 void KockaZeme::update(){}
 

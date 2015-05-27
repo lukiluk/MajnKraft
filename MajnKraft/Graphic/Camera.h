@@ -8,6 +8,7 @@
 #ifndef CAMERA_H
 #define	CAMERA_H
 #include "glm/glm.hpp"
+#define GLEW_STATIC
 #include "GL/glew.h"
 
 class Camera {

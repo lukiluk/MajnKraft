@@ -9,7 +9,7 @@
 #define	KOCKATRAVY_H
 
 #include "Kocka.h"
-
+#include "../Graphic/GObject.h"
 
 class KockaTravy : public Kocka{
 public:

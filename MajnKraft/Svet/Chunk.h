@@ -19,20 +19,16 @@ public:
     Chunk(const Chunk& orig);
     virtual ~Chunk();
     
-    InfoKocka* getBlock(int x, int y, int z) { 
-        if (z >= 0 && z < 256)
-            return this->castSveta[x][y][z];
-        return (InfoKocka*)-1;
-    }
+    InfoKocka* getBlock(int x, int y, int z);
     
-    void setSvet(InfoKocka**** castSveta){ this->castSveta = castSveta; }
+    void setCubes(InfoKocka**** castSveta);
     
-    int getChunkID(){ return this->ID; }
+    int getChunkID();
     void draw(int offsetX, int offsetY);
     
 
 private:
-    InfoKocka**** castSveta;
+    InfoKocka**** cubes;
     int ID;
 
 };

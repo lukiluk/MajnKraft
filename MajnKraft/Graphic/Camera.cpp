@@ -10,6 +10,7 @@
 #include <glm/glm.hpp>
 #include "glm/gtx/transform.hpp"
 #include <glm/gtx/quaternion.hpp>
+#define GLEW_STATIC
 #include <GL/glew.h>
 
 /*Vytvori kameru na zaklade  sirky zorneho pola , minimalnej a maximalnej vzdialenosti ktoru vykresluje , a shaderu ktoremu posiela vysledok */

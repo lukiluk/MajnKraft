@@ -8,7 +8,7 @@
 #ifndef KOCKAVZDUCHU_H
 #define	KOCKAVZDUCHU_H
 #include "Kocka.h"
-
+#include "../Graphic/GObject.h"
 class KockaVzduchu : public Kocka{
 public:
     KockaVzduchu();

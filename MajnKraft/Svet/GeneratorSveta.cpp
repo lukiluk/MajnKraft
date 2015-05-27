@@ -22,28 +22,28 @@ GeneratorSveta::~GeneratorSveta() {
 }
 
 Chunk* GeneratorSveta::generuj(){
-    Chunk testovaci = Chunk();
-    InfoKocka**** svet;
+    Chunk testChunk = Chunk();
+    InfoKocka**** cubes;
     
-    svet = new InfoKocka***[testovaci.DLZKA_CHUNKU];
-    for(int x = 0; x < testovaci.DLZKA_CHUNKU; x++){
-        svet[x] = new InfoKocka**[testovaci.SIRKA_CHUNKU];
-        for(int y = 0; y < testovaci.SIRKA_CHUNKU; y++){
-            svet[x][y] = new InfoKocka*[testovaci.VYSKA_CHUNKU];
-            for(int z = 0; z < testovaci.VYSKA_CHUNKU; z++){
+    cubes = new InfoKocka***[testChunk.DLZKA_CHUNKU];
+    for(int x = 0; x < testChunk.DLZKA_CHUNKU; x++){
+        cubes[x] = new InfoKocka**[testChunk.SIRKA_CHUNKU];
+        for(int y = 0; y < testChunk.SIRKA_CHUNKU; y++){
+            cubes[x][y] = new InfoKocka*[testChunk.VYSKA_CHUNKU];
+            for(int z = 0; z < testChunk.VYSKA_CHUNKU; z++){
                 if(z >=0 && z < 60){
-                    svet[x][y][z] = new InfoKocka(this->kockaKamena,false);
+                    cubes[x][y][z] = new InfoKocka(this->kockaKamena,true);
                 }else if(z == 60){
-                    svet[x][y][z] = new InfoKocka(this->kockaZeme,false);
+                    cubes[x][y][z] = new InfoKocka(this->kockaZeme,true);
                 }else if(z == 61){
-                    svet[x][y][z] = new InfoKocka(this->kockaTravy,true);
+                    cubes[x][y][z] = new InfoKocka(this->kockaTravy,true);
                 }else{
-                    svet[x][y][z] = new InfoKocka(this->kockaVzduchu,true);
+                    cubes[x][y][z] = new InfoKocka(this->kockaVzduchu,true);
                 }
             }
         }
     }
     
-    testovaci.setSvet(svet);
-    return &testovaci;
+    testChunk.setCubes(cubes);
+    return &testChunk;
 }

@@ -23,7 +23,7 @@ public:
     bool isUsed();
     virtual ~Texture();
 private:
-    Texture(const Texture& orig);
+   // Texture(const Texture& orig);
 };
 
 #endif	/* TEXTURE_H */

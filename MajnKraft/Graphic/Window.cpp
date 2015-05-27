@@ -1,4 +1,5 @@
 #include "Window.h"
+#define GLEW_STATIC
 #include <GL/glew.h>
 #include <stdio.h>
  /*Vytvori okno so zadanov sirkov a vyskov*/

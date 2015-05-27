@@ -17,7 +17,10 @@ KockaTravy::~KockaTravy() {
 }
 
 void KockaTravy::draw(double x, double y, double z){
-    
+    GObject grafika = GObject(CUBE,TEXTUREBASIC);
+    grafika.setTextures("./Graphic/Textures/grass.png","./Graphic/Textures/grass.png","./Graphic/Textures/grass.png"
+    ,"./Graphic/Textures/grass.png","./Graphic/Textures/grass.png","./Graphic/Textures/grassB.png");
+    grafika.drawTo(x,y,z);
 }
 
 void KockaTravy::update(){

@@ -19,5 +19,6 @@ Svet::~Svet() {
 }
 
 void Svet::draw() {
+   // nacitanySvet = GeneratorSveta().nacitaj(); //docasne
     nacitanySvet->draw(0,0);
 }
