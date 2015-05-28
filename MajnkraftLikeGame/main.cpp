@@ -16,7 +16,7 @@
 #include "Graphic/Camera.h"
 #include "Graphic/GObject.h"
 #include "Core/Input.h"
-#include "Svet/Svet.h"
+#include "Game/Svet/Svet.h"
 
 int main(int argc, char* argv[])
 {

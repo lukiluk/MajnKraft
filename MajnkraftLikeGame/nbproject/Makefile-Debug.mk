@@ -35,23 +35,24 @@ OBJECTDIR=${CND_BUILDDIR}/${CND_CONF}/${CND_PLATFORM}
 
 # Object Files
 OBJECTFILES= \
+	${OBJECTDIR}/Core/Engine.o \
 	${OBJECTDIR}/Core/Input.o \
+	${OBJECTDIR}/Core/Transformation.o \
+	${OBJECTDIR}/Game/Kocky/KockaKamena.o \
+	${OBJECTDIR}/Game/Kocky/KockaTravy.o \
+	${OBJECTDIR}/Game/Kocky/KockaVzduchu.o \
+	${OBJECTDIR}/Game/Kocky/KockaZeme.o \
+	${OBJECTDIR}/Game/Svet/Chunk.o \
+	${OBJECTDIR}/Game/Svet/GeneratorSveta.o \
+	${OBJECTDIR}/Game/Svet/InfoKocka.o \
+	${OBJECTDIR}/Game/Svet/Svet.o \
 	${OBJECTDIR}/Graphic/Camera.o \
 	${OBJECTDIR}/Graphic/GObject.o \
 	${OBJECTDIR}/Graphic/Mesh.o \
 	${OBJECTDIR}/Graphic/Shader.o \
 	${OBJECTDIR}/Graphic/Texture.o \
 	${OBJECTDIR}/Graphic/TextureBasicShader.o \
-	${OBJECTDIR}/Graphic/Transformation.o \
 	${OBJECTDIR}/Graphic/Window.o \
-	${OBJECTDIR}/Kocky/KockaKamena.o \
-	${OBJECTDIR}/Kocky/KockaTravy.o \
-	${OBJECTDIR}/Kocky/KockaVzduchu.o \
-	${OBJECTDIR}/Kocky/KockaZeme.o \
-	${OBJECTDIR}/Svet/Chunk.o \
-	${OBJECTDIR}/Svet/GeneratorSveta.o \
-	${OBJECTDIR}/Svet/InfoKocka.o \
-	${OBJECTDIR}/Svet/Svet.o \
 	${OBJECTDIR}/main.o
 
 
@@ -79,10 +80,60 @@ ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/majnkraftlikegame.exe: ${OBJECTFILES}
 	${MKDIR} -p ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}
 	${LINK.cc} -o ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/majnkraftlikegame ${OBJECTFILES} ${LDLIBSOPTIONS} -lmingw32 -lSDL2main -lSDL2 -lSDL2_image -lglew32 -lopengl32
 
+${OBJECTDIR}/Core/Engine.o: Core/Engine.cpp 
+	${MKDIR} -p ${OBJECTDIR}/Core
+	${RM} "$@.d"
+	$(COMPILE.cc) -g -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/Core/Engine.o Core/Engine.cpp
+
 ${OBJECTDIR}/Core/Input.o: Core/Input.cpp 
 	${MKDIR} -p ${OBJECTDIR}/Core
 	${RM} "$@.d"
 	$(COMPILE.cc) -g -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/Core/Input.o Core/Input.cpp
+
+${OBJECTDIR}/Core/Transformation.o: Core/Transformation.cpp 
+	${MKDIR} -p ${OBJECTDIR}/Core
+	${RM} "$@.d"
+	$(COMPILE.cc) -g -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/Core/Transformation.o Core/Transformation.cpp
+
+${OBJECTDIR}/Game/Kocky/KockaKamena.o: Game/Kocky/KockaKamena.cpp 
+	${MKDIR} -p ${OBJECTDIR}/Game/Kocky
+	${RM} "$@.d"
+	$(COMPILE.cc) -g -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/Game/Kocky/KockaKamena.o Game/Kocky/KockaKamena.cpp
+
+${OBJECTDIR}/Game/Kocky/KockaTravy.o: Game/Kocky/KockaTravy.cpp 
+	${MKDIR} -p ${OBJECTDIR}/Game/Kocky
+	${RM} "$@.d"
+	$(COMPILE.cc) -g -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/Game/Kocky/KockaTravy.o Game/Kocky/KockaTravy.cpp
+
+${OBJECTDIR}/Game/Kocky/KockaVzduchu.o: Game/Kocky/KockaVzduchu.cpp 
+	${MKDIR} -p ${OBJECTDIR}/Game/Kocky
+	${RM} "$@.d"
+	$(COMPILE.cc) -g -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/Game/Kocky/KockaVzduchu.o Game/Kocky/KockaVzduchu.cpp
+
+${OBJECTDIR}/Game/Kocky/KockaZeme.o: Game/Kocky/KockaZeme.cpp 
+	${MKDIR} -p ${OBJECTDIR}/Game/Kocky
+	${RM} "$@.d"
+	$(COMPILE.cc) -g -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/Game/Kocky/KockaZeme.o Game/Kocky/KockaZeme.cpp
+
+${OBJECTDIR}/Game/Svet/Chunk.o: Game/Svet/Chunk.cpp 
+	${MKDIR} -p ${OBJECTDIR}/Game/Svet
+	${RM} "$@.d"
+	$(COMPILE.cc) -g -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/Game/Svet/Chunk.o Game/Svet/Chunk.cpp
+
+${OBJECTDIR}/Game/Svet/GeneratorSveta.o: Game/Svet/GeneratorSveta.cpp 
+	${MKDIR} -p ${OBJECTDIR}/Game/Svet
+	${RM} "$@.d"
+	$(COMPILE.cc) -g -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/Game/Svet/GeneratorSveta.o Game/Svet/GeneratorSveta.cpp
+
+${OBJECTDIR}/Game/Svet/InfoKocka.o: Game/Svet/InfoKocka.cpp 
+	${MKDIR} -p ${OBJECTDIR}/Game/Svet
+	${RM} "$@.d"
+	$(COMPILE.cc) -g -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/Game/Svet/InfoKocka.o Game/Svet/InfoKocka.cpp
+
+${OBJECTDIR}/Game/Svet/Svet.o: Game/Svet/Svet.cpp 
+	${MKDIR} -p ${OBJECTDIR}/Game/Svet
+	${RM} "$@.d"
+	$(COMPILE.cc) -g -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/Game/Svet/Svet.o Game/Svet/Svet.cpp
 
 ${OBJECTDIR}/Graphic/Camera.o: Graphic/Camera.cpp 
 	${MKDIR} -p ${OBJECTDIR}/Graphic
@@ -114,55 +165,10 @@ ${OBJECTDIR}/Graphic/TextureBasicShader.o: Graphic/TextureBasicShader.cpp
 	${RM} "$@.d"
 	$(COMPILE.cc) -g -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/Graphic/TextureBasicShader.o Graphic/TextureBasicShader.cpp
 
-${OBJECTDIR}/Graphic/Transformation.o: Graphic/Transformation.cpp 
-	${MKDIR} -p ${OBJECTDIR}/Graphic
-	${RM} "$@.d"
-	$(COMPILE.cc) -g -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/Graphic/Transformation.o Graphic/Transformation.cpp
-
 ${OBJECTDIR}/Graphic/Window.o: Graphic/Window.cpp 
 	${MKDIR} -p ${OBJECTDIR}/Graphic
 	${RM} "$@.d"
 	$(COMPILE.cc) -g -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/Graphic/Window.o Graphic/Window.cpp
-
-${OBJECTDIR}/Kocky/KockaKamena.o: Kocky/KockaKamena.cpp 
-	${MKDIR} -p ${OBJECTDIR}/Kocky
-	${RM} "$@.d"
-	$(COMPILE.cc) -g -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/Kocky/KockaKamena.o Kocky/KockaKamena.cpp
-
-${OBJECTDIR}/Kocky/KockaTravy.o: Kocky/KockaTravy.cpp 
-	${MKDIR} -p ${OBJECTDIR}/Kocky
-	${RM} "$@.d"
-	$(COMPILE.cc) -g -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/Kocky/KockaTravy.o Kocky/KockaTravy.cpp
-
-${OBJECTDIR}/Kocky/KockaVzduchu.o: Kocky/KockaVzduchu.cpp 
-	${MKDIR} -p ${OBJECTDIR}/Kocky
-	${RM} "$@.d"
-	$(COMPILE.cc) -g -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/Kocky/KockaVzduchu.o Kocky/KockaVzduchu.cpp
-
-${OBJECTDIR}/Kocky/KockaZeme.o: Kocky/KockaZeme.cpp 
-	${MKDIR} -p ${OBJECTDIR}/Kocky
-	${RM} "$@.d"
-	$(COMPILE.cc) -g -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/Kocky/KockaZeme.o Kocky/KockaZeme.cpp
-
-${OBJECTDIR}/Svet/Chunk.o: Svet/Chunk.cpp 
-	${MKDIR} -p ${OBJECTDIR}/Svet
-	${RM} "$@.d"
-	$(COMPILE.cc) -g -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/Svet/Chunk.o Svet/Chunk.cpp
-
-${OBJECTDIR}/Svet/GeneratorSveta.o: Svet/GeneratorSveta.cpp 
-	${MKDIR} -p ${OBJECTDIR}/Svet
-	${RM} "$@.d"
-	$(COMPILE.cc) -g -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/Svet/GeneratorSveta.o Svet/GeneratorSveta.cpp
-
-${OBJECTDIR}/Svet/InfoKocka.o: Svet/InfoKocka.cpp 
-	${MKDIR} -p ${OBJECTDIR}/Svet
-	${RM} "$@.d"
-	$(COMPILE.cc) -g -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/Svet/InfoKocka.o Svet/InfoKocka.cpp
-
-${OBJECTDIR}/Svet/Svet.o: Svet/Svet.cpp 
-	${MKDIR} -p ${OBJECTDIR}/Svet
-	${RM} "$@.d"
-	$(COMPILE.cc) -g -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/Svet/Svet.o Svet/Svet.cpp
 
 ${OBJECTDIR}/main.o: main.cpp 
 	${MKDIR} -p ${OBJECTDIR}

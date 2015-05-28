@@ -8,7 +8,7 @@
 #ifndef KOCKAZEME_H
 #define	KOCKAZEME_H
 #include "Kocka.h"
-#include "../Graphic/GObject.h"
+#include "../../Graphic/GObject.h"
 class KockaZeme  : public Kocka{
 public:
     KockaZeme();
