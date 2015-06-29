@@ -2,12 +2,18 @@
 #define GLEW_STATIC
 #include <GL/glew.h>
 #include <stdio.h>
- /*Vytvori okno so zadanov sirkov a vyskov*/
-Window::Window(int width,int height,bool doubleBuffering) {
-    this->doubleBuffering=doubleBuffering;
-    (doubleBuffering)?
-        SDL_GL_SetAttribute(SDL_GL_DOUBLEBUFFER,1):
-            SDL_GL_SetAttribute(SDL_GL_DOUBLEBUFFER,0);
+
+Window::Window() {
+    Window(800,600,1);
+}
+
+
+/*Vytvori okno so zadanov sirkov a vyskov*/
+Window::Window(int width, int height, bool doubleBuffering) {
+    this->doubleBuffering = doubleBuffering;
+    (doubleBuffering) ?
+            SDL_GL_SetAttribute(SDL_GL_DOUBLEBUFFER, 1):
+            SDL_GL_SetAttribute(SDL_GL_DOUBLEBUFFER, 0);
     SDL_GL_SetAttribute(SDL_GL_CONTEXT_PROFILE_MASK, SDL_GL_CONTEXT_PROFILE_CORE);
     SDL_GL_SetAttribute(SDL_GL_CONTEXT_MAJOR_VERSION, 3);
     SDL_GL_SetAttribute(SDL_GL_CONTEXT_MINOR_VERSION, 2);
@@ -15,7 +21,7 @@ Window::Window(int width,int height,bool doubleBuffering) {
     window = SDL_CreateWindow("Majncraft", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, width, height, SDL_WINDOW_OPENGL);
     /*Vytvori obsah zariadenia do ktoreho sa bude dat zapisovat*/
     context = SDL_GL_CreateContext(window);
-    
+
     glewExperimental = GL_TRUE;
     glewInit();
 
@@ -32,7 +38,7 @@ Window::Window(int width,int height,bool doubleBuffering) {
 }
 
 /*Vymeni aktualny snimok za novy*/
-void Window::Update(){
+void Window::Update() {
     SDL_GL_SwapWindow(window);
 }
 

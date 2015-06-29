@@ -7,6 +7,8 @@
 
 #include "GObject.h"
 #include "TextureBasicShader.h"
+#include "PhongShader.h"
+#include <glm/glm.hpp>
 
 GObject::GObject(TypeOfObject objectType,TypeOfShader shaderType):objectType(objectType),shaderType(shaderType) {
     if(this->objectType==CUBE){
@@ -16,7 +18,11 @@ GObject::GObject(TypeOfObject objectType,TypeOfShader shaderType):objectType(obj
     if(this->shaderType==TEXTUREBASIC){
         activeShader = TextureBasicShader::getInstance().getShaderProgram();
     }
+    if(this->shaderType==AMBIENT){
+        activeShader = PhongShader::getInstance().getShaderProgram();
+    }
     transformation = new Transformation();
+    PhongShader::getInstance().setUniformV3("ambientLight",glm::vec3(0.2f,0.2f,0.2f));
 }
 
 TypeOfObject GObject::getObjectType() const {

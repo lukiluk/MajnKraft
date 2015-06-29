@@ -14,7 +14,7 @@
 #include "Mesh.h"
 
 enum TypeOfObject{CUBE,COMPLEX};
-enum TypeOfShader{TEXTUREBASIC};
+enum TypeOfShader{TEXTUREBASIC,AMBIENT};
 
 class GObject{
 public:

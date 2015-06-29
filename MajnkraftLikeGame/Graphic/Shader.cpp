@@ -69,7 +69,7 @@ void Shader::createShaders(char* vertexSource,char* fragmentSource) {
     shaderProgram = glCreateProgram();          //vytvori identifikator pre shader
     glAttachShader(shaderProgram, vertexShader);    //prideli k shaderu vertex shader
     glAttachShader(shaderProgram, fragmentShader);
-    glBindFragDataLocation(shaderProgram, 0, "outColor");   //??
+    glBindFragDataLocation(shaderProgram, 0, "pixel");   //ktory atribut je vysledna farba
     glLinkProgram(shaderProgram);                       //zlinkuje shader
     checkShader(shaderProgram,GL_LINK_STATUS,true);
     glUseProgram(shaderProgram);                        //prikaze pouzivat shader

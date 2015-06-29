@@ -125,7 +125,7 @@ void Mesh::draw(GLuint shaderProgram) {         //stale nieviem podrobne co to r
     glEnableVertexAttribArray(texAttrib);
     glVertexAttribPointer(texAttrib, 2, GL_FLOAT, GL_FALSE, 8 * sizeof(GLfloat), (void*)(6 * sizeof(GLfloat)));
 
-    GLint uniColor = glGetUniformLocation(shaderProgram, "overrideColor");
+    GLint uniColor = glGetUniformLocation(shaderProgram, "baseColor");
     glUniform3f(uniColor, 1.0f, 1.0f, 1.0f);    //nastavi v shadery uniColor na danu  hodnotu
     
     glDrawArrays(GL_TRIANGLES, 0, 36);      //vykresli buffer ako trojuhoniky

@@ -4,6 +4,7 @@
 /*Vytvori nove okno*/
 class Window {
 public:
+    Window();
     Window(int,int,bool);
     void Update();
     SDL_Window* getWindow();

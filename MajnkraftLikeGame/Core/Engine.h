@@ -7,20 +7,29 @@
 
 #ifndef ENGINE_H
 #define	ENGINE_H
+
+#include "Input.h"
+#include "../Graphic/Window.h"
+#include "IGame.h"
 #include <string>
 
 class Engine {
     
 public:
     Engine(int width, int height, int fps, std::string title);
+    void run(IGame* game, Uint32 ips, Uint32 ups, Uint32 fps);
     Engine(const Engine& orig);
     virtual ~Engine();
-    std::string title;
+    
+private:
+    std::string windowTitle;
     int width;
     int height;
     double frameTime;
-private:
-    
+    Uint32 lastInputTime,lastRenderTime,lastUpdateTime;
+    Uint32 inputUpdateTime,renderUpdateTime,UpdateTime;
+    Window window;
+    Input input;
 
 };
 

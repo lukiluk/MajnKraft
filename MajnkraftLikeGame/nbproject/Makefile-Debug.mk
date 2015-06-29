@@ -38,6 +38,7 @@ OBJECTFILES= \
 	${OBJECTDIR}/Core/Engine.o \
 	${OBJECTDIR}/Core/Input.o \
 	${OBJECTDIR}/Core/Transformation.o \
+	${OBJECTDIR}/Game/Game.o \
 	${OBJECTDIR}/Game/Kocky/KockaKamena.o \
 	${OBJECTDIR}/Game/Kocky/KockaTravy.o \
 	${OBJECTDIR}/Game/Kocky/KockaVzduchu.o \
@@ -49,6 +50,7 @@ OBJECTFILES= \
 	${OBJECTDIR}/Graphic/Camera.o \
 	${OBJECTDIR}/Graphic/GObject.o \
 	${OBJECTDIR}/Graphic/Mesh.o \
+	${OBJECTDIR}/Graphic/PhongShader.o \
 	${OBJECTDIR}/Graphic/Shader.o \
 	${OBJECTDIR}/Graphic/Texture.o \
 	${OBJECTDIR}/Graphic/TextureBasicShader.o \
@@ -60,8 +62,8 @@ OBJECTFILES= \
 CFLAGS=
 
 # CC Compiler Flags
-CCFLAGS=
-CXXFLAGS=
+CCFLAGS=-std=c++11
+CXXFLAGS=-std=c++11
 
 # Fortran Compiler Flags
 FFLAGS=
@@ -94,6 +96,11 @@ ${OBJECTDIR}/Core/Transformation.o: Core/Transformation.cpp
 	${MKDIR} -p ${OBJECTDIR}/Core
 	${RM} "$@.d"
 	$(COMPILE.cc) -g -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/Core/Transformation.o Core/Transformation.cpp
+
+${OBJECTDIR}/Game/Game.o: Game/Game.cpp 
+	${MKDIR} -p ${OBJECTDIR}/Game
+	${RM} "$@.d"
+	$(COMPILE.cc) -g -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/Game/Game.o Game/Game.cpp
 
 ${OBJECTDIR}/Game/Kocky/KockaKamena.o: Game/Kocky/KockaKamena.cpp 
 	${MKDIR} -p ${OBJECTDIR}/Game/Kocky
@@ -149,6 +156,11 @@ ${OBJECTDIR}/Graphic/Mesh.o: Graphic/Mesh.cpp
 	${MKDIR} -p ${OBJECTDIR}/Graphic
 	${RM} "$@.d"
 	$(COMPILE.cc) -g -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/Graphic/Mesh.o Graphic/Mesh.cpp
+
+${OBJECTDIR}/Graphic/PhongShader.o: Graphic/PhongShader.cpp 
+	${MKDIR} -p ${OBJECTDIR}/Graphic
+	${RM} "$@.d"
+	$(COMPILE.cc) -g -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/Graphic/PhongShader.o Graphic/PhongShader.cpp
 
 ${OBJECTDIR}/Graphic/Shader.o: Graphic/Shader.cpp 
 	${MKDIR} -p ${OBJECTDIR}/Graphic

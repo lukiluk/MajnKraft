@@ -8,7 +8,9 @@
       <itemPath>Game/Svet/Chunk.h</itemPath>
       <itemPath>Core/Engine.h</itemPath>
       <itemPath>Graphic/GObject.h</itemPath>
+      <itemPath>Game/Game.h</itemPath>
       <itemPath>Game/Svet/GeneratorSveta.h</itemPath>
+      <itemPath>Core/IGame.h</itemPath>
       <itemPath>Game/Svet/InfoKocka.h</itemPath>
       <itemPath>Core/Input.h</itemPath>
       <itemPath>Game/Kocky/Kocka.h</itemPath>
@@ -18,6 +20,7 @@
       <itemPath>Game/Kocky/KockaZeme.h</itemPath>
       <itemPath>Game/Kocky/KockySpolocne.h</itemPath>
       <itemPath>Graphic/Mesh.h</itemPath>
+      <itemPath>Graphic/PhongShader.h</itemPath>
       <itemPath>Graphic/Shader.h</itemPath>
       <itemPath>Game/Svet/Svet.h</itemPath>
       <itemPath>Graphic/Texture.h</itemPath>
@@ -36,6 +39,7 @@
       <itemPath>Game/Svet/Chunk.cpp</itemPath>
       <itemPath>Core/Engine.cpp</itemPath>
       <itemPath>Graphic/GObject.cpp</itemPath>
+      <itemPath>Game/Game.cpp</itemPath>
       <itemPath>Game/Svet/GeneratorSveta.cpp</itemPath>
       <itemPath>Game/Svet/InfoKocka.cpp</itemPath>
       <itemPath>Core/Input.cpp</itemPath>
@@ -44,6 +48,7 @@
       <itemPath>Game/Kocky/KockaVzduchu.cpp</itemPath>
       <itemPath>Game/Kocky/KockaZeme.cpp</itemPath>
       <itemPath>Graphic/Mesh.cpp</itemPath>
+      <itemPath>Graphic/PhongShader.cpp</itemPath>
       <itemPath>Graphic/Shader.cpp</itemPath>
       <itemPath>Game/Svet/Svet.cpp</itemPath>
       <itemPath>Graphic/Texture.cpp</itemPath>
@@ -106,6 +111,9 @@
         <rebuildPropChanged>false</rebuildPropChanged>
       </toolsSet>
       <compileType>
+        <ccTool>
+          <commandLine>-std=c++11</commandLine>
+        </ccTool>
         <linkerTool>
           <commandLine>-lmingw32 -lSDL2main -lSDL2 -lSDL2_image -lglew32 -lopengl32</commandLine>
         </linkerTool>
@@ -114,6 +122,8 @@
       </item>
       <item path="Core/Engine.h" ex="false" tool="3" flavor2="0">
       </item>
+      <item path="Core/IGame.h" ex="false" tool="3" flavor2="0">
+      </item>
       <item path="Core/Input.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="Core/Input.h" ex="false" tool="3" flavor2="0">
@@ -121,6 +131,10 @@
       <item path="Core/Transformation.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="Core/Transformation.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="Game/Game.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="Game/Game.h" ex="false" tool="3" flavor2="0">
       </item>
       <item path="Game/Kocky/Kocka.h" ex="false" tool="3" flavor2="0">
       </item>
@@ -169,6 +183,10 @@
       <item path="Graphic/Mesh.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="Graphic/Mesh.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="Graphic/PhongShader.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="Graphic/PhongShader.h" ex="false" tool="3" flavor2="0">
       </item>
       <item path="Graphic/Shader.cpp" ex="false" tool="1" flavor2="0">
       </item>
@@ -213,6 +231,8 @@
       </item>
       <item path="Core/Engine.h" ex="false" tool="3" flavor2="0">
       </item>
+      <item path="Core/IGame.h" ex="false" tool="3" flavor2="0">
+      </item>
       <item path="Core/Input.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="Core/Input.h" ex="false" tool="3" flavor2="0">
@@ -220,6 +240,10 @@
       <item path="Core/Transformation.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="Core/Transformation.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="Game/Game.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="Game/Game.h" ex="false" tool="3" flavor2="0">
       </item>
       <item path="Game/Kocky/Kocka.h" ex="false" tool="3" flavor2="0">
       </item>
@@ -268,6 +292,10 @@
       <item path="Graphic/Mesh.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="Graphic/Mesh.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="Graphic/PhongShader.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="Graphic/PhongShader.h" ex="false" tool="3" flavor2="0">
       </item>
       <item path="Graphic/Shader.cpp" ex="false" tool="1" flavor2="0">
       </item>
