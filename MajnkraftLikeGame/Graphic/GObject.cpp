@@ -22,7 +22,8 @@ GObject::GObject(TypeOfObject objectType,TypeOfShader shaderType):objectType(obj
         activeShader = PhongShader::getInstance().getShaderProgram();
     }
     transformation = new Transformation();
-    PhongShader::getInstance().setUniformV3("ambientLight",glm::vec3(0.2f,0.2f,0.2f));
+    PhongShader::getInstance().setUniform("ambientLight",glm::vec3(0.2f,0.2f,0.2f));
+    PhongShader::getInstance().setUniform("directionalLight",DirectionalLight(BaseLight(glm::vec3(0.0f,0.0f,1.0f),0.8f),glm::vec3(-0.5f,-1.0f,-0.5f)));
 }
 
 TypeOfObject GObject::getObjectType() const {

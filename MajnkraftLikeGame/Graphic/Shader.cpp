@@ -83,30 +83,39 @@ GLuint Shader::getShaderProgram() const {
     return shaderProgram;
 }
 
-void Shader::addUniform(char* name) {
-    int location = glGetUniformLocation(shaderProgram,name);
+void Shader::addUniform(std::string name) {
+    int location = glGetUniformLocation(shaderProgram,name.c_str());
     if (location == -1){
-        printf("Bad uniform name ",name);
+        printf("Bad uniform name ",name.c_str());
     }
     uniforms[name]=location;
 }
 
-void Shader::setUniformi(char* name, int value) {
+void Shader::setUniform(std::string name, int value) {
     glUniform1i(uniforms[name],value);
 }
 
-void Shader::setUniformf(char* name, float value) {
+void Shader::setUniform(std::string name, float value) {
     glUniform1f(uniforms[name],value);
 }
 
-void Shader::setUniformV3(char* name, glm::vec3 value) {
+void Shader::setUniform(std::string name, glm::vec3 value) {
     glUniform3f(uniforms[name],value.x,value.y,value.z);
 }
 
-void Shader::setUniformM4(char* name, glm::mat4 value) {
+void Shader::setUniform(std::string name, glm::mat4 value) {
     glUniformMatrix4fv(uniforms[name], 1, GL_FALSE, glm::value_ptr(value));
 }
 
+void Shader::setUniform(std::string name, BaseLight baseLight) {
+    setUniform(name + ".color", baseLight.GetColor());
+    setUniform(name + ".intensity", baseLight.GetIntensity());
+}
+
+void Shader::setUniform(std::string name, DirectionalLight directionalLight) {
+    setUniform((name + ".base"), directionalLight.GetBase());
+    setUniform((name + ".direction"), directionalLight.GetDirection());
+}
 
 Shader::~Shader() {
   glDeleteShader(fragmentShader);

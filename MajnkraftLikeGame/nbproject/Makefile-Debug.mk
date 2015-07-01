@@ -47,7 +47,9 @@ OBJECTFILES= \
 	${OBJECTDIR}/Game/Svet/GeneratorSveta.o \
 	${OBJECTDIR}/Game/Svet/InfoKocka.o \
 	${OBJECTDIR}/Game/Svet/Svet.o \
+	${OBJECTDIR}/Graphic/BaseLight.o \
 	${OBJECTDIR}/Graphic/Camera.o \
+	${OBJECTDIR}/Graphic/DirectionalLight.o \
 	${OBJECTDIR}/Graphic/GObject.o \
 	${OBJECTDIR}/Graphic/Mesh.o \
 	${OBJECTDIR}/Graphic/PhongShader.o \
@@ -142,10 +144,20 @@ ${OBJECTDIR}/Game/Svet/Svet.o: Game/Svet/Svet.cpp
 	${RM} "$@.d"
 	$(COMPILE.cc) -g -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/Game/Svet/Svet.o Game/Svet/Svet.cpp
 
+${OBJECTDIR}/Graphic/BaseLight.o: Graphic/BaseLight.cpp 
+	${MKDIR} -p ${OBJECTDIR}/Graphic
+	${RM} "$@.d"
+	$(COMPILE.cc) -g -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/Graphic/BaseLight.o Graphic/BaseLight.cpp
+
 ${OBJECTDIR}/Graphic/Camera.o: Graphic/Camera.cpp 
 	${MKDIR} -p ${OBJECTDIR}/Graphic
 	${RM} "$@.d"
 	$(COMPILE.cc) -g -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/Graphic/Camera.o Graphic/Camera.cpp
+
+${OBJECTDIR}/Graphic/DirectionalLight.o: Graphic/DirectionalLight.cpp 
+	${MKDIR} -p ${OBJECTDIR}/Graphic
+	${RM} "$@.d"
+	$(COMPILE.cc) -g -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/Graphic/DirectionalLight.o Graphic/DirectionalLight.cpp
 
 ${OBJECTDIR}/Graphic/GObject.o: Graphic/GObject.cpp 
 	${MKDIR} -p ${OBJECTDIR}/Graphic

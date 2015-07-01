@@ -4,8 +4,10 @@
     <logicalFolder name="HeaderFiles"
                    displayName="Header Files"
                    projectFiles="true">
+      <itemPath>Graphic/BaseLight.h</itemPath>
       <itemPath>Graphic/Camera.h</itemPath>
       <itemPath>Game/Svet/Chunk.h</itemPath>
+      <itemPath>Graphic/DirectionalLight.h</itemPath>
       <itemPath>Core/Engine.h</itemPath>
       <itemPath>Graphic/GObject.h</itemPath>
       <itemPath>Game/Game.h</itemPath>
@@ -35,8 +37,10 @@
     <logicalFolder name="SourceFiles"
                    displayName="Source Files"
                    projectFiles="true">
+      <itemPath>Graphic/BaseLight.cpp</itemPath>
       <itemPath>Graphic/Camera.cpp</itemPath>
       <itemPath>Game/Svet/Chunk.cpp</itemPath>
+      <itemPath>Graphic/DirectionalLight.cpp</itemPath>
       <itemPath>Core/Engine.cpp</itemPath>
       <itemPath>Graphic/GObject.cpp</itemPath>
       <itemPath>Game/Game.cpp</itemPath>
@@ -172,9 +176,17 @@
       </item>
       <item path="Game/Svet/Svet.h" ex="false" tool="3" flavor2="0">
       </item>
+      <item path="Graphic/BaseLight.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="Graphic/BaseLight.h" ex="false" tool="3" flavor2="0">
+      </item>
       <item path="Graphic/Camera.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="Graphic/Camera.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="Graphic/DirectionalLight.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="Graphic/DirectionalLight.h" ex="false" tool="3" flavor2="0">
       </item>
       <item path="Graphic/GObject.cpp" ex="false" tool="1" flavor2="0">
       </item>
@@ -281,9 +293,17 @@
       </item>
       <item path="Game/Svet/Svet.h" ex="false" tool="3" flavor2="0">
       </item>
+      <item path="Graphic/BaseLight.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="Graphic/BaseLight.h" ex="false" tool="3" flavor2="0">
+      </item>
       <item path="Graphic/Camera.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="Graphic/Camera.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="Graphic/DirectionalLight.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="Graphic/DirectionalLight.h" ex="false" tool="3" flavor2="0">
       </item>
       <item path="Graphic/GObject.cpp" ex="false" tool="1" flavor2="0">
       </item>

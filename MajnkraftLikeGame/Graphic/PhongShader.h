@@ -16,6 +16,7 @@ public:
     static PhongShader& getInstance();
     void updateUniforms();
     static glm::vec3 ambientLight;
+    static DirectionalLight directionalLight;
 private:
     PhongShader();
     PhongShader(const PhongShader& orig);

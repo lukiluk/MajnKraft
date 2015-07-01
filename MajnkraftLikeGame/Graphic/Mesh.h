@@ -9,25 +9,27 @@
 #define	MESH_H
 #define GLM_FORCE_RADIANS
 #include <glm/glm.hpp>
-class Mesh
-{
+
+class Mesh {
 private:
-        GLuint vao;
-        GLuint vbo;
-        GLfloat vertices[48];
-        
+    static const int VERCITIESLENGHT = 66;
+    GLuint vao;
+    GLuint vbo;
+    GLfloat vertices[VERCITIESLENGHT];
+
+
 public:
-	Mesh();
-	void loadCube();
-	void draw(GLuint shaderProgram);
-	~Mesh();
-        void selectCube();
-        void selectCubeBack();
-        void selectCubeFront();
-        void selectCubeRight();
-        void selectCubeLeft();
-        void selectCubeTop();
-        void selectCubeBottom();
+    Mesh();
+    void loadCube();
+    void draw(GLuint shaderProgram);
+    ~Mesh();
+    void selectCube();
+    void selectCubeBack();
+    void selectCubeFront();
+    void selectCubeRight();
+    void selectCubeLeft();
+    void selectCubeTop();
+    void selectCubeBottom();
 };
 
 

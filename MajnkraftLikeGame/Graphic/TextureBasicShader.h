@@ -13,7 +13,6 @@
 class TextureBasicShader :public Shader{
 public:
     static TextureBasicShader& getInstance();
-    void updateUniforms();
 private:
     TextureBasicShader();
     TextureBasicShader(const TextureBasicShader& orig);
