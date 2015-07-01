@@ -27,7 +27,7 @@ public:
     void lookUp();
     void lookDown();
     void setSensitivity(float);
-    void update(glm::vec3 position,glm::vec3 fowardVector,glm::vec3 upVector);
+    void update();
     virtual ~Camera();
     
     void move(glm::vec3 direction,float amt);
@@ -37,7 +37,7 @@ public:
 private:
     float sensitivity;
     glm::vec3 position;
-    glm::vec3 upVector;
+    glm::vec3 upVector = glm::vec3(0.0f,1.0f,0.0f);
     glm::vec3 fowardVector;
     glm::mat4 view;
     GLint shaderProgram;

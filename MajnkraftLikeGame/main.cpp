@@ -33,8 +33,6 @@ int main(int argc, char* argv[])
     //Svet* svet = new Svet();
   
     Camera camera(70.0f,(float)8/6,0.01f,1000.0f,kocka2->getActiveShader());     //vytvara cameru
-    camera.update(glm::vec3(1.0f, 1.0f, 4.0f),glm::vec3(0.0f, 0.0f,-1.0f),                                  //aktualizuje kameru(pojde do hlavneho cyklu))
-        glm::vec3(0.0f, 1.0f, 0.0f));
     camera.setCameraPosition(1.0f, 1.0f, 4.0f);
     camera.setLookAtPosition(0.0f,0.0f,-2.0f);
     SDL_Event windowEvent;                                          //Zachytava ukoncenie okna a klavesnicu
@@ -49,8 +47,7 @@ int main(int argc, char* argv[])
         glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);         //Vycisti sa obrazovka
 
         
-        camera.update(glm::vec3(1.0f, 1.0f, 4.0f),glm::vec3(0.0f, 0.0f,-1.0f),                                  //aktualizuje kameru(pojde do hlavneho cyklu))
-        glm::vec3(0.0f, 1.0f, 0.0f));
+        camera.update();
         //draw cube
         for (int i = 1; i <= 10; i++) {
             for (int j = 1; j <= 10; j++) {

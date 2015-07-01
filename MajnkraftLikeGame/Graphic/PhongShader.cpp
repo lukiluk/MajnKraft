@@ -22,11 +22,13 @@ PhongShader::PhongShader() {
             in vec3 normal;
             out vec2 Texcoord;
             out vec3 normal0;
+            out vec3 worldPos0;
 
             void main() {
                 Texcoord = texcoord;
                 gl_Position = proj * view * trans * vec4(position, 1.0);
                 normal0 = (trans * vec4(normal,0.0f)).xyz;
+                worldPos0 = (trans * vec4(position,1.0f)).xyz;
             })
             ,
     //fragmentShader
@@ -47,18 +49,32 @@ PhongShader::PhongShader() {
             uniform vec3 baseColor;
             uniform vec3 ambientLight;
             uniform DirectionalLight directionalLight;
+            uniform float specularIntensity;
+            uniform float specularPower;
+            uniform vec3 eyePos;
             
             in vec2 Texcoord;
             in vec3 normal0;
+            in vec3 worldPos0;
             out vec4 pixel;
 
             vec4 calcLight(BaseLight base,vec3 direction,vec3 normal){
                 float difuseFactor=dot(normal,-direction);
                 vec4 difuseColor = vec4(0,0,0,0);
+                vec4 specularColor = vec4(0,0,0,0);
                 if(difuseFactor>0){
                     difuseColor = vec4(base.color,1.0)*base.intensity*difuseFactor;
+                
+                    vec3 directionToEye = normalize(eyePos - worldPos0);
+                    vec3 reflectDirection = normalize(reflect(direction,normal));
+                    float specularFactor = dot(directionToEye,reflectDirection);
+                    specularFactor = pow(specularFactor,specularPower);
+                    if(specularFactor>0){
+                        specularColor = vec4(base.color,1.0f) * specularIntensity * specularFactor;
+                    }
+                    
                 }
-                return difuseColor;
+                return difuseColor + specularColor;
             }
             
             vec4 calcDirectionalLight(DirectionalLight directionalLight,vec3 normal){
@@ -87,6 +103,9 @@ PhongShader::PhongShader() {
     addUniform("directionalLight.base.color");
     addUniform("directionalLight.base.intensity");
     addUniform("directionalLight.direction");
+    addUniform("specularIntensity");
+    addUniform("specularPower");
+    addUniform("eyePos");
 }
 
 

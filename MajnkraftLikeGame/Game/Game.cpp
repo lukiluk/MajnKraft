@@ -20,9 +20,6 @@ void Game::initialize() {
     kocka2->setTextures("./Graphic/Textures/grass.png", "./Graphic/Textures/grass.png", "./Graphic/Textures/grass.png"
             , "./Graphic/Textures/grass.png", "./Graphic/Textures/grass.png", "./Graphic/Textures/grassB.png");
     kocka1->setTextures("./Graphic/Textures/rock.png");
-
-    camera.update(glm::vec3(1.0f, 1.0f, 4.0f), glm::vec3(0.0f, 0.0f, -1.0f), //aktualizuje kameru(pojde do hlavneho cyklu))
-            glm::vec3(0.0f, 1.0f, 0.0f));
     camera.setCameraPosition(1.0f, 1.0f, 4.0f);
     camera.setLookAtPosition(0.0f, 0.0f, -2.0f);
 }
@@ -84,7 +81,7 @@ void Game::render() {
 void Game::update() {
      if (SDL_PollEvent(&windowEvent))                          //zachyti udalosti ktore sa stali v okne
             if (windowEvent.type == SDL_QUIT) running=false; 
-    camera.update(glm::vec3(1.0f, 1.0f, 4.0f), glm::vec3(0.0f, 0.0f, -1.0f), glm::vec3(0.0f, 1.0f, 0.0f));
+    camera.update();
 }
 
 bool Game::isRunning() const {

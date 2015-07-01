@@ -23,7 +23,9 @@ GObject::GObject(TypeOfObject objectType,TypeOfShader shaderType):objectType(obj
     }
     transformation = new Transformation();
     PhongShader::getInstance().setUniform("ambientLight",glm::vec3(0.2f,0.2f,0.2f));
-    PhongShader::getInstance().setUniform("directionalLight",DirectionalLight(BaseLight(glm::vec3(0.0f,0.0f,1.0f),0.8f),glm::vec3(-0.5f,-1.0f,-0.5f)));
+    PhongShader::getInstance().setUniform("directionalLight",DirectionalLight(BaseLight(glm::vec3(1.0f,1.0f,1.0f),0.2f),glm::vec3(-0.5f,-1.0f,-0.5f)));
+    PhongShader::getInstance().setUniform("specularIntensity",4);
+    PhongShader::getInstance().setUniform("specularPower",64);
 }
 
 TypeOfObject GObject::getObjectType() const {
