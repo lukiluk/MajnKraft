@@ -1,3 +1,6 @@
+#include <SDL2/begin_code.h>
+#include <stdlib.h>
+
 #include "Shader.h"
 
 Shader::Shader() {
@@ -8,7 +11,7 @@ Shader::Shader() {
 /*Skontroluje shader na chyby*/
 void Shader::checkShader(GLuint shader, GLuint flag, bool isProgram) {
     GLint succes = 0;
-    GLchar errorMsg[1024] = {0};
+    GLchar errorMsg[2048] = {0};
     (isProgram) ?
             glGetProgramiv(shader, flag, &succes) :
             glGetShaderiv(shader, flag, &succes);
@@ -21,52 +24,19 @@ void Shader::checkShader(GLuint shader, GLuint flag, bool isProgram) {
 }
 
 /*Nacita textureShader*/
-void Shader::createShaders(char* vertexSource, char* fragmentSource) {
-    //vytvori shader ktory urci body "trojuholnikov"
-    /* const char* vertexSource = GLSL(
-         uniform mat4 trans;
-         uniform mat4 view;
-         uniform mat4 proj;
-         uniform vec3 overrideColor;
-
-         in vec3 position;
-         in vec3 color;
-         in vec2 texcoord;
-
-         out vec3 Color;
-         out vec2 Texcoord;
-        
-         void main() {
-             Color = overrideColor * color;
-             Texcoord = texcoord;
-             gl_Position = proj * view * trans * vec4(position, 1.0);
-         }
-     );*/
-
+void Shader::createShaders(std::string vertexSource,std::string fragmentSource) {
+    const char* vsource = vertexSource.c_str();
+    const char* fsource = fragmentSource.c_str();
     vertexShader = glCreateShader(GL_VERTEX_SHADER); //vytvori identifikator pre shader
-    glShaderSource(vertexShader, 1, &vertexSource, NULL);
+    glShaderSource(vertexShader, 1, &vsource, NULL);
     glCompileShader(vertexShader);
     Shader::checkShader(shaderProgram, GL_COMPILE_STATUS, false);
 
-    // Create and compile the fragment shader
-    /* const char* fragmentSource = GLSL(
-         uniform sampler2D tex0;
-         uniform sampler2D tex1;
-
-         in vec3 Color;
-         in vec2 Texcoord;
-
-         out vec4 outColor;
-        
-         void main() {
-             outColor = mix(texture(tex0, Texcoord), texture(tex1, Texcoord), 0.5) * vec4(Color, 1.0);
-         }
-     );*/
-
     fragmentShader = glCreateShader(GL_FRAGMENT_SHADER);
-    glShaderSource(fragmentShader, 1, &fragmentSource, NULL);
+    glShaderSource(fragmentShader, 1, &fsource, NULL);
     glCompileShader(fragmentShader);
     checkShader(shaderProgram, GL_COMPILE_STATUS, false);
+    
     // Link the vertex and fragment shader into a shader program
     shaderProgram = glCreateProgram(); //vytvori identifikator pre shader
     glAttachShader(shaderProgram, vertexShader); //prideli k shaderu vertex shader
@@ -75,6 +45,23 @@ void Shader::createShaders(char* vertexSource, char* fragmentSource) {
     glLinkProgram(shaderProgram); //zlinkuje shader
     checkShader(shaderProgram, GL_LINK_STATUS, true);
     glUseProgram(shaderProgram); //prikaze pouzivat shader
+}
+
+std::string Shader::loadShader(std::string filename){
+    std::ifstream inf(filename);
+    std::string code;
+    if(!inf){
+        printf("Couldnt open shader %s",filename.c_str());
+        exit(-1);
+    }
+    std::string line;
+    while ( std::getline (inf,line) )
+    {
+        code.append(line);
+        code.append("\n");
+    }
+    inf.close();
+    return code;
 }
 
 void Shader::bindProgram() {
@@ -123,17 +110,6 @@ void Shader::setUniform(std::string name, glm::mat4 value) {
     } catch (std::out_of_range e) {
         printf("Cannot set unexisting uniform %s", name.c_str());
     }
-}
-
-void Shader::setUniform(std::string name, BaseLight baseLight) {
-    setUniform(name + ".color", baseLight.GetColor());
-    setUniform(name + ".intensity", baseLight.GetIntensity());
-}
-
-void Shader::setUniform(std::string name, DirectionalLight directionalLight) {
-
-    setUniform((name + ".base"), directionalLight.GetBase());
-    setUniform((name + ".direction"), directionalLight.GetDirection());
 }
 
 Shader::~Shader() {

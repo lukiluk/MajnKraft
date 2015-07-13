@@ -9,13 +9,12 @@
 #define	SHADER_H
 //#define GLEW_STATIC
 #include <GL/glew.h>
-#include <stdio.h>
 #include <map>
 #define GLM_FORCE_RADIANS
 #include "glm/glm.hpp"
-#include "BaseLight.h"
-#include "DirectionalLight.h"
 #include <glm/gtc/type_ptr.hpp>
+#include <iostream>
+#include <fstream>
 #include <string>
 
 class Shader
@@ -28,15 +27,14 @@ private:
     void checkShader(GLuint shader,GLuint flag,bool isProgram);
 public:
 	Shader();
-	void createShaders(char* vertexSource,char* fragmentSource);
+	void createShaders(std::string vertexSource,std::string fragmentSource);
+        std::string loadShader(std::string filename);
         void bindProgram();
         void addUniform(std::string name);
         void setUniform(std::string name,int value);
         void setUniform(std::string name,float value);
         void setUniform(std::string name,glm::vec3 value);
         void setUniform(std::string name,glm::mat4 value);
-        void setUniform(std::string name,BaseLight baseLight);
-        void setUniform(std::string name,DirectionalLight directionalLight);
 	~Shader();
         
     GLuint getShaderProgram() const;

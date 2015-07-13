@@ -17,86 +17,110 @@
 #include "Graphic/GObject.h"
 #include "Core/Input.h"
 #include "Game/Svet/Svet.h"
+#include "Graphic/PhongShader.h"
+#include <vector>
 
-int main(int argc, char* argv[])
-{
-    SDL_Init(SDL_INIT_VIDEO|SDL_INIT_TIMER);
-    
-    Window window(800,600,true);
+int main(int argc, char* argv[]) {
+    SDL_Init(SDL_INIT_VIDEO | SDL_INIT_TIMER);
+
+    Window window(1336, 750, true);
     Input input;
 
-    GObject* kocka1 = new GObject(CUBE,AMBIENT);
-    GObject* kocka2 = new GObject(CUBE,AMBIENT);
-    kocka2->setTextures("./Graphic/Textures/grass.png","./Graphic/Textures/grass.png","./Graphic/Textures/grass.png"
-    ,"./Graphic/Textures/grass.png","./Graphic/Textures/grass.png","./Graphic/Textures/grassB.png");
+    GObject* kocka1 = new GObject(CUBE,PHONG);
+    //GObject* kocka2 = new GObject(CUBE,PHONG);
+    GObject* plane = new GObject(PLANE, PHONG);
+
+    plane->setTextures("./Graphic/Textures/bricks.png");
+    //kocka2->setTextures("./Graphic/Textures/grass.png","./Graphic/Textures/grass.png","./Graphic/Textures/grass.png"
+    //,"./Graphic/Textures/grass.png","./Graphic/Textures/grass.png","./Graphic/Textures/grassB.png");
     kocka1->setTextures("./Graphic/Textures/rock.png");
     //Svet* svet = new Svet();
-  
-    Camera camera(70.0f,(float)8/6,0.01f,1000.0f,kocka2->getActiveShader());     //vytvara cameru
-    camera.setCameraPosition(1.0f, 1.0f, 4.0f);
-    camera.setLookAtPosition(0.0f,0.0f,-2.0f);
-    SDL_Event windowEvent;                                          //Zachytava ukoncenie okna a klavesnicu
-    
-    bool run=true;
-    while (run)
-    {
-        if (SDL_PollEvent(&windowEvent))                          //zachyti udalosti ktore sa stali v okne
-            if (windowEvent.type == SDL_QUIT) break; 
-        // Clear the screen to black
-        glClearColor(0.0f, 0.0f, 0.0f, 0.0f);                       //Nastavy cistiacu farbu ktora sa pouzije pri cisteni obrazovky
-        glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);         //Vycisti sa obrazovka
 
-        
-        camera.update();
+    Camera camera(70.0f, (float)window.GetWidth()/window.GetHeight(), 0.01f, 1000.0f, kocka1->getActiveShader()); //vytvara cameru
+    camera.setCameraPosition(1.0f, 1.0f, 4.0f);
+    camera.setLookAtPosition(0.0f, 0.0f, -2.0f);
+    SDL_Event windowEvent; //Zachytava ukoncenie okna a klavesnicu
+
+
+    PhongShader::getInstance().setAmbientLight(glm::vec3(0.1f, 0.1f, 0.1f));
+    //PhongShader::getInstance().setDirectionalLight(DirectionalLight(BaseLight(glm::vec3(1.0f, 1.0f, 1.0f), 0.8f), glm::vec3(0.0f, -1.0f, 1.0f)));
+    PhongShader::getInstance().setSpecularIntensity(2);
+    PhongShader::getInstance().setSpecularPower(32);
+    PointLight p1 = PointLight(BaseLight(glm::vec3(0.0f, 0.5f, 0.5f), 0.8f), Attenuation(0, 0, 1), glm::vec3(0, -0.1f, 2.0f));
+    PointLight p2 = PointLight(BaseLight(glm::vec3(0.5f, 0.0f, 0.5f), 0.8f), Attenuation(0, 0, 1), glm::vec3(0, -0.1f, 0));
+    std::vector<PointLight> pls;
+    pls.push_back(p1);
+    pls.push_back(p2);
+    bool run = true;
+    PhongShader::getInstance().updateUniforms();
+    while (run) {
+        if (SDL_PollEvent(&windowEvent)) //zachyti udalosti ktore sa stali v okne
+            if (windowEvent.type == SDL_QUIT) break;
+        // Clear the screen to black
+        glClearColor(0.0f, 0.0f, 0.0f, 0.0f); //Nastavy cistiacu farbu ktora sa pouzije pri cisteni obrazovky
+        glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT); //Vycisti sa obrazovka
         //draw cube
-        for (int i = 1; i <= 10; i++) {
+        /*for (int i = 1; i <= 10; i++) {
             for (int j = 1; j <= 10; j++) {
                 for (int k = 1; k <= 10; k++) {
                     if(j==10){
-                        kocka2->drawTo(k,j,i);
+                        kocka2->move(k,j,i);
+                        kocka2->drawTo();
                     }
                     if(i==1||j==1||k==1||i==10||k==10){
-                        kocka1->drawTo(k,j,i);
+                        kocka1->move(k,j,i);
+                        kocka1->drawTo();
                     }
                 }
             }
-        }
-
-        run=input.input();
-        if(input.wasKeyDown(SDLK_ESCAPE)){
+        }*/
+        kocka1->move(0,1,0);
+        kocka1->rotate(glm::sin((float)SDL_GetTicks()/1000),glm::sin((float)SDL_GetTicks()/1000)*2,0.5);
+        kocka1->draw();
+        plane->move(0, -1, 0);
+        plane->scale(4, 1, 4);
+        pls[0].SetPosition(glm::vec3(glm::sin((float)SDL_GetTicks()/1000), -0.1f, 0.0f));
+        pls[1].SetPosition(glm::vec3(0, 0.0f, glm::sin((float)SDL_GetTicks()/1000)));
+        PhongShader::getInstance().setPointLights(pls);
+        plane->draw();
+        run = input.input();
+        if (input.isKeyPressed(SDL_SCANCODE_ESCAPE)) {
             break;
         }
-        if(input.isKeyPressed(SDLK_s)){
+        if (input.isKeyHolded(SDL_SCANCODE_S)) {
             camera.moveCameraBack();
         }
-        if(input.isKeyPressed(SDLK_w)){
+        if (input.isKeyHolded(SDL_SCANCODE_W)) {
             camera.moveCameraFoward();
         }
-        if(input.isKeyPressed(SDLK_a)){
-             camera.moveCameraLeft();
+        if (input.isKeyHolded(SDL_SCANCODE_A)) {
+            camera.moveCameraLeft();
         }
-        if(input.isKeyPressed(SDLK_d)){
+        if (input.isKeyHolded(SDL_SCANCODE_D)) {
             camera.moveCameraRight();
         }
         // If the mouse is moving to the left 
-        if (input.getMouseDeltaX() < 0)
-            camera.lookLeft();
-                // If the mouse is moving to the right 
-        if (input.getMouseDeltaX() > 0)
-            camera.lookRight();
-                // If the mouse is moving up 
-        if (input.getMouseDeltaY() < 0)
-            camera.lookUp();
-                // If the mouse is moving down 
-        if (input.getMouseDeltaY() > 0)
-            camera.lookDown();
-        if (input.isMBPressed(SDL_BUTTON_LEFT)){
+
+        if (input.isMBHolded(SDL_BUTTON_LEFT)) {
             SDL_SetRelativeMouseMode(SDL_TRUE);
+            if (input.getMouseDeltaX() < 0)
+                camera.lookLeft();
+            // If the mouse is moving to the right 
+            if (input.getMouseDeltaX() > 0)
+                camera.lookRight();
+            // If the mouse is moving up 
+            if (input.getMouseDeltaY() < 0)
+                camera.lookUp();
+            // If the mouse is moving down 
+            if (input.getMouseDeltaY() > 0)
+                camera.lookDown();
         }
-        if(input.wasMBUp(SDL_BUTTON_LEFT)) {
+        if (input.wasMBRelased(SDL_BUTTON_LEFT)) {
             SDL_SetRelativeMouseMode(SDL_FALSE);
         }
-        window.Update();    
+        PhongShader::getInstance().updateUniforms();
+        camera.update();
+        window.update();
     }
 
     SDL_Quit();

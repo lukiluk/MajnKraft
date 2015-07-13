@@ -4,97 +4,10 @@
  * 
  * Created on Utorok, 2015, marec 3, 17:06
  */
-
-#define GLSL(src) "#version 330 core\n" #src
 #include "PhongShader.h"
 
 PhongShader::PhongShader() {
-
-    createShaders(
-            //vertexShader
-            GLSL(
-            uniform mat4 trans;
-            uniform mat4 view;
-            uniform mat4 proj;
-
-            in vec3 position;
-            in vec2 texcoord;
-            in vec3 normal;
-            out vec2 Texcoord;
-            out vec3 normal0;
-            out vec3 worldPos0;
-
-            void main() {
-                Texcoord = texcoord;
-                gl_Position = proj * view * trans * vec4(position, 1.0);
-                normal0 = (trans * vec4(normal,0.0f)).xyz;
-                worldPos0 = (trans * vec4(position,1.0f)).xyz;
-            })
-            ,
-    //fragmentShader
-    GLSL(
-                    
-            struct BaseLight{
-                vec3 color;
-                float intensity;
-            };
-            
-            struct DirectionalLight{
-                BaseLight base;
-                vec3 direction;
-            };
-            
-            uniform sampler2D tex0;
-            uniform sampler2D tex1;
-            uniform vec3 baseColor;
-            uniform vec3 ambientLight;
-            uniform DirectionalLight directionalLight;
-            uniform float specularIntensity;
-            uniform float specularPower;
-            uniform vec3 eyePos;
-            
-            in vec2 Texcoord;
-            in vec3 normal0;
-            in vec3 worldPos0;
-            out vec4 pixel;
-
-            vec4 calcLight(BaseLight base,vec3 direction,vec3 normal){
-                float difuseFactor=dot(normal,-direction);
-                vec4 difuseColor = vec4(0,0,0,0);
-                vec4 specularColor = vec4(0,0,0,0);
-                if(difuseFactor>0){
-                    difuseColor = vec4(base.color,1.0)*base.intensity*difuseFactor;
-                
-                    vec3 directionToEye = normalize(eyePos - worldPos0);
-                    vec3 reflectDirection = normalize(reflect(direction,normal));
-                    float specularFactor = dot(directionToEye,reflectDirection);
-                    specularFactor = pow(specularFactor,specularPower);
-                    if(specularFactor>0){
-                        specularColor = vec4(base.color,1.0f) * specularIntensity * specularFactor;
-                    }
-                    
-                }
-                return difuseColor + specularColor;
-            }
-            
-            vec4 calcDirectionalLight(DirectionalLight directionalLight,vec3 normal){
-                return calcLight(directionalLight.base,directionalLight.direction,normal);
-            }
-            
-            void main() {
-                vec4 totalLight = vec4(ambientLight,1);
-                vec4 color = vec4(baseColor,1);
-                if(color != vec4(0,0,0,0)){
-                    color *= mix(texture(tex0, Texcoord), texture(tex1, Texcoord), 0.5) ;
-                }
-                vec3 normal = normalize(normal0);
-                totalLight += calcDirectionalLight(directionalLight,normal);
-                pixel = color*totalLight;
-            }
-    )
-
-    );
-    
+    createShaders(loadShader("./Graphic/Shader/PhongShader.v"), loadShader("./Graphic/Shader/PhongShader.f"));
     addUniform("trans");
     addUniform("view");
     addUniform("proj");
@@ -106,9 +19,17 @@ PhongShader::PhongShader() {
     addUniform("specularIntensity");
     addUniform("specularPower");
     addUniform("eyePos");
+    for (int i = 0; i < MAX_POINT_LIGHTS; i++) {
+        std::string s = SSTR(i);
+        addUniform(("pointLights[" + s + "].base.color"));
+        addUniform(("pointLights[" + s + "].base.intensity"));
+        addUniform(("pointLights[" + s + "].atten.constant"));
+        addUniform(("pointLights[" + s + "].atten.linear"));
+        addUniform(("pointLights[" + s + "].atten.exponent"));
+        addUniform(("pointLights[" + s + "].position"));
+    }
+
 }
-
-
 
 PhongShader& PhongShader::getInstance() {
     static PhongShader instance; // Guaranteed to be destroyed.
@@ -116,5 +37,93 @@ PhongShader& PhongShader::getInstance() {
     return instance;
 }
 
+void PhongShader::updateUniforms() {
+    if (ambientLight == glm::vec3()) {
+        printf("Warning: ambient lignht is zero");
+    } else if (ALChanged) {
+        setUniform("ambientLight", ambientLight);
+    }
+    if (specularIntensity == 0.0f) {
+        printf("Warning: specular intensity is zero");
+    } else if (SIChanged) {
+        setUniform("specularIntensity", specularIntensity);
+    }
+    if (specularPower == 0.0f) {
+        printf("Warning: specular power is zero");
+    } else if (SPChanged) {
+        setUniform("specularPower", specularPower);
+    }
+    if (DLChanged) {
+        setUniformP("directionalLight", directionalLight);
+    }
+    for (int i = 0; i < pointLights.size(); i++) {
+        setUniformP("pointLights[" + SSTR(i) + "]", pointLights[i]);
+    }
+    SPChanged = false;
+    DLChanged = false;
+    ALChanged = false;
+    SIChanged = false;
+}
 
+void PhongShader::setUniformP(std::string name, BaseLight baseLight) {
+    try {
+        setUniform(name + ".color", baseLight.GetColor());
+        setUniform(name + ".intensity", baseLight.GetIntensity());
+    } catch (std::out_of_range e) {
+        printf("Cannot set unexisting uniform %s", name.c_str());
+    }
+}
 
+void PhongShader::setUniformP(std::string name, DirectionalLight directionalLight) {
+    try {
+        setUniformP((name + ".base"), directionalLight.GetBase());
+        setUniform((name + ".direction"), directionalLight.GetDirection());
+        DLChanged = true;
+    } catch (std::out_of_range e) {
+        printf("Cannot set unexisting uniform %s", name.c_str());
+    }
+}
+
+void PhongShader::setUniformP(std::string name, PointLight pointLight) {
+    try {
+        setUniformP(name + ".base", pointLight.GetBaseLight());
+        setUniform(name + ".atten.constant", pointLight.GetAttenuation().GetConstant());
+        setUniform(name + ".atten.linear", pointLight.GetAttenuation().GetLinear());
+        setUniform(name + ".atten.exponent", pointLight.GetAttenuation().GetExponent());
+        setUniform(name + ".position", pointLight.GetPosition());
+    } catch (std::out_of_range e) {
+        printf("Cannot set unexisting uniform %s", name.c_str());
+    }
+}
+
+void PhongShader::setPointLights(std::vector<PointLight> pPointLights) {
+    if (pPointLights.size() > MAX_POINT_LIGHTS) {
+        printf("You passed too much point lights");
+        return;
+    }
+    if (pointLights.size()!=0) {
+        pointLights.clear();
+    }
+    for (int i = 0; i < pPointLights.size(); i++) {
+        this->pointLights.push_back(pPointLights.at(i));
+    }
+}
+
+void PhongShader::setAmbientLight(glm::vec3 ambientLight) {
+    this->ambientLight = ambientLight;
+    ALChanged = true;
+}
+
+void PhongShader::setDirectionalLight(DirectionalLight directionalLight) {
+    this->directionalLight = directionalLight;
+}
+
+void PhongShader::setSpecularIntensity(float specularIntensity) {
+    this->specularIntensity = specularIntensity;
+    SIChanged = true;
+}
+
+void PhongShader::setSpecularPower(float specularPower) {
+    this->specularPower = specularPower;
+    SPChanged = true;
+}

@@ -25,20 +25,20 @@ void Game::initialize() {
 }
 
 void Game::input() {
-    running = inputer.input();
-    if (inputer.wasKeyDown(SDLK_ESCAPE)) {
+    /*running = inputer.input();
+    if (inputer.isKeyPressed(SDLK_ESCAPE)) {
         running=false;
     }
-    if (inputer.isKeyPressed(SDLK_s)) {
+    if (inputer.isKeyHolded(SDLK_s)) {
         camera.moveCameraBack();
     }
-    if (inputer.isKeyPressed(SDLK_w)) {
+    if (inputer.isKeyHolded(SDLK_w)) {
         camera.moveCameraFoward();
     }
-    if (inputer.isKeyPressed(SDLK_a)) {
+    if (inputer.isKeyHolded(SDLK_a)) {
         camera.moveCameraLeft();
     }
-    if (inputer.isKeyPressed(SDLK_d)) {
+    if (inputer.isKeyHolded(SDLK_d)) {
         camera.moveCameraRight();
     }
     // If the mouse is moving to the left 
@@ -53,12 +53,12 @@ void Game::input() {
     // If the mouse is moving down 
     if (inputer.getMouseDeltaY() > 0)
         camera.lookDown();
-    if (inputer.isMBPressed(SDL_BUTTON_LEFT)) {
+    if (inputer.isMBHolded(SDL_BUTTON_LEFT)) {
         SDL_SetRelativeMouseMode(SDL_TRUE);
     }
-    if (inputer.wasMBUp(SDL_BUTTON_LEFT)) {
+    if (inputer.wasMBRelased(SDL_BUTTON_LEFT)) {
         SDL_SetRelativeMouseMode(SDL_FALSE);
-    }
+    }*/
 }
 
 void Game::render() {
@@ -66,10 +66,12 @@ void Game::render() {
         for (int j = 1; j <= 10; j++) {
             for (int k = 1; k <= 10; k++) {
                 if (j == 10) {
-                    kocka2->drawTo(k, j, i);
+                    kocka2->move(k,j,i);
+                    kocka2->draw();
                 }
                 if (i == 1 || j == 1 || k == 1 || i == 10 || k == 10) {
-                    kocka1->drawTo(k, j, i);
+                    kocka1->move(k,j,i);
+                    kocka1->draw();
                 }
             }
         }

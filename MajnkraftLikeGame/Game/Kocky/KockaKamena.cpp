@@ -21,7 +21,7 @@ KockaKamena::~KockaKamena() {
 }
 
 void KockaKamena::draw(double x, double y, double z){
-   object->drawTo(x,y,z);
+//   object->drawTo(x,y,z);
 }
 void KockaKamena::update(){
 }

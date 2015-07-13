@@ -9,7 +9,7 @@
 
 DirectionalLight::DirectionalLight() {
     base = BaseLight();
-    direction = glm::vec3(-0.5f,-1.0f,-0.5f);
+    direction = glm::vec3(0,0,0);
 }
 
 DirectionalLight::DirectionalLight(BaseLight base, glm::vec3 direction) :

@@ -13,27 +13,28 @@
 class Input{
 private:
     SDL_Event event;
-    std::map<int, bool> pressedKeys;
-    std::map<int, bool> keyPress;           //true stacenie,false pustenie
-    std::map<int, bool> pressedMB;      // mouseButton
-    std::map<int, bool> MBClick;            //mouseButton ,true stacenie,false pustenie
+    std::map<SDL_Scancode, bool> holdedKeys;
+    std::map<SDL_Scancode, bool> pressedKeys;           //true stacenie,false pustenie
+    std::map<int, bool> holdedMB;      // mouseButton
+    std::map<int, bool> clickedMB;            //mouseButton ,true stacenie,false pustenie
     unsigned short mouseX,mouseY;
     short mouseDeltaX,mouseDeltaY;
+    const Uint8* keyStates;
 public:
     Input();
     bool input();
     /*Ci je klavesa stlacena*/
-    bool isKeyPressed(SDL_Keycode key);
+    bool isKeyHolded(SDL_Scancode key);
     /*Ci sa stlacila klavesa*/
-    bool wasKeyDown(SDL_Keycode key);
+    bool isKeyPressed(SDL_Scancode key);
     /*Ci sa pustila klavesa*/
-    bool wasKeyUp(SDL_Keycode key);
+    bool isKeyRelased(SDL_Scancode key);
     /*Ci je tlacidlo mysi stlacene*/
-    bool isMBPressed(int button);
+    bool isMBHolded(int button);
     /*Ci sa stacilo tlacidlo mysi*/
-    bool wasMBDown(int button);
+    bool wasMBClicked(int button);
     /*Ci sa pustilo tlacidlo mysi*/
-    bool wasMBUp(int button);
+    bool wasMBRelased(int button);
     
     short getMouseDeltaX() const;
     short getMouseDeltaY() const;

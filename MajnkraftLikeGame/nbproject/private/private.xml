@@ -7,10 +7,14 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/Lukas/Documents/NetBeansProjects/MajnKraftLikeGame/MajnkraftLikeGame/Game/Game.h</file>
             <file>file:/C:/Users/Lukas/Documents/NetBeansProjects/MajnKraftLikeGame/MajnkraftLikeGame/Game/Game.cpp</file>
-            <file>file:/C:/Users/Lukas/Documents/NetBeansProjects/MajnKraftLikeGame/MajnkraftLikeGame/Core/Engine.cpp</file>
+            <file>file:/C:/Users/Lukas/Documents/NetBeansProjects/MajnKraftLikeGame/MajnkraftLikeGame/Graphic/Camera.cpp</file>
+            <file>file:/C:/Users/Lukas/Documents/NetBeansProjects/MajnKraftLikeGame/MajnkraftLikeGame/Graphic/PhongShader.cpp</file>
+            <file>file:/C:/Users/Lukas/Documents/NetBeansProjects/MajnKraftLikeGame/MajnkraftLikeGame/Graphic/Window.cpp</file>
+            <file>file:/C:/Users/Lukas/Documents/NetBeansProjects/MajnKraftLikeGame/MajnkraftLikeGame/Core/Input.h</file>
+            <file>file:/C:/Users/Lukas/Documents/NetBeansProjects/MajnKraftLikeGame/MajnkraftLikeGame/Core/Input.cpp</file>
             <file>file:/C:/Users/Lukas/Documents/NetBeansProjects/MajnKraftLikeGame/MajnkraftLikeGame/main.cpp</file>
+            <file>file:/C:/Users/Lukas/Documents/NetBeansProjects/MajnKraftLikeGame/MajnkraftLikeGame/Graphic/Window.h</file>
         </group>
     </open-files>
 </project-private>

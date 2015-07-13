@@ -47,12 +47,15 @@ OBJECTFILES= \
 	${OBJECTDIR}/Game/Svet/GeneratorSveta.o \
 	${OBJECTDIR}/Game/Svet/InfoKocka.o \
 	${OBJECTDIR}/Game/Svet/Svet.o \
+	${OBJECTDIR}/Graphic/Attenuation.o \
 	${OBJECTDIR}/Graphic/BaseLight.o \
 	${OBJECTDIR}/Graphic/Camera.o \
 	${OBJECTDIR}/Graphic/DirectionalLight.o \
 	${OBJECTDIR}/Graphic/GObject.o \
+	${OBJECTDIR}/Graphic/Material.o \
 	${OBJECTDIR}/Graphic/Mesh.o \
 	${OBJECTDIR}/Graphic/PhongShader.o \
+	${OBJECTDIR}/Graphic/PointLight.o \
 	${OBJECTDIR}/Graphic/Shader.o \
 	${OBJECTDIR}/Graphic/Texture.o \
 	${OBJECTDIR}/Graphic/TextureBasicShader.o \
@@ -144,6 +147,11 @@ ${OBJECTDIR}/Game/Svet/Svet.o: Game/Svet/Svet.cpp
 	${RM} "$@.d"
 	$(COMPILE.cc) -g -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/Game/Svet/Svet.o Game/Svet/Svet.cpp
 
+${OBJECTDIR}/Graphic/Attenuation.o: Graphic/Attenuation.cpp 
+	${MKDIR} -p ${OBJECTDIR}/Graphic
+	${RM} "$@.d"
+	$(COMPILE.cc) -g -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/Graphic/Attenuation.o Graphic/Attenuation.cpp
+
 ${OBJECTDIR}/Graphic/BaseLight.o: Graphic/BaseLight.cpp 
 	${MKDIR} -p ${OBJECTDIR}/Graphic
 	${RM} "$@.d"
@@ -164,6 +172,11 @@ ${OBJECTDIR}/Graphic/GObject.o: Graphic/GObject.cpp
 	${RM} "$@.d"
 	$(COMPILE.cc) -g -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/Graphic/GObject.o Graphic/GObject.cpp
 
+${OBJECTDIR}/Graphic/Material.o: Graphic/Material.cpp 
+	${MKDIR} -p ${OBJECTDIR}/Graphic
+	${RM} "$@.d"
+	$(COMPILE.cc) -g -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/Graphic/Material.o Graphic/Material.cpp
+
 ${OBJECTDIR}/Graphic/Mesh.o: Graphic/Mesh.cpp 
 	${MKDIR} -p ${OBJECTDIR}/Graphic
 	${RM} "$@.d"
@@ -173,6 +186,11 @@ ${OBJECTDIR}/Graphic/PhongShader.o: Graphic/PhongShader.cpp
 	${MKDIR} -p ${OBJECTDIR}/Graphic
 	${RM} "$@.d"
 	$(COMPILE.cc) -g -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/Graphic/PhongShader.o Graphic/PhongShader.cpp
+
+${OBJECTDIR}/Graphic/PointLight.o: Graphic/PointLight.cpp 
+	${MKDIR} -p ${OBJECTDIR}/Graphic
+	${RM} "$@.d"
+	$(COMPILE.cc) -g -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/Graphic/PointLight.o Graphic/PointLight.cpp
 
 ${OBJECTDIR}/Graphic/Shader.o: Graphic/Shader.cpp 
 	${MKDIR} -p ${OBJECTDIR}/Graphic

@@ -9,7 +9,7 @@ Window::Window() {
 
 
 /*Vytvori okno so zadanov sirkov a vyskov*/
-Window::Window(int width, int height, bool doubleBuffering) {
+Window::Window(int width, int height, bool doubleBuffering):width(width),height(height) {
     this->doubleBuffering = doubleBuffering;
     (doubleBuffering) ?
             SDL_GL_SetAttribute(SDL_GL_DOUBLEBUFFER, 1):
@@ -32,19 +32,31 @@ Window::Window(int width, int height, bool doubleBuffering) {
         return;
     }
     /*Kontroluje ci dany pixel je pred inym(ci ho ma vykreslit)*/
+    
     glEnable(GL_DEPTH_TEST);
+    glCullFace(GL_BACK);
     glEnable(GL_CULL_FACE);
-    glEnable(GL_LINE_SMOOTH);
+    glEnable(GL_DEPTH_CLAMP);
+    glEnable(GL_TEXTURE_2D);
 }
 
 /*Vymeni aktualny snimok za novy*/
-void Window::Update() {
+void Window::update() {
     SDL_GL_SwapWindow(window);
 }
 
 SDL_Window* Window::getWindow() {
     return window;
 }
+
+float Window::GetHeight() const {
+    return height;
+}
+
+float Window::GetWidth() const {
+    return width;
+}
+
 
 Window::~Window() {
     SDL_GL_DeleteContext(context);

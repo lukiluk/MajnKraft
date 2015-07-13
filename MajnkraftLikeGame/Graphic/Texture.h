@@ -9,16 +9,17 @@
 #define	TEXTURE_H
 #include <SDL2/SDL.h>
 #include <GL/gl.h>
+#include <string>
 
 class Texture {
 private:
     GLuint textures[1],shader;
     int width, height, comp;
-    SDL_Surface *img;
+    SDL_Surface* img;
     bool used;
 public:
     Texture();
-    void loadTexture(GLuint shaderProgram,char* path);
+    void loadTexture(GLuint shaderProgram,std::string path);
     void bindTexture();
     bool isUsed();
     virtual ~Texture();

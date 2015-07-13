@@ -1,17 +1,13 @@
 #include "Input.h"
 #include <stdio.h>
 
-Input::Input():mouseDeltaX(0),mouseDeltaY(0),mouseX(0),mouseY(0) {
+Input::Input():keyStates(SDL_GetKeyboardState(NULL)),mouseDeltaX(0),mouseDeltaY(0),mouseX(0),mouseY(0) {
 
 }
 
 bool Input::input() {
-    if (!keyPress.empty()) {
-        keyPress.clear();
-    }
-    if (!MBClick.empty()) {
-        MBClick.clear();
-    }
+    pressedKeys.clear();
+    clickedMB.clear();
     mouseDeltaX = 0;
     mouseDeltaY = 0;
     while (SDL_PollEvent(&event)) {
@@ -20,23 +16,22 @@ bool Input::input() {
             case SDL_QUIT:
                 return false;
             case SDL_KEYDOWN:
-                pressedKeys[event.key.keysym.sym] = true;
-                keyPress[event.key.keysym.sym] = true;
+                pressedKeys[event.key.keysym.scancode] = true;
                 return true;
                 break;
             case SDL_KEYUP:
-                pressedKeys[event.key.keysym.sym] = false;
-                keyPress[event.key.keysym.sym] = false;
+                holdedKeys[event.key.keysym.scancode] = false;
+                pressedKeys[event.key.keysym.scancode] = false;
                 return true;
                 break;
             case SDL_MOUSEBUTTONDOWN:
-                pressedMB[event.button.button] = true;
-                MBClick[event.button.button] = true;
+                holdedMB[event.button.button] = true;
+                clickedMB[event.button.button] = true;
                 printf("click");
                 break;
             case SDL_MOUSEBUTTONUP:
-                pressedMB[event.button.button] = false;
-                MBClick[event.button.button] = false;
+                holdedMB[event.button.button] = false;
+                clickedMB[event.button.button] = false;
                 break;
             case SDL_MOUSEMOTION:
                 mouseX = event.motion.x;
@@ -51,44 +46,44 @@ bool Input::input() {
 }
 
 
-bool Input::isKeyPressed(SDL_Keycode key) {
-    if (pressedKeys.find(key) != pressedKeys.end() && pressedKeys[key])  //skontroluje ci sa nachadza v tabulke a ci je stacena klavesa
+bool Input::isKeyHolded(SDL_Scancode key) {
+    if (keyStates[key])  //skontroluje ci sa nachadza v tabulke a ci je stacena klavesa
         return true;
     else
         return false;
 
 }
 
-bool Input::wasKeyDown(SDL_Keycode key) {
-    if (keyPress.find(key) != keyPress.end() && keyPress[key])  //skontroluje ci sa nachadza v tabulke a ci bola stacena klavesa
+bool Input::isKeyPressed(SDL_Scancode key) {
+    if (pressedKeys.find(key) != pressedKeys.end() && pressedKeys[key])  //skontroluje ci sa nachadza v tabulke a ci bola stacena klavesa
         return true;
     else
         return false;
 }
 
-bool Input::wasKeyUp(SDL_Keycode key) {
-    if (keyPress.find(key) != keyPress.end() && !keyPress[key]) //skontroluje ci sa nachadza v tabulke a ci bola pustena klavesa
+bool Input::isKeyRelased(SDL_Scancode key) {
+    if (pressedKeys.find(key) != pressedKeys.end() && !pressedKeys[key]) //skontroluje ci sa nachadza v tabulke a ci bola pustena klavesa
         return true;
     else
         return false;
 }
 
-bool Input::isMBPressed(int button) {
-    if (pressedMB.find(button) != pressedMB.end() && pressedMB[button])
+bool Input::isMBHolded(int button) {
+    if (holdedMB.find(button) != holdedMB.end() && holdedMB[button])
         return true;
     else
         return false;
 }
 
-bool Input::wasMBDown(int button) {
-    if (MBClick.find(button) != MBClick.end() && MBClick[button])  //skontroluje ci sa nachadza v tabulke a ci bola stacena klavesa
+bool Input::wasMBClicked(int button) {
+    if (clickedMB.find(button) != clickedMB.end() && clickedMB[button])  //skontroluje ci sa nachadza v tabulke a ci bola stacena klavesa
         return true;
     else
         return false;
 }
 
-bool Input::wasMBUp(int button) {
-    if (MBClick.find(button) != MBClick.end() && !MBClick[button])  //skontroluje ci sa nachadza v tabulke a ci bola stacena klavesa
+bool Input::wasMBRelased(int button) {
+    if (clickedMB.find(button) != clickedMB.end() && !clickedMB[button])  //skontroluje ci sa nachadza v tabulke a ci bola stacena klavesa
         return true;
     else
         return false;

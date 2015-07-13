@@ -12,7 +12,7 @@
 
 class Mesh {
 private:
-    static const int VERCITIESLENGHT = 66;
+    static const int VERCITIESLENGHT = 48;
     GLuint vao;
     GLuint vbo;
     GLfloat vertices[VERCITIESLENGHT];
@@ -30,6 +30,8 @@ public:
     void selectCubeLeft();
     void selectCubeTop();
     void selectCubeBottom();
+    
+    void selectTestPlane();
 };
 
 

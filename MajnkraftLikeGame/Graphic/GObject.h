@@ -13,8 +13,8 @@
 #include "../Core/Transformation.h"
 #include "Mesh.h"
 
-enum TypeOfObject{CUBE,COMPLEX};
-enum TypeOfShader{TEXTUREBASIC,AMBIENT};
+enum TypeOfObject{CUBE,PLANE,COMPLEX};
+enum TypeOfShader{TEXTUREBASIC,PHONG};
 
 class GObject{
 public:
@@ -25,8 +25,9 @@ public:
     void setShaderType(TypeOfShader shaderType);
     void rotate(float amountX,float ammountY,float ammountZ);
     void move(float ammountX,float ammountY,float ammountZ);
+    void scale(float ammountX,float ammountY,float ammountZ);
     void setTextures(char* front,char* back=NULL,char* left=NULL,char* right=NULL,char* top=NULL ,char* bottom=NULL);
-    void drawTo(float x,float y,float z);
+    void draw();
     GLuint getActiveShader();
     virtual ~GObject();
 private:
