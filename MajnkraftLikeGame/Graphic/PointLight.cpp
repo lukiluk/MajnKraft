@@ -6,10 +6,12 @@
  */
 
 #include "PointLight.h"
-PointLight::PointLight(){
+
+PointLight::PointLight() {
 }
-PointLight::PointLight(BaseLight baseLight, Attenuation attenuation, glm::vec3 position) :
-    baseLight(baseLight), attenuation(attenuation), position(position) {
+
+PointLight::PointLight(BaseLight baseLight, Attenuation attenuation, glm::vec3 position, float range) :
+baseLight(baseLight), attenuation(attenuation), position(position), range(range) {
 }
 
 Attenuation PointLight::GetAttenuation() const {
@@ -34,6 +36,14 @@ void PointLight::SetBaseLight(BaseLight baseLight) {
 
 void PointLight::SetPosition(glm::vec3 position) {
     this->position = position;
+}
+
+float PointLight::GetRange() const {
+    return range;
+}
+
+void PointLight::SetRange(float range) {
+    this->range = range;
 }
 
 PointLight::~PointLight() {

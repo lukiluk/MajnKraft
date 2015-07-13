@@ -57,6 +57,7 @@ OBJECTFILES= \
 	${OBJECTDIR}/Graphic/PhongShader.o \
 	${OBJECTDIR}/Graphic/PointLight.o \
 	${OBJECTDIR}/Graphic/Shader.o \
+	${OBJECTDIR}/Graphic/SpotLight.o \
 	${OBJECTDIR}/Graphic/Texture.o \
 	${OBJECTDIR}/Graphic/TextureBasicShader.o \
 	${OBJECTDIR}/Graphic/Window.o \
@@ -196,6 +197,11 @@ ${OBJECTDIR}/Graphic/Shader.o: Graphic/Shader.cpp
 	${MKDIR} -p ${OBJECTDIR}/Graphic
 	${RM} "$@.d"
 	$(COMPILE.cc) -g -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/Graphic/Shader.o Graphic/Shader.cpp
+
+${OBJECTDIR}/Graphic/SpotLight.o: Graphic/SpotLight.cpp 
+	${MKDIR} -p ${OBJECTDIR}/Graphic
+	${RM} "$@.d"
+	$(COMPILE.cc) -g -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/Graphic/SpotLight.o Graphic/SpotLight.cpp
 
 ${OBJECTDIR}/Graphic/Texture.o: Graphic/Texture.cpp 
 	${MKDIR} -p ${OBJECTDIR}/Graphic

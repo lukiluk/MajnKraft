@@ -27,6 +27,19 @@ PhongShader::PhongShader() {
         addUniform(("pointLights[" + s + "].atten.linear"));
         addUniform(("pointLights[" + s + "].atten.exponent"));
         addUniform(("pointLights[" + s + "].position"));
+        addUniform(("pointLights[" + s + "].range"));
+    }
+    for (int i = 0; i < MAX_SPOT_LIGHTS; i++) {
+        std::string s = SSTR(i);
+        addUniform(("spotLights[" + s + "].pointLight.base.color"));
+        addUniform(("spotLights[" + s + "].pointLight.base.intensity"));
+        addUniform(("spotLights[" + s + "].pointLight.atten.constant"));
+        addUniform(("spotLights[" + s + "].pointLight.atten.linear"));
+        addUniform(("spotLights[" + s + "].pointLight.atten.exponent"));
+        addUniform(("spotLights[" + s + "].pointLight.position"));
+        addUniform(("spotLights[" + s + "].pointLight.range"));
+        addUniform(("spotLights[" + s + "].direction"));
+        addUniform(("spotLights[" + s + "].cutoff"));
     }
 
 }
@@ -58,6 +71,9 @@ void PhongShader::updateUniforms() {
     }
     for (int i = 0; i < pointLights.size(); i++) {
         setUniformP("pointLights[" + SSTR(i) + "]", pointLights[i]);
+    }
+    for (int i = 0; i < spotLights.size(); i++) {
+        setUniformP("spotLights[" + SSTR(i) + "]", spotLights[i]);
     }
     SPChanged = false;
     DLChanged = false;
@@ -91,6 +107,17 @@ void PhongShader::setUniformP(std::string name, PointLight pointLight) {
         setUniform(name + ".atten.linear", pointLight.GetAttenuation().GetLinear());
         setUniform(name + ".atten.exponent", pointLight.GetAttenuation().GetExponent());
         setUniform(name + ".position", pointLight.GetPosition());
+        setUniform(name + ".range", pointLight.GetRange());
+    } catch (std::out_of_range e) {
+        printf("Cannot set unexisting uniform %s", name.c_str());
+    }
+}
+
+void PhongShader::setUniformP(std::string name, SpotLight spotLight){
+    try {
+        setUniformP(name + ".pointLight",spotLight.GetPointLight());
+        setUniform(name + ".direction",spotLight.GetDirection());
+        setUniform(name + ".cutoff",spotLight.GetCutoff());
     } catch (std::out_of_range e) {
         printf("Cannot set unexisting uniform %s", name.c_str());
     }
@@ -108,6 +135,20 @@ void PhongShader::setPointLights(std::vector<PointLight> pPointLights) {
         this->pointLights.push_back(pPointLights.at(i));
     }
 }
+
+void PhongShader::setSpotLights(std::vector<SpotLight> pSpotLights) {
+    if (pSpotLights.size() > MAX_SPOT_LIGHTS) {
+        printf("You passed too much spot lights");
+        return;
+    }
+    if (spotLights.size()!=0) {
+        spotLights.clear();
+    }
+    for (int i = 0; i < pSpotLights.size(); i++) {
+        this->spotLights.push_back(pSpotLights.at(i));
+    }
+}
+
 
 void PhongShader::setAmbientLight(glm::vec3 ambientLight) {
     this->ambientLight = ambientLight;

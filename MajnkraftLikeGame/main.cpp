@@ -46,11 +46,16 @@ int main(int argc, char* argv[]) {
     //PhongShader::getInstance().setDirectionalLight(DirectionalLight(BaseLight(glm::vec3(1.0f, 1.0f, 1.0f), 0.8f), glm::vec3(0.0f, -1.0f, 1.0f)));
     PhongShader::getInstance().setSpecularIntensity(2);
     PhongShader::getInstance().setSpecularPower(32);
-    PointLight p1 = PointLight(BaseLight(glm::vec3(0.0f, 0.5f, 0.5f), 0.8f), Attenuation(0, 0, 1), glm::vec3(0, -0.1f, 2.0f));
-    PointLight p2 = PointLight(BaseLight(glm::vec3(0.5f, 0.0f, 0.5f), 0.8f), Attenuation(0, 0, 1), glm::vec3(0, -0.1f, 0));
+    PointLight p1 = PointLight(BaseLight(glm::vec3(0.0f, 0.5f, 0.5f), 0.8f), Attenuation(0, 0, 1), glm::vec3(0, -0.1f, 2.0f),8);
+    PointLight p2 = PointLight(BaseLight(glm::vec3(0.5f, 0.0f, 0.5f), 0.8f), Attenuation(0, 0, 1), glm::vec3(0, -0.1f, 0),8);
+    SpotLight s1 = SpotLight(PointLight(BaseLight(glm::vec3(0.5f, 0.0f, 0.5f), 0.8f), Attenuation(0, 0, 1), glm::vec3(0, 2.0f, 0),8),
+                            glm::vec3(0,-1,0.5f),0.7f);
     std::vector<PointLight> pls;
+    std::vector<SpotLight> sls;
     pls.push_back(p1);
-    pls.push_back(p2);
+    sls.push_back(s1);
+    //pls.push_back(p2);
+    PhongShader::getInstance().setSpotLights(sls);
     bool run = true;
     PhongShader::getInstance().updateUniforms();
     while (run) {
@@ -80,8 +85,9 @@ int main(int argc, char* argv[]) {
         plane->move(0, -1, 0);
         plane->scale(4, 1, 4);
         pls[0].SetPosition(glm::vec3(glm::sin((float)SDL_GetTicks()/1000), -0.1f, 0.0f));
-        pls[1].SetPosition(glm::vec3(0, 0.0f, glm::sin((float)SDL_GetTicks()/1000)));
+        //pls[1].SetPosition(glm::vec3(0, 0.0f, glm::sin((float)SDL_GetTicks()/1000)));
         PhongShader::getInstance().setPointLights(pls);
+        
         plane->draw();
         run = input.input();
         if (input.isKeyPressed(SDL_SCANCODE_ESCAPE)) {

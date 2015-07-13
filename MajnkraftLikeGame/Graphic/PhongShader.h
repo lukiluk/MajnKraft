@@ -22,6 +22,7 @@
 #include "PointLight.h"
 #include "BaseLight.h"
 #include "DirectionalLight.h"
+#include "SpotLight.h"
 #include <vector>
 
 class PhongShader : public Shader {
@@ -29,10 +30,12 @@ private:
     PhongShader();
     PhongShader(const PhongShader& orig);
     static const int MAX_POINT_LIGHTS = 4;
+    static const int MAX_SPOT_LIGHTS = 4;
     glm::vec3 ambientLight;
     DirectionalLight directionalLight;
    // PointLight pointLights[MAX_POINT_LIGHTS];
     std::vector<PointLight> pointLights;
+    std::vector<SpotLight> spotLights;
     
     float specularIntensity;
     float specularPower;
@@ -44,8 +47,10 @@ public:
     void setUniformP(std::string name, BaseLight baseLight);
     void setUniformP(std::string name, DirectionalLight directionalLight);
     void setUniformP(std::string name, PointLight pointLight);
+    void setUniformP(std::string name, SpotLight spotLight);
     
     void setPointLights(std::vector<PointLight> pPointLights);
+    void setSpotLights(std::vector<SpotLight> pSpotLights);
     void setAmbientLight(glm::vec3 ambientLight);
     void setDirectionalLight(DirectionalLight directionalLight);
     void setSpecularIntensity(float specularIntensity);

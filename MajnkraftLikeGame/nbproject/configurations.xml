@@ -27,6 +27,7 @@
       <itemPath>Graphic/PhongShader.h</itemPath>
       <itemPath>Graphic/PointLight.h</itemPath>
       <itemPath>Graphic/Shader.h</itemPath>
+      <itemPath>Graphic/SpotLight.h</itemPath>
       <itemPath>Game/Svet/Svet.h</itemPath>
       <itemPath>Graphic/Texture.h</itemPath>
       <itemPath>Graphic/TextureBasicShader.h</itemPath>
@@ -60,6 +61,7 @@
       <itemPath>Graphic/PhongShader.cpp</itemPath>
       <itemPath>Graphic/PointLight.cpp</itemPath>
       <itemPath>Graphic/Shader.cpp</itemPath>
+      <itemPath>Graphic/SpotLight.cpp</itemPath>
       <itemPath>Game/Svet/Svet.cpp</itemPath>
       <itemPath>Graphic/Texture.cpp</itemPath>
       <itemPath>Graphic/TextureBasicShader.cpp</itemPath>
@@ -222,6 +224,10 @@
       </item>
       <item path="Graphic/Shader.h" ex="false" tool="3" flavor2="0">
       </item>
+      <item path="Graphic/SpotLight.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="Graphic/SpotLight.h" ex="false" tool="3" flavor2="0">
+      </item>
       <item path="Graphic/Texture.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="Graphic/Texture.h" ex="false" tool="3" flavor2="0">
@@ -350,6 +356,10 @@
       <item path="Graphic/Shader.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="Graphic/Shader.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="Graphic/SpotLight.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="Graphic/SpotLight.h" ex="false" tool="3" flavor2="0">
       </item>
       <item path="Graphic/Texture.cpp" ex="false" tool="1" flavor2="0">
       </item>
