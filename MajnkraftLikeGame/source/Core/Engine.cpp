@@ -9,13 +9,10 @@
 
 #include "SDL2/SDL.h"
 
-Engine::Engine(int width, int height, int fps, std::string windowTitle) {
-    this->width = width;
-    this->height = height;
-    this->windowTitle = windowTitle;
-    this->frameTime = 1 / fps;
-    SDL_Init(SDL_INIT_VIDEO | SDL_INIT_TIMER);
-    window = Window(width, height, true);
+Engine::Engine(int width, int height, int fps, char* windowTitle) :
+    width(width), height(height), windowTitle(windowTitle), frameTime(1/fps), running(false) 
+{
+    window =new Window(width, height, windowTitle);
 }
 
 void Engine::run(IGame* game, Uint32 ips, Uint32 ups, Uint32 fps) {
@@ -29,6 +26,7 @@ void Engine::run(IGame* game, Uint32 ips, Uint32 ups, Uint32 fps) {
         }
         if (SDL_GetTicks() - lastInputTime > 1/fps) {
             game->render();
+            window->update();
         }
     }
 
@@ -38,5 +36,6 @@ Engine::Engine(const Engine& orig) {
 }
 
 Engine::~Engine() {
+    delete window;
 }
 

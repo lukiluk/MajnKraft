@@ -35,41 +35,43 @@ OBJECTDIR=${CND_BUILDDIR}/${CND_CONF}/${CND_PLATFORM}
 
 # Object Files
 OBJECTFILES= \
-	${OBJECTDIR}/Core/Engine.o \
-	${OBJECTDIR}/Core/Input.o \
-	${OBJECTDIR}/Core/Transformation.o \
-	${OBJECTDIR}/Game/Game.o \
-	${OBJECTDIR}/Game/Kocky/KockaKamena.o \
-	${OBJECTDIR}/Game/Kocky/KockaTravy.o \
-	${OBJECTDIR}/Game/Kocky/KockaVzduchu.o \
-	${OBJECTDIR}/Game/Kocky/KockaZeme.o \
-	${OBJECTDIR}/Game/Svet/Chunk.o \
-	${OBJECTDIR}/Game/Svet/GeneratorSveta.o \
-	${OBJECTDIR}/Game/Svet/InfoKocka.o \
-	${OBJECTDIR}/Game/Svet/Svet.o \
-	${OBJECTDIR}/Graphic/Attenuation.o \
-	${OBJECTDIR}/Graphic/BaseLight.o \
-	${OBJECTDIR}/Graphic/Camera.o \
-	${OBJECTDIR}/Graphic/DirectionalLight.o \
-	${OBJECTDIR}/Graphic/GObject.o \
-	${OBJECTDIR}/Graphic/Material.o \
-	${OBJECTDIR}/Graphic/Mesh.o \
-	${OBJECTDIR}/Graphic/PhongShader.o \
-	${OBJECTDIR}/Graphic/PointLight.o \
-	${OBJECTDIR}/Graphic/Shader.o \
-	${OBJECTDIR}/Graphic/SpotLight.o \
-	${OBJECTDIR}/Graphic/Texture.o \
-	${OBJECTDIR}/Graphic/TextureBasicShader.o \
-	${OBJECTDIR}/Graphic/Window.o \
-	${OBJECTDIR}/main.o
+	${OBJECTDIR}/source/Core/Engine.o \
+	${OBJECTDIR}/source/Core/Input.o \
+	${OBJECTDIR}/source/Core/Transformation.o \
+	${OBJECTDIR}/source/Game/Game.o \
+	${OBJECTDIR}/source/Game/Kocky/KockaKamena.o \
+	${OBJECTDIR}/source/Game/Kocky/KockaTravy.o \
+	${OBJECTDIR}/source/Game/Kocky/KockaVzduchu.o \
+	${OBJECTDIR}/source/Game/Kocky/KockaZeme.o \
+	${OBJECTDIR}/source/Game/Svet/Chunk.o \
+	${OBJECTDIR}/source/Game/Svet/GeneratorSveta.o \
+	${OBJECTDIR}/source/Game/Svet/InfoKocka.o \
+	${OBJECTDIR}/source/Game/Svet/Svet.o \
+	${OBJECTDIR}/source/Graphic/Camera.o \
+	${OBJECTDIR}/source/Graphic/GObject.o \
+	${OBJECTDIR}/source/Graphic/Lights/Attenuation.o \
+	${OBJECTDIR}/source/Graphic/Lights/BaseLight.o \
+	${OBJECTDIR}/source/Graphic/Lights/DirectionalLight.o \
+	${OBJECTDIR}/source/Graphic/Lights/PointLight.o \
+	${OBJECTDIR}/source/Graphic/Lights/SpotLight.o \
+	${OBJECTDIR}/source/Graphic/Material.o \
+	${OBJECTDIR}/source/Graphic/Mesh.o \
+	${OBJECTDIR}/source/Graphic/MeshCube.o \
+	${OBJECTDIR}/source/Graphic/PhongShader.o \
+	${OBJECTDIR}/source/Graphic/Shader.o \
+	${OBJECTDIR}/source/Graphic/Texture.o \
+	${OBJECTDIR}/source/Graphic/TextureBasicShader.o \
+	${OBJECTDIR}/source/Graphic/Vertex.o \
+	${OBJECTDIR}/source/Graphic/Window.o \
+	${OBJECTDIR}/source/main.o
 
 
 # C Compiler Flags
 CFLAGS=
 
 # CC Compiler Flags
-CCFLAGS=-std=c++11
-CXXFLAGS=-std=c++11
+CCFLAGS=
+CXXFLAGS=
 
 # Fortran Compiler Flags
 FFLAGS=
@@ -82,146 +84,156 @@ LDLIBSOPTIONS=
 
 # Build Targets
 .build-conf: ${BUILD_SUBPROJECTS}
-	"${MAKE}"  -f nbproject/Makefile-${CND_CONF}.mk ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/majnkraftlikegame.exe
+	"${MAKE}"  -f nbproject/Makefile-${CND_CONF}.mk ${CND_CONF}/Minekraft.exe
 
-${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/majnkraftlikegame.exe: ${OBJECTFILES}
-	${MKDIR} -p ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}
-	${LINK.cc} -o ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/majnkraftlikegame ${OBJECTFILES} ${LDLIBSOPTIONS} -lmingw32 -lSDL2main -lSDL2 -lSDL2_image -lglew32 -lopengl32
+${CND_CONF}/Minekraft.exe: ${OBJECTFILES}
+	${MKDIR} -p ${CND_CONF}
+	${LINK.cc} -o ${CND_CONF}/Minekraft ${OBJECTFILES} ${LDLIBSOPTIONS} -lmingw32 -lSDL2main -lSDL2 -lSDL2_image -lglew32 -lopengl32
 
-${OBJECTDIR}/Core/Engine.o: Core/Engine.cpp 
-	${MKDIR} -p ${OBJECTDIR}/Core
+${OBJECTDIR}/source/Core/Engine.o: source/Core/Engine.cpp 
+	${MKDIR} -p ${OBJECTDIR}/source/Core
 	${RM} "$@.d"
-	$(COMPILE.cc) -g -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/Core/Engine.o Core/Engine.cpp
+	$(COMPILE.cc) -g -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/source/Core/Engine.o source/Core/Engine.cpp
 
-${OBJECTDIR}/Core/Input.o: Core/Input.cpp 
-	${MKDIR} -p ${OBJECTDIR}/Core
+${OBJECTDIR}/source/Core/Input.o: source/Core/Input.cpp 
+	${MKDIR} -p ${OBJECTDIR}/source/Core
 	${RM} "$@.d"
-	$(COMPILE.cc) -g -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/Core/Input.o Core/Input.cpp
+	$(COMPILE.cc) -g -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/source/Core/Input.o source/Core/Input.cpp
 
-${OBJECTDIR}/Core/Transformation.o: Core/Transformation.cpp 
-	${MKDIR} -p ${OBJECTDIR}/Core
+${OBJECTDIR}/source/Core/Transformation.o: source/Core/Transformation.cpp 
+	${MKDIR} -p ${OBJECTDIR}/source/Core
 	${RM} "$@.d"
-	$(COMPILE.cc) -g -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/Core/Transformation.o Core/Transformation.cpp
+	$(COMPILE.cc) -g -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/source/Core/Transformation.o source/Core/Transformation.cpp
 
-${OBJECTDIR}/Game/Game.o: Game/Game.cpp 
-	${MKDIR} -p ${OBJECTDIR}/Game
+${OBJECTDIR}/source/Game/Game.o: source/Game/Game.cpp 
+	${MKDIR} -p ${OBJECTDIR}/source/Game
 	${RM} "$@.d"
-	$(COMPILE.cc) -g -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/Game/Game.o Game/Game.cpp
+	$(COMPILE.cc) -g -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/source/Game/Game.o source/Game/Game.cpp
 
-${OBJECTDIR}/Game/Kocky/KockaKamena.o: Game/Kocky/KockaKamena.cpp 
-	${MKDIR} -p ${OBJECTDIR}/Game/Kocky
+${OBJECTDIR}/source/Game/Kocky/KockaKamena.o: source/Game/Kocky/KockaKamena.cpp 
+	${MKDIR} -p ${OBJECTDIR}/source/Game/Kocky
 	${RM} "$@.d"
-	$(COMPILE.cc) -g -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/Game/Kocky/KockaKamena.o Game/Kocky/KockaKamena.cpp
+	$(COMPILE.cc) -g -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/source/Game/Kocky/KockaKamena.o source/Game/Kocky/KockaKamena.cpp
 
-${OBJECTDIR}/Game/Kocky/KockaTravy.o: Game/Kocky/KockaTravy.cpp 
-	${MKDIR} -p ${OBJECTDIR}/Game/Kocky
+${OBJECTDIR}/source/Game/Kocky/KockaTravy.o: source/Game/Kocky/KockaTravy.cpp 
+	${MKDIR} -p ${OBJECTDIR}/source/Game/Kocky
 	${RM} "$@.d"
-	$(COMPILE.cc) -g -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/Game/Kocky/KockaTravy.o Game/Kocky/KockaTravy.cpp
+	$(COMPILE.cc) -g -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/source/Game/Kocky/KockaTravy.o source/Game/Kocky/KockaTravy.cpp
 
-${OBJECTDIR}/Game/Kocky/KockaVzduchu.o: Game/Kocky/KockaVzduchu.cpp 
-	${MKDIR} -p ${OBJECTDIR}/Game/Kocky
+${OBJECTDIR}/source/Game/Kocky/KockaVzduchu.o: source/Game/Kocky/KockaVzduchu.cpp 
+	${MKDIR} -p ${OBJECTDIR}/source/Game/Kocky
 	${RM} "$@.d"
-	$(COMPILE.cc) -g -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/Game/Kocky/KockaVzduchu.o Game/Kocky/KockaVzduchu.cpp
+	$(COMPILE.cc) -g -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/source/Game/Kocky/KockaVzduchu.o source/Game/Kocky/KockaVzduchu.cpp
 
-${OBJECTDIR}/Game/Kocky/KockaZeme.o: Game/Kocky/KockaZeme.cpp 
-	${MKDIR} -p ${OBJECTDIR}/Game/Kocky
+${OBJECTDIR}/source/Game/Kocky/KockaZeme.o: source/Game/Kocky/KockaZeme.cpp 
+	${MKDIR} -p ${OBJECTDIR}/source/Game/Kocky
 	${RM} "$@.d"
-	$(COMPILE.cc) -g -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/Game/Kocky/KockaZeme.o Game/Kocky/KockaZeme.cpp
+	$(COMPILE.cc) -g -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/source/Game/Kocky/KockaZeme.o source/Game/Kocky/KockaZeme.cpp
 
-${OBJECTDIR}/Game/Svet/Chunk.o: Game/Svet/Chunk.cpp 
-	${MKDIR} -p ${OBJECTDIR}/Game/Svet
+${OBJECTDIR}/source/Game/Svet/Chunk.o: source/Game/Svet/Chunk.cpp 
+	${MKDIR} -p ${OBJECTDIR}/source/Game/Svet
 	${RM} "$@.d"
-	$(COMPILE.cc) -g -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/Game/Svet/Chunk.o Game/Svet/Chunk.cpp
+	$(COMPILE.cc) -g -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/source/Game/Svet/Chunk.o source/Game/Svet/Chunk.cpp
 
-${OBJECTDIR}/Game/Svet/GeneratorSveta.o: Game/Svet/GeneratorSveta.cpp 
-	${MKDIR} -p ${OBJECTDIR}/Game/Svet
+${OBJECTDIR}/source/Game/Svet/GeneratorSveta.o: source/Game/Svet/GeneratorSveta.cpp 
+	${MKDIR} -p ${OBJECTDIR}/source/Game/Svet
 	${RM} "$@.d"
-	$(COMPILE.cc) -g -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/Game/Svet/GeneratorSveta.o Game/Svet/GeneratorSveta.cpp
+	$(COMPILE.cc) -g -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/source/Game/Svet/GeneratorSveta.o source/Game/Svet/GeneratorSveta.cpp
 
-${OBJECTDIR}/Game/Svet/InfoKocka.o: Game/Svet/InfoKocka.cpp 
-	${MKDIR} -p ${OBJECTDIR}/Game/Svet
+${OBJECTDIR}/source/Game/Svet/InfoKocka.o: source/Game/Svet/InfoKocka.cpp 
+	${MKDIR} -p ${OBJECTDIR}/source/Game/Svet
 	${RM} "$@.d"
-	$(COMPILE.cc) -g -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/Game/Svet/InfoKocka.o Game/Svet/InfoKocka.cpp
+	$(COMPILE.cc) -g -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/source/Game/Svet/InfoKocka.o source/Game/Svet/InfoKocka.cpp
 
-${OBJECTDIR}/Game/Svet/Svet.o: Game/Svet/Svet.cpp 
-	${MKDIR} -p ${OBJECTDIR}/Game/Svet
+${OBJECTDIR}/source/Game/Svet/Svet.o: source/Game/Svet/Svet.cpp 
+	${MKDIR} -p ${OBJECTDIR}/source/Game/Svet
 	${RM} "$@.d"
-	$(COMPILE.cc) -g -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/Game/Svet/Svet.o Game/Svet/Svet.cpp
+	$(COMPILE.cc) -g -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/source/Game/Svet/Svet.o source/Game/Svet/Svet.cpp
 
-${OBJECTDIR}/Graphic/Attenuation.o: Graphic/Attenuation.cpp 
-	${MKDIR} -p ${OBJECTDIR}/Graphic
+${OBJECTDIR}/source/Graphic/Camera.o: source/Graphic/Camera.cpp 
+	${MKDIR} -p ${OBJECTDIR}/source/Graphic
 	${RM} "$@.d"
-	$(COMPILE.cc) -g -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/Graphic/Attenuation.o Graphic/Attenuation.cpp
+	$(COMPILE.cc) -g -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/source/Graphic/Camera.o source/Graphic/Camera.cpp
 
-${OBJECTDIR}/Graphic/BaseLight.o: Graphic/BaseLight.cpp 
-	${MKDIR} -p ${OBJECTDIR}/Graphic
+${OBJECTDIR}/source/Graphic/GObject.o: source/Graphic/GObject.cpp 
+	${MKDIR} -p ${OBJECTDIR}/source/Graphic
 	${RM} "$@.d"
-	$(COMPILE.cc) -g -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/Graphic/BaseLight.o Graphic/BaseLight.cpp
+	$(COMPILE.cc) -g -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/source/Graphic/GObject.o source/Graphic/GObject.cpp
 
-${OBJECTDIR}/Graphic/Camera.o: Graphic/Camera.cpp 
-	${MKDIR} -p ${OBJECTDIR}/Graphic
+${OBJECTDIR}/source/Graphic/Lights/Attenuation.o: source/Graphic/Lights/Attenuation.cpp 
+	${MKDIR} -p ${OBJECTDIR}/source/Graphic/Lights
 	${RM} "$@.d"
-	$(COMPILE.cc) -g -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/Graphic/Camera.o Graphic/Camera.cpp
+	$(COMPILE.cc) -g -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/source/Graphic/Lights/Attenuation.o source/Graphic/Lights/Attenuation.cpp
 
-${OBJECTDIR}/Graphic/DirectionalLight.o: Graphic/DirectionalLight.cpp 
-	${MKDIR} -p ${OBJECTDIR}/Graphic
+${OBJECTDIR}/source/Graphic/Lights/BaseLight.o: source/Graphic/Lights/BaseLight.cpp 
+	${MKDIR} -p ${OBJECTDIR}/source/Graphic/Lights
 	${RM} "$@.d"
-	$(COMPILE.cc) -g -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/Graphic/DirectionalLight.o Graphic/DirectionalLight.cpp
+	$(COMPILE.cc) -g -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/source/Graphic/Lights/BaseLight.o source/Graphic/Lights/BaseLight.cpp
 
-${OBJECTDIR}/Graphic/GObject.o: Graphic/GObject.cpp 
-	${MKDIR} -p ${OBJECTDIR}/Graphic
+${OBJECTDIR}/source/Graphic/Lights/DirectionalLight.o: source/Graphic/Lights/DirectionalLight.cpp 
+	${MKDIR} -p ${OBJECTDIR}/source/Graphic/Lights
 	${RM} "$@.d"
-	$(COMPILE.cc) -g -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/Graphic/GObject.o Graphic/GObject.cpp
+	$(COMPILE.cc) -g -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/source/Graphic/Lights/DirectionalLight.o source/Graphic/Lights/DirectionalLight.cpp
 
-${OBJECTDIR}/Graphic/Material.o: Graphic/Material.cpp 
-	${MKDIR} -p ${OBJECTDIR}/Graphic
+${OBJECTDIR}/source/Graphic/Lights/PointLight.o: source/Graphic/Lights/PointLight.cpp 
+	${MKDIR} -p ${OBJECTDIR}/source/Graphic/Lights
 	${RM} "$@.d"
-	$(COMPILE.cc) -g -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/Graphic/Material.o Graphic/Material.cpp
+	$(COMPILE.cc) -g -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/source/Graphic/Lights/PointLight.o source/Graphic/Lights/PointLight.cpp
 
-${OBJECTDIR}/Graphic/Mesh.o: Graphic/Mesh.cpp 
-	${MKDIR} -p ${OBJECTDIR}/Graphic
+${OBJECTDIR}/source/Graphic/Lights/SpotLight.o: source/Graphic/Lights/SpotLight.cpp 
+	${MKDIR} -p ${OBJECTDIR}/source/Graphic/Lights
 	${RM} "$@.d"
-	$(COMPILE.cc) -g -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/Graphic/Mesh.o Graphic/Mesh.cpp
+	$(COMPILE.cc) -g -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/source/Graphic/Lights/SpotLight.o source/Graphic/Lights/SpotLight.cpp
 
-${OBJECTDIR}/Graphic/PhongShader.o: Graphic/PhongShader.cpp 
-	${MKDIR} -p ${OBJECTDIR}/Graphic
+${OBJECTDIR}/source/Graphic/Material.o: source/Graphic/Material.cpp 
+	${MKDIR} -p ${OBJECTDIR}/source/Graphic
 	${RM} "$@.d"
-	$(COMPILE.cc) -g -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/Graphic/PhongShader.o Graphic/PhongShader.cpp
+	$(COMPILE.cc) -g -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/source/Graphic/Material.o source/Graphic/Material.cpp
 
-${OBJECTDIR}/Graphic/PointLight.o: Graphic/PointLight.cpp 
-	${MKDIR} -p ${OBJECTDIR}/Graphic
+${OBJECTDIR}/source/Graphic/Mesh.o: source/Graphic/Mesh.cpp 
+	${MKDIR} -p ${OBJECTDIR}/source/Graphic
 	${RM} "$@.d"
-	$(COMPILE.cc) -g -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/Graphic/PointLight.o Graphic/PointLight.cpp
+	$(COMPILE.cc) -g -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/source/Graphic/Mesh.o source/Graphic/Mesh.cpp
 
-${OBJECTDIR}/Graphic/Shader.o: Graphic/Shader.cpp 
-	${MKDIR} -p ${OBJECTDIR}/Graphic
+${OBJECTDIR}/source/Graphic/MeshCube.o: source/Graphic/MeshCube.cpp 
+	${MKDIR} -p ${OBJECTDIR}/source/Graphic
 	${RM} "$@.d"
-	$(COMPILE.cc) -g -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/Graphic/Shader.o Graphic/Shader.cpp
+	$(COMPILE.cc) -g -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/source/Graphic/MeshCube.o source/Graphic/MeshCube.cpp
 
-${OBJECTDIR}/Graphic/SpotLight.o: Graphic/SpotLight.cpp 
-	${MKDIR} -p ${OBJECTDIR}/Graphic
+${OBJECTDIR}/source/Graphic/PhongShader.o: source/Graphic/PhongShader.cpp 
+	${MKDIR} -p ${OBJECTDIR}/source/Graphic
 	${RM} "$@.d"
-	$(COMPILE.cc) -g -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/Graphic/SpotLight.o Graphic/SpotLight.cpp
+	$(COMPILE.cc) -g -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/source/Graphic/PhongShader.o source/Graphic/PhongShader.cpp
 
-${OBJECTDIR}/Graphic/Texture.o: Graphic/Texture.cpp 
-	${MKDIR} -p ${OBJECTDIR}/Graphic
+${OBJECTDIR}/source/Graphic/Shader.o: source/Graphic/Shader.cpp 
+	${MKDIR} -p ${OBJECTDIR}/source/Graphic
 	${RM} "$@.d"
-	$(COMPILE.cc) -g -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/Graphic/Texture.o Graphic/Texture.cpp
+	$(COMPILE.cc) -g -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/source/Graphic/Shader.o source/Graphic/Shader.cpp
 
-${OBJECTDIR}/Graphic/TextureBasicShader.o: Graphic/TextureBasicShader.cpp 
-	${MKDIR} -p ${OBJECTDIR}/Graphic
+${OBJECTDIR}/source/Graphic/Texture.o: source/Graphic/Texture.cpp 
+	${MKDIR} -p ${OBJECTDIR}/source/Graphic
 	${RM} "$@.d"
-	$(COMPILE.cc) -g -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/Graphic/TextureBasicShader.o Graphic/TextureBasicShader.cpp
+	$(COMPILE.cc) -g -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/source/Graphic/Texture.o source/Graphic/Texture.cpp
 
-${OBJECTDIR}/Graphic/Window.o: Graphic/Window.cpp 
-	${MKDIR} -p ${OBJECTDIR}/Graphic
+${OBJECTDIR}/source/Graphic/TextureBasicShader.o: source/Graphic/TextureBasicShader.cpp 
+	${MKDIR} -p ${OBJECTDIR}/source/Graphic
 	${RM} "$@.d"
-	$(COMPILE.cc) -g -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/Graphic/Window.o Graphic/Window.cpp
+	$(COMPILE.cc) -g -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/source/Graphic/TextureBasicShader.o source/Graphic/TextureBasicShader.cpp
 
-${OBJECTDIR}/main.o: main.cpp 
-	${MKDIR} -p ${OBJECTDIR}
+${OBJECTDIR}/source/Graphic/Vertex.o: source/Graphic/Vertex.cpp 
+	${MKDIR} -p ${OBJECTDIR}/source/Graphic
 	${RM} "$@.d"
-	$(COMPILE.cc) -g -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/main.o main.cpp
+	$(COMPILE.cc) -g -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/source/Graphic/Vertex.o source/Graphic/Vertex.cpp
+
+${OBJECTDIR}/source/Graphic/Window.o: source/Graphic/Window.cpp 
+	${MKDIR} -p ${OBJECTDIR}/source/Graphic
+	${RM} "$@.d"
+	$(COMPILE.cc) -g -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/source/Graphic/Window.o source/Graphic/Window.cpp
+
+${OBJECTDIR}/source/main.o: source/main.cpp 
+	${MKDIR} -p ${OBJECTDIR}/source
+	${RM} "$@.d"
+	$(COMPILE.cc) -g -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/source/main.o source/main.cpp
 
 # Subprojects
 .build-subprojects:
@@ -229,7 +241,7 @@ ${OBJECTDIR}/main.o: main.cpp
 # Clean Targets
 .clean-conf: ${CLEAN_SUBPROJECTS}
 	${RM} -r ${CND_BUILDDIR}/${CND_CONF}
-	${RM} ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/majnkraftlikegame.exe
+	${RM} ${CND_CONF}/Minekraft.exe
 
 # Subprojects
 .clean-subprojects:

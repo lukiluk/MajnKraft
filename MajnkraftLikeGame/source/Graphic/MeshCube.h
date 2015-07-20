@@ -10,19 +10,22 @@
 #define GLM_FORCE_RADIANS
 #include <glm/glm.hpp>
 
-class Mesh {
-private:
-    static const int VERCITIESLENGHT = 48;
-    GLuint vao;
-    GLuint vbo;
-    GLfloat vertices[VERCITIESLENGHT];
+#include "Vertex.h"
 
+class MeshCube {
+private:
+    GLuint vao;
+    GLuint ibo;
+    GLuint vbo;
+    std::vector<Vertex> verticies;
+    std::vector<int> indecies;
+    std::vector<int> normals;
 
 public:
-    Mesh();
+    MeshCube();
     void loadCube();
     void draw(GLuint shaderProgram);
-    ~Mesh();
+    
     void selectCube();
     void selectCubeBack();
     void selectCubeFront();
@@ -32,6 +35,8 @@ public:
     void selectCubeBottom();
     
     void selectTestPlane();
+    
+    ~MeshCube();
 };
 
 

@@ -16,7 +16,7 @@
 class Engine {
     
 public:
-    Engine(int width, int height, int fps, std::string title);
+    Engine(int width, int height, int fps, char* windowTitle);
     void run(IGame* game, Uint32 ips, Uint32 ups, Uint32 fps);
     Engine(const Engine& orig);
     virtual ~Engine();
@@ -26,9 +26,10 @@ private:
     int width;
     int height;
     double frameTime;
+    bool running;
     Uint32 lastInputTime,lastRenderTime,lastUpdateTime;
     Uint32 inputUpdateTime,renderUpdateTime,UpdateTime;
-    Window window;
+    Window* window;
     Input input;
 
 };

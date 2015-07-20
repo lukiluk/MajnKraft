@@ -14,12 +14,20 @@
 #define GLEW_STATIC
 #include <GL/glew.h>
 
-/*Vytvori kameru na zaklade  sirky zorneho pola , minimalnej a maximalnej vzdialenosti ktoru vykresluje , a shaderu ktoremu posiela vysledok */
-Camera::Camera(float fov,float aspectRatio,float minDistance,float maxDistance,GLint shader):shaderProgram(shader),sensitivity(1.8f),position(glm::vec3(0.0f,0.0f,0.0f)),fowardVector(glm::vec3(0.0f, 0.0f,-1.0f)),
-upVector(glm::vec3(0.0f, 1.0f,0.0f)){
-    glm::mat4 perspective = glm::perspective(fov, aspectRatio, minDistance, maxDistance);
-    glUniformMatrix4fv(glGetUniformLocation(shaderProgram, "proj"), 1, GL_FALSE, &perspective[0][0]);
+Camera::Camera() {
+
 }
+
+/*Vytvori kameru na zaklade  sirky zorneho pola , minimalnej a maximalnej vzdialenosti ktoru vykresluje , a shaderu ktoremu posiela vysledok */
+Camera::Camera(float fieldOfView,float aspectRatio,float minRenderDistance,float maxRenderDistance,GLint shader):shaderProgram(shader),sensitivity(1.8f),position(glm::vec3(0.0f,0.0f,0.0f)),fowardVector(glm::vec3(0.0f, 0.0f,-1.0f)),
+upVector(glm::vec3(0.0f, 1.0f,0.0f)),fieldOfView(fieldOfView),aspectRatio(aspectRatio),minRenderDistance(minRenderDistance),maxRenderDistance(maxRenderDistance)
+{
+}
+
+glm::mat4 Camera::getProjectionMatrix() {
+    return glm::perspective(fieldOfView, aspectRatio, minRenderDistance, maxRenderDistance);
+}
+
 
 void Camera::setCameraPosition(float x, float y, float z){
     position=glm::vec3(x,y,z);
@@ -28,15 +36,10 @@ void Camera::setCameraPosition(float x, float y, float z){
 void Camera::setLookAtPosition(float x, float y, float z){
    fowardVector=glm::vec3(x,y,z);
 }
-/*Urci poziciu a uhol kamery na zaklade miesta kde sa nachadza ,miesta kam sa pozera , a 
-  vektorom ktory ukozuje hore(na urcenie rotacie) a posle udaje shaderu*/
-void Camera::update(){
-    view = glm::lookAt(this->position,this->position+this->fowardVector* 1.0f,this->upVector);
-    glUniformMatrix4fv(glGetUniformLocation(shaderProgram, "view"),
-            1, GL_FALSE,&view[0][0]);
-    PhongShader::getInstance().setUniform("eyePos",position);
-}
 
+glm::mat4 Camera::getViewMatrix() {
+    return glm::lookAt(this->position,this->position+this->fowardVector* 1.0f,this->upVector);
+}
 
 void Camera::move(glm::vec3 direction, float amt) {
     position+=direction*amt;
@@ -107,8 +110,44 @@ void Camera::moveCameraBack() {
     position+=-fowardVector*0.1f;
 }
 
+glm::vec3 Camera::getCameraPosition() {
+    return position;
+}
+
 void Camera::setSensitivity(float sensitivity) {
     this->sensitivity=sensitivity;
+}
+
+float Camera::getAspectRatio() const {
+    return aspectRatio;
+}
+
+float Camera::getFieldOfView() const {
+    return fieldOfView;
+}
+
+float Camera::getMaxRenderDistance() const {
+    return maxRenderDistance;
+}
+
+float Camera::getMinRenderDistance() const {
+    return minRenderDistance;
+}
+
+void Camera::setAspectRatio(float aspectRatio) {
+    this->aspectRatio = aspectRatio;
+}
+
+void Camera::setFieldOfView(float fieldOfView) {
+    this->fieldOfView = fieldOfView;
+}
+
+void Camera::setMaxRenderDistance(float maxRenderDistance) {
+    this->maxRenderDistance = maxRenderDistance;
+}
+
+void Camera::setMinRenderDistance(float minRenderDistance) {
+    this->minRenderDistance = minRenderDistance;
 }
 
 Camera::~Camera() {

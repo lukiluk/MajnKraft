@@ -19,21 +19,22 @@
 #include <glm/glm.hpp>
 #include <string>
 #include <stdio.h>
-#include "PointLight.h"
-#include "BaseLight.h"
-#include "DirectionalLight.h"
-#include "SpotLight.h"
+#include "Lights/PointLight.h"
+#include "Lights/BaseLight.h"
+#include "Lights/DirectionalLight.h"
+#include "Lights/SpotLight.h"
 #include <vector>
 
 class PhongShader : public Shader {
 private:
-    PhongShader();
-    PhongShader(const PhongShader& orig);
     static const int MAX_POINT_LIGHTS = 4;
     static const int MAX_SPOT_LIGHTS = 4;
+    
+    PhongShader();
+    PhongShader(const PhongShader& orig);
+    
     glm::vec3 ambientLight;
     DirectionalLight directionalLight;
-   // PointLight pointLights[MAX_POINT_LIGHTS];
     std::vector<PointLight> pointLights;
     std::vector<SpotLight> spotLights;
     
@@ -42,7 +43,7 @@ private:
     bool ALChanged=false,DLChanged=false,SIChanged=false,SPChanged=false;
 public:
     static PhongShader& getInstance();
-    void updateUniforms();
+    void updateUniforms(glm::mat4 projectionMatrix, glm::mat4 viewMatrix, glm::vec3 cameraPosition);
     
     void setUniformP(std::string name, BaseLight baseLight);
     void setUniformP(std::string name, DirectionalLight directionalLight);

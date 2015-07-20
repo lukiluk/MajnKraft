@@ -32,6 +32,12 @@ TypeOfObject GObject::getObjectType() const {
 
 void GObject::setObjectType(TypeOfObject objectType) {
     this->objectType = objectType;
+    if (this->objectType == CUBE) {
+        mesh = new Mesh();
+    }
+    if (this->objectType == PLANE) {
+        mesh = new Mesh();
+    }
 }
 
 TypeOfShader GObject::getShaderType() const {
@@ -40,6 +46,12 @@ TypeOfShader GObject::getShaderType() const {
 
 void GObject::setShaderType(TypeOfShader shaderType) {
     this->shaderType = shaderType;
+    if (this->shaderType == TEXTUREBASIC) {
+        activeShader = TextureBasicShader::getInstance().getShaderProgram();
+    }
+    if (this->shaderType == PHONG) {
+        activeShader = PhongShader::getInstance().getShaderProgram();
+    }
 }
 
 void GObject::setTextures(char* front, char* back, char* left, char* right, char* top, char* bottom) {

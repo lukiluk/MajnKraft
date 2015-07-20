@@ -13,6 +13,8 @@
 
 class Texture {
 private:
+    static constexpr const char* TEXTURE_FOLDER = "resources/textures/";
+    
     GLuint textures[1],shader;
     int width, height, comp;
     SDL_Surface* img;

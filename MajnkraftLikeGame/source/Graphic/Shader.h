@@ -25,10 +25,14 @@ private:
     GLuint shaderProgram;
     std::map<std::string,int> uniforms;
     void checkShader(GLuint shader,GLuint flag,bool isProgram);
+protected:
+    static constexpr const char* SHADER_PATH = "resources/shader/";
+    static constexpr const char* FRAGMENT_EXTENSION = "f";
+    static constexpr const char* VERTEX_EXTENSION = "v";
 public:
 	Shader();
 	void createShaders(std::string vertexSource,std::string fragmentSource);
-        std::string loadShader(std::string filename);
+        std::string loadShader(const std::string filename);
         void bindProgram();
         void addUniform(std::string name);
         void setUniform(std::string name,int value);

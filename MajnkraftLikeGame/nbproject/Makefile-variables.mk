@@ -8,9 +8,9 @@ CND_BUILDDIR=build
 CND_DISTDIR=dist
 # Debug configuration
 CND_PLATFORM_Debug=MinGW-Windows
-CND_ARTIFACT_DIR_Debug=dist/Debug/MinGW-Windows
-CND_ARTIFACT_NAME_Debug=majnkraftlikegame
-CND_ARTIFACT_PATH_Debug=dist/Debug/MinGW-Windows/majnkraftlikegame
+CND_ARTIFACT_DIR_Debug=Debug
+CND_ARTIFACT_NAME_Debug=Minekraft
+CND_ARTIFACT_PATH_Debug=Debug/Minekraft
 CND_PACKAGE_DIR_Debug=dist/Debug/MinGW-Windows/package
 CND_PACKAGE_NAME_Debug=majnkraftlikegame.tar
 CND_PACKAGE_PATH_Debug=dist/Debug/MinGW-Windows/package/majnkraftlikegame.tar

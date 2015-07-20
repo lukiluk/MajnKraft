@@ -5,11 +5,11 @@
 class Window {
 public:
     Window();
-    Window(int,int,bool);
+    Window(int width,int height,char* title);
     void update();
     SDL_Window* getWindow();
-    float GetHeight() const;
-    float GetWidth() const;
+    float GetHeight();
+    float GetWidth();
     ~Window();
 private:
     SDL_GLContext context;

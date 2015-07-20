@@ -13,8 +13,8 @@ CND_BUILDDIR=build
 CND_DLIB_EXT=dll
 NBTMPDIR=${CND_BUILDDIR}/${CND_CONF}/${CND_PLATFORM}/tmp-packaging
 TMPDIRNAME=tmp-packaging
-OUTPUT_PATH=${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/majnkraftlikegame
-OUTPUT_BASENAME=majnkraftlikegame
+OUTPUT_PATH=${CND_CONF}/Minekraft
+OUTPUT_BASENAME=Minekraft
 PACKAGE_TOP_DIR=majnkraftlikegame/
 
 # Functions

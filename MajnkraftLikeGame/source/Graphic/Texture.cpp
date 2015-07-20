@@ -14,11 +14,14 @@
 Texture::Texture() : used(false),width(0),height(0) {
 }
 
-void Texture::loadTexture(GLuint shaderProgram, std::string path) {
+void Texture::loadTexture(GLuint shaderProgram, std::string file) {
     shader = shaderProgram;
     glGenTextures(1, textures);
     glBindTexture(GL_TEXTURE_2D, textures[0]);
-    std::string extension = path.substr(path.find_last_of('.') + 1);
+    std::string path;
+    path.append(TEXTURE_FOLDER);
+    path.append(file);
+    std::string extension = file.substr(file.find_last_of('.') + 1);
     GLenum format;
     if (extension == "png") {
         IMG_Init(IMG_INIT_PNG);
@@ -29,7 +32,7 @@ void Texture::loadTexture(GLuint shaderProgram, std::string path) {
         format = GL_RGB;
     }
     else{
-        printf("Unsuported(suported .png,.jpg) or invalid texture type in %s\n",path.c_str());
+        printf("Unsuported(suported .png,.jpg) or invalid texture type in %s\n",file.c_str());
         return;
     }
     img = IMG_Load(path.c_str());

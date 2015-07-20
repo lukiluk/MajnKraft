@@ -7,7 +7,7 @@
 #include "PhongShader.h"
 
 PhongShader::PhongShader() {
-    createShaders(loadShader("./Graphic/Shader/PhongShader.v"), loadShader("./Graphic/Shader/PhongShader.f"));
+    createShaders(loadShader(std::string("phongShader.")+ std::string(VERTEX_EXTENSION)), loadShader(std::string("phongShader.") + std::string(FRAGMENT_EXTENSION)));
     addUniform("trans");
     addUniform("view");
     addUniform("proj");
@@ -50,7 +50,10 @@ PhongShader& PhongShader::getInstance() {
     return instance;
 }
 
-void PhongShader::updateUniforms() {
+void PhongShader::updateUniforms(glm::mat4 projectionMatrix,glm::mat4 viewMatrix, glm::vec3 cameraPosition) {
+    setUniform("proj",projectionMatrix);
+    setUniform("view",viewMatrix);
+    setUniform("eyePos",cameraPosition);
     if (ambientLight == glm::vec3()) {
         printf("Warning: ambient lignht is zero");
     } else if (ALChanged) {

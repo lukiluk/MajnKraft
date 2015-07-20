@@ -48,10 +48,12 @@ void Shader::createShaders(std::string vertexSource,std::string fragmentSource) 
 }
 
 std::string Shader::loadShader(std::string filename){
-    std::ifstream inf(filename);
+    std::string filePath;
+    filePath.append(SHADER_PATH).append(filename);
+    std::ifstream inf(filePath);
     std::string code;
     if(!inf){
-        printf("Couldnt open shader %s",filename.c_str());
+        printf("Couldnt open shader %s",filePath.c_str());
         exit(-1);
     }
     std::string line;
@@ -59,6 +61,7 @@ std::string Shader::loadShader(std::string filename){
     {
         code.append(line);
         code.append("\n");
+        printf("%s\n",line.c_str());
     }
     inf.close();
     return code;
