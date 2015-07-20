@@ -17,6 +17,6 @@ private:
     SDL_Window* window;
     float width=0,height=0;
 };
-
+//
 #endif	/* DISPLAY_H */
 
